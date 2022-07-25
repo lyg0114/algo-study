@@ -18,13 +18,29 @@ package leetCode;
  */
 
 public class TwoSum_1 {
+
   public static void main(String[] args) {
   }
 }
 
 class Solution {
   public int[] twoSum(int[] nums, int target) {
-    return null;
+    return travels(nums, target);
+  }
+
+  public int[] travels(int[] nums, int target) {
+    int startIndex = 0;
+    for (int i = startIndex; i < nums.length; i++) {
+      if (startIndex != nums.length) {
+        for (int j = startIndex; j < nums.length; j++) {
+          if (i !=j && nums[i] + nums[j] == target) {
+            return new int[]{i, j};
+          }
+        }
+        startIndex++;
+      }
+    }
+    return new int[]{};
   }
 }
 

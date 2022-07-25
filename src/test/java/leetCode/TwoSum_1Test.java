@@ -6,11 +6,12 @@ import org.junit.Test;
 public class TwoSum_1Test  {
 
   @Test
-  public void test(){
-    int[] nums = {2,7,11,15};
+  public void TESTtwoSum(){
+    int[] nums = {3,2,4};
     Solution solution = new Solution();
-    int[] result = solution.twoSum(nums, 9);
-    assertEquals(result[0] + result[1] ,9);
+    int[] result = solution.twoSum(nums, 6);
+    assertEquals(1, result[0]);
+    assertEquals(2, result[1]);
   }
 
 }
