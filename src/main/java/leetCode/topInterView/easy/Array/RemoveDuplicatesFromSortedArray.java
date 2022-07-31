@@ -24,5 +24,8 @@ It does not matter what you leave beyond the returned k (hence they are undersco
  */
 
 public class RemoveDuplicatesFromSortedArray {
-
+  public int removeDuplicates(int[] nums) {
+    return 0;
+  }
 }
+
