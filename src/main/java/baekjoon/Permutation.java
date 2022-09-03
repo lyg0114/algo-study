@@ -9,7 +9,6 @@ public class Permutation {
   private List<Integer> permutations = new ArrayList<Integer>();
   private int permutationCount = 0;
 
-
   public void calculatePermutataion(){
     init();
     makePermutation(3,3,0);
@@ -18,11 +17,9 @@ public class Permutation {
   }
 
   public void init() {
-
     permutations.add(1);
     permutations.add(2);
     permutations.add(3);
-
   }
 
   public void makePermutation(int n, int r, int depth) {
