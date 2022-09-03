@@ -18,9 +18,11 @@ public class Permutation {
   }
 
   public void init() {
+
     permutations.add(1);
     permutations.add(2);
     permutations.add(3);
+
   }
 
   public void makePermutation(int n, int r, int depth) {
