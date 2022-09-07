@@ -17,8 +17,7 @@ public class SevenDwarfsMain {
   public static void main(String[] args) {
     DwartTalls dwartTalls = new DwartTalls();
     dwartTalls.extracted();
-    int result = dwartTalls.extractSevenDwarfs(-1);
-    System.out.println("result = " + result);
+    dwartTalls.extractSevenDwarfs(-1);
   }
 
 }
