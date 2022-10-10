@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.topInterView.easy.Array;
 
 /*
 
@@ -18,13 +18,17 @@ package leetCode;
 
  */
 
-public class TwoSum_1 {
+public class TwoSum {
 
   public static void main(String[] args) {
+    int[] nums = {3,2,4};
+    TwoSum twoSum = new TwoSum();
+    int[] result =twoSum.twoSum(nums, 6);
+    for (int i : result) {
+      System.out.println("i = " + i);
+    }
   }
-}
 
-class Solution {
   public int[] twoSum(int[] nums, int target) {
     return travels(nums, target);
   }
