@@ -1,4 +1,4 @@
-package baekjoon.page1;
+package baekjoon.page1.countofAlpabet;
 
 import java.util.HashMap;
 
