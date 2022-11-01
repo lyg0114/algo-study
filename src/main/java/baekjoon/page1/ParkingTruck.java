@@ -1,6 +1,5 @@
 package baekjoon.page1;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
