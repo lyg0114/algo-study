@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.Stack;
 
 public class Combination {
-
   private List<Integer> results = new ArrayList<Integer>();
   private Stack<Integer> combinations = new Stack<Integer>();
   private int totalCount;
   private int choise;
 
   private int combinationCount = 0;
+
+  public static void main(String[] args) {
+    Combination combination = new Combination();
+    combination.makeCombiNation(0);
+  }
 
   public Combination() {
     init();
@@ -33,9 +37,9 @@ public class Combination {
       return;
     }
 
-    for (int i = start + 1; i < totalCount; i++) {
+    for (int i = start; i < totalCount; i++) {
       combinations.push(i);
-      makeCombiNation(i);
+      makeCombiNation(i + 1);
       combinations.pop();
     }
     return;
@@ -43,9 +47,8 @@ public class Combination {
 
   public void printCombinations(List<Integer> combinations) {
     for (int i = 0; i < combinations.size(); i++) {
-      System.out.print(results.get(combinations.get(i)));
+      System.out.print(results.get(combinations.get(i)) + " ");
     }
     System.out.println("");
   }
-
 }
