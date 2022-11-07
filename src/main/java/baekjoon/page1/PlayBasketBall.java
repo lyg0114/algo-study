@@ -9,16 +9,14 @@ import java.util.Scanner;
  * code
  */
 public class PlayBasketBall {
-
   public static void main(String[] args) {
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = getScanner();
     int count = Integer.parseInt(scan.next());
     if (count < 1 || count > 150) {
       return;
     }
 
     HashMap<Character, Integer> resultMap = new HashMap<>();
-
     for (int i = 0; i < count; i++) {
       String str = scan.next();
       char[] chars = str.toCharArray();
@@ -31,7 +29,6 @@ public class PlayBasketBall {
       } else {
         resultMap.replace(chars[0], resultMap.get(chars[0]) + 1);
       }
-
     }
 
     for (Character character : resultMap.keySet()) {
@@ -40,7 +37,9 @@ public class PlayBasketBall {
         System.out.println(character);
       }
     }
-
   }
 
+  private static Scanner getScanner() {
+    return new Scanner(System.in);
+  }
 }
