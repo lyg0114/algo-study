@@ -1,4 +1,4 @@
-package baekjoon.page1;
+package baekjoon.page1.playBasketBall;
 import java.util.HashMap;
 import java.util.Scanner;
 
