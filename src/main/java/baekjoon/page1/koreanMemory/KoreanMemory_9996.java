@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.page1.koreanMemory;
 import java.util.Scanner;
 
 /**
