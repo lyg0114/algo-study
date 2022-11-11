@@ -8,7 +8,6 @@ import java.util.Scanner;
  * @since : 2022/11/07
  */
 public class playBasketBallV2 {
-
   public static void main(String[] args) {
     Scanner scan = getScanner();
     int count = Integer.parseInt(scan.next());

@@ -5,7 +5,9 @@ import java.util.Scanner;
 /**
  * @author : iyeong-gyo
  * @package : baekjoon.page1
- * @since : 2022/11/06 total Alpabet Count : 26 A : 65 , Z : 90 a : 97 , z : 122 Solve using ASCII
+ * @since : 2022/11/06 total Alpabet Count : 26
+ * A : 65 , Z : 90 a : 97 , z : 122
+ * Solve using ASCII
  * code
  */
 public class PlayBasketBall {
