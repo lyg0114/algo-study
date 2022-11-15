@@ -1,4 +1,4 @@
-package baekjoon.page1;
+package baekjoon.page1.pocketmon;
 
 import java.util.Scanner;
 
