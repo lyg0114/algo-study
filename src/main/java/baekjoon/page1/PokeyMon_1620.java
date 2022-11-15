@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @package : baekjoon.page1
  * @since : 2022/11/15
  */
-public class PokeyMon {
+public class PokeyMon_1620 {
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     int N = Integer.parseInt(scan.next());
