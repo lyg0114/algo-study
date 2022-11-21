@@ -7,6 +7,7 @@ import java.util.Scanner;
  * @author : iyeong-gyo
  * @package : baekjoon.page1
  * @since : 2022/11/17
+ * 경우의 수 문제
  */
 public class PassionKingMIssSin_9375 {
 
