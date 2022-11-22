@@ -13,9 +13,7 @@ import java.util.Set;
  * @since : 2022/11/22
  */
 public class palindrome_1213 {
-
   private List<String> palindromes = new ArrayList<String>();
-  private String resultStr;
   private Set resultSets;
 
   public static void main(String[] ars) {
@@ -24,18 +22,12 @@ public class palindrome_1213 {
   }
 
   private void calculatePermutataion() {
-    makeTargetLists();
+    ininData();
     checkPalindrome(palindromes.size(), palindromes.size(), 0);
-    ArrayList results = new ArrayList<>(resultSets);
-    Collections.sort(results, String.CASE_INSENSITIVE_ORDER);
-    try{
-      System.out.println(results.get(0));
-    } catch (Exception e){
-      System.out.println("I'm Sorry Hansoo");
-    }
+    printResults();
   }
 
-  public void makeTargetLists() {
+  public void ininData() {
     Scanner scan = new Scanner(System.in);
     String next = scan.next();
     char[] chars = next.toCharArray();
@@ -43,26 +35,13 @@ public class palindrome_1213 {
     for (int i = 0; i < chars.length; i++) {
       palindromes.add(String.valueOf(chars[i]));
     }
-    StringBuilder sb = new StringBuilder();
-    for (String s : palindromes) {
-      sb.append(s);
-    }
-    resultStr = sb.toString();
     resultSets = new HashSet<String>();
   }
 
   public void checkPalindrome(int number, int choice, int depth) {
     if (choice == depth) {
       if (isPalindrome()) {
-        StringBuilder sb = new StringBuilder();
-        for (String s : palindromes) {
-          sb.append(s);
-        }
-        String current = sb.toString();
-        if (resultStr.compareTo(current) > 0) {
-          resultStr = current;
-        }
-        resultSets.add(current);
+        resultSets.add(getStringFromList(palindromes));
       }
       return;
     }
@@ -83,5 +62,23 @@ public class palindrome_1213 {
       }
     }
     return isPalindrome;
+  }
+
+  private String getStringFromList(List<String> strs) {
+    StringBuilder sb = new StringBuilder();
+    for (String s : strs) {
+      sb.append(s);
+    }
+    return sb.toString();
+  }
+
+  private void printResults() {
+    ArrayList results = new ArrayList<>(resultSets);
+    Collections.sort(results, String.CASE_INSENSITIVE_ORDER);
+    try {
+      System.out.println(results.get(0));
+    } catch (Exception e) {
+      System.out.println("I'm Sorry Hansoo");
+    }
   }
 }
