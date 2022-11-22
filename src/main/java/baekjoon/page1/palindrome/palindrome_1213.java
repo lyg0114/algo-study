@@ -1,4 +1,4 @@
-package baekjoon.page1;
+package baekjoon.page1.palindrome;
 
 import java.util.ArrayList;
 import java.util.Collections;
