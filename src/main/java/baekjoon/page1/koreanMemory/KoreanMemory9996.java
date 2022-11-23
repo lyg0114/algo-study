@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @package : baekjoon
  * @since : 2022/11/08
  */
-public class KoreanMemory_9996 {
+public class KoreanMemory9996 {
 
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);

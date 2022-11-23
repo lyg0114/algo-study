@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @package : baekjoon.page1
  * @since : 2022/11/23
  */
-public class palindrome_1213_2 {
+public class palindrome1213B {
   public static void main(String[] ars) {
     Scanner scan = new Scanner(System.in);
     String inputStr = scan.next();

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @since : 2022/11/11
  * <p>
  */
-public class SequenceUsingPSum_2559 {
+public class SequenceUsingPSum2559 {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     int totalNum = Integer.parseInt(scanner.next());

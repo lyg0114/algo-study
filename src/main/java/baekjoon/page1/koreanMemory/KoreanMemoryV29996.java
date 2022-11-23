@@ -14,7 +14,7 @@ import java.util.Scanner;
  * 5. 서로 다르면 * 프로그램 종료
  * 6. 뒤이어 입력되는 텍스트의 맨앞, 맨뒤 비교
  */
-public class KoreanMemoryV2_9996 {
+public class KoreanMemoryV29996 {
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     int count = Integer.parseInt(scan.next());

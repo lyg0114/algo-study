@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @since : 2022/11/17
  * 경우의 수 문제
  */
-public class PassionKingMIssSin_9375 {
+public class PassionKingMIssSin9375 {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     int t = Integer.parseInt(scanner.next());

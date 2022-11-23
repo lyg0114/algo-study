@@ -12,12 +12,12 @@ import java.util.Set;
  * @package : baekjoon.page1
  * @since : 2022/11/22
  */
-public class palindrome_1213 {
+public class palindrome1213A {
   private List<String> palindromes = new ArrayList<String>();
   private Set resultSets;
 
   public static void main(String[] ars) {
-    palindrome_1213 palindrome = new palindrome_1213();
+    palindrome1213A palindrome = new palindrome1213A();
     palindrome.calculatePermutataion();
   }
 
