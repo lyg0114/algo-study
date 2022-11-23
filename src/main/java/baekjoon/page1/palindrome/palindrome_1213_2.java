@@ -8,21 +8,20 @@ import java.util.Scanner;
  * @since : 2022/11/23
  */
 public class palindrome_1213_2 {
-  public static void main(String [] ars){
+
+  public static void main(String[] ars) {
     Scanner scan = new Scanner(System.in);
     String inputStr = scan.next();
     int[] ints = convertStringToCountingArray(inputStr);
-    for (int i = 0; i < ints.length; i++) {
-      System.out.println("i = " + i);
-      System.out.println(ints[i]);
+    for (int i = 'Z'; i >= 'A'; i--) {
+      System.out.println((char) i + " : " + ints[i]);
     }
   }
 
   public static int[] convertStringToCountingArray(String inputStr) {
-    int[] result = new int[inputStr.length()];
+    int[] result = new int[200];
     for (int i = 0; i < inputStr.length(); i++) {
-      int targetNum = inputStr.charAt(i);
-      result[targetNum - 97] += 1;
+      result[inputStr.charAt(i)] += 1;
     }
     return result;
   }
