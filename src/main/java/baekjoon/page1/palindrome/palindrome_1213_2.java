@@ -1,8 +1,5 @@
 package baekjoon.page1.palindrome;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -19,7 +16,6 @@ public class palindrome_1213_2 {
     char mid = 0;
     String ret = "";
     for (int i = 'Z'; i >= 'A'; i--) {
-//      System.out.println((char) i + " : " + ints[i]);
       if (cnt[i] > 0) {
         if (cnt[i] % 2 == 1) {
           mid = (char) i;
@@ -36,6 +32,7 @@ public class palindrome_1213_2 {
         ret += String.valueOf((char) i);
       }
     }
+
     if (mid > 0) {
       String before = ret.substring(0, ret.length() / 2);
       String after = ret.substring(ret.length() / 2, ret.length());
