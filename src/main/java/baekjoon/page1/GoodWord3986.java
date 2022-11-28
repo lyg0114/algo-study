@@ -12,25 +12,29 @@ public class GoodWord3986 {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     int n = Integer.parseInt(scanner.next());
-
-    Stack<String> stack = new Stack<String>();
+    int resultCnt = 0;
+    Stack<Character> stack = new Stack<Character>();
     for (int i = 0; i < n; i++) {
-      String str = scanner.next();
-      if(stack.isEmpty()){
-        stack.push(str);
-        continue;
-      }
-      if(!stack.isEmpty()){
-        String pop = stack.pop();
-        if(!str.equals(pop)){
-          stack.push(pop);
-          stack.push(str);
+      String inputStr = scanner.next();
+      char[] chars = inputStr.toCharArray();
+      for (int j = 0; j < chars.length; j++) {
+        if (stack.isEmpty()) {
+          stack.push(chars[j]);
+          continue;
+        }
+        if (!stack.isEmpty()) {
+          Character pop = stack.pop();
+          if (chars[j] != pop) {
+            stack.push(pop);
+            stack.push(chars[j]);
+          }
         }
       }
+      if (stack.isEmpty()) {
+        resultCnt++;
+      }
+      stack.removeAllElements();
     }
-
-    if(stack.isEmpty()){
-      System.out.println("good word");
-    }
+    System.out.println(resultCnt);
   }
 }
