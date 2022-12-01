@@ -6,6 +6,11 @@ import java.util.Scanner;
  * @author : iyeong-gyo
  * @package : baekjoon.page1
  * @since : 2022/11/30
+ *
+ * ( A * A * A * A * A * A ) % C
+ * case 1 :
+ * case 2 :
+ * case 3 :
  */
 public class Multifly {
   private static Long A;
@@ -31,5 +36,4 @@ public class Multifly {
     }
     return ret;
   }
-
 }
