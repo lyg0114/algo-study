@@ -19,9 +19,12 @@ public class Multifly {
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    A = Long.valueOf(scanner.next());
-    B = Long.valueOf(scanner.next());
-    C = Long.valueOf(scanner.next());
+//    A = Long.valueOf(scanner.next());
+//    B = Long.valueOf(scanner.next());
+//    C = Long.valueOf(scanner.next());
+    A = 10L;
+    B = 11L;
+    C = 12L;
     System.out.println(go(A,B));
   }
 
