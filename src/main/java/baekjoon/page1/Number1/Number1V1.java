@@ -19,11 +19,11 @@ public class Number1V1 {
     System.out.println("ret = " + ret);
   }
 
-  private static int calculate(int n, int i, long ret) {
-    ret =  (ret + (long) Math.pow(10, i));
+  private static int calculate(int n, int i, int ret) {
+    ret = (ret * 10) + 1;
     if (ret % n == 0) {
-      return i +1;
+      return i + 1;
     }
-    return calculate(n, i + 1, ret);
+    return calculate(n, i + 1, ret % n);
   }
 }
