@@ -9,7 +9,6 @@ import java.util.LinkedList;
  * @since : 2022/12/07
  */
 public class AdjacencyLinkedList {
-
   private static ArrayList<LinkedList> arrayList = new ArrayList<LinkedList>();
   private static int visited[] = new int[5];
 
@@ -36,18 +35,21 @@ public class AdjacencyLinkedList {
     arrayList.add(integers4);
 
     for (int i = 0; i < arrayList.size(); i++) {
-      travers(i);
+      if (arrayList.get(i).size() > 0 && visited[i] == 0) {
+        travers(i);
+      }
     }
   }
 
   private static void travers(Integer i) {
-    if(visited[i] == 1) return;
     System.out.println(i);
     visited[i] = 1;
 
     LinkedList<Integer> linkedList = arrayList.get(i);
     for (int j = 0; j < linkedList.size(); j++) {
-      if(visited[j] == 1) continue;
+      if (visited[j] == 1) {
+        continue;
+      }
       travers(j);
     }
   }
