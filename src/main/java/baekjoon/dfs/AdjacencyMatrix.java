@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.dfs;
 
 /**
  * @author : iyeong-gyo
