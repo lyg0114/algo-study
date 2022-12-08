@@ -1,4 +1,4 @@
-package baekjoon.dfs;
+package baekjoon.dfs.recursion;
 
 public class JonghwaIsBB {
     private static int dy[] = {-1, 0, 1, 0};

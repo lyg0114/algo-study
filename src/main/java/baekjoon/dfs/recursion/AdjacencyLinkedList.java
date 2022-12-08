@@ -1,4 +1,4 @@
-package baekjoon.dfs;
+package baekjoon.dfs.recursion;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

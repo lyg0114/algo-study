@@ -1,4 +1,4 @@
-package baekjoon.dfs;
+package baekjoon.dfs.recursion;
 
 /**
  * @author : iyeong-gyo
