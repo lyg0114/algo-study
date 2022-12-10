@@ -33,10 +33,8 @@ public class BFSBasic {
     adj.get(20).add(24);
     BFS(10);
     for (int i = 0; i < nodes.length; i++) {
-      System.out.println(String.format("[ %d : %d ]", nodes[i], visited[nodes[i]]));
+      System.out.println(String.format("[ %d : %d ]", nodes[i], visited[nodes[i]] - 1));
     }
-
-    System.out.println(visited[24] - 1);
   }
 
   public static void BFS(int here) {
@@ -45,6 +43,7 @@ public class BFSBasic {
     queue.add(here);
     while (queue.size() > 0) {
       Integer from = queue.poll();
+      System.out.println("from = " + from);
       for (Integer there : adj.get(from)) {
         if (visited[there] > 0) {
           continue;
