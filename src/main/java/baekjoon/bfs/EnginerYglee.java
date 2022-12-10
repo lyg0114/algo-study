@@ -9,7 +9,6 @@ import java.util.Queue;
  * @since : 2022/12/11
  */
 class Position {
-
   int x;
   int y;
 
@@ -28,7 +27,6 @@ class Position {
 }
 
 public class EnginerYglee {
-
   private static int dx[] = {0, 1, 0, -1};
   private static int dy[] = {-1, 0, 1, 0};
   private static int nx = 0;
@@ -63,11 +61,10 @@ public class EnginerYglee {
         }
         if (matirx[nx][ny] == 1 && visited[nx][ny] == 0) {
           System.out.println("[" + nx + " : " + ny + "]");
-          visited[nx][ny] = visited[nx - dx[i]][ny - dy[i]] + 1;
+          visited[nx][ny] = visited[poll.getX()][poll.getY()] + 1;
           queue.add(new Position(nx, ny));
         }
       }
     }
   }
-
 }
