@@ -6,6 +6,7 @@ package baekjoon.page2;
  * @since : 2022/12/17
  */
 class CalculateSafetyAreaCount {
+
   private static int dx[] = {0, 1, 0, -1};
   private static int dy[] = {-1, 0, 1, 0};
   private static int[][] matirx = {
@@ -19,7 +20,8 @@ class CalculateSafetyAreaCount {
   private int nx = 0;
   private int ny = 0;
   private int ret = 0;
-  private int waterLevel = 4;
+  private int maxCnt = 0;
+  private int waterLevel;
 
   void dfs(int x, int y) {
     visited[x][y] = 1;
@@ -47,12 +49,37 @@ class CalculateSafetyAreaCount {
     }
     return ret;
   }
+
+  public int getMaxSafetyAreaCnt() {
+    int currentMaxCnt;
+    for (int i = 0; i < 9; i++) {
+      waterLevel = i;
+      clearVisited();
+      currentMaxCnt = getSafetyAreaCnt();
+      ret = 0;
+      if (currentMaxCnt > maxCnt) {
+        maxCnt = currentMaxCnt;
+      }
+    }
+    return maxCnt;
+  }
+
+  private void clearVisited() {
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 5; j++) {
+        visited[i][j] = 0;
+      }
+    }
+  }
 }
 
 public class SafetyArea {
+
   public static void main(String[] args) {
     CalculateSafetyAreaCount calSafetyCnt = new CalculateSafetyAreaCount();
-    int safetyAreaCnt = calSafetyCnt.getSafetyAreaCnt();
-    System.out.println("safetyAreaCnt = " + safetyAreaCnt);
+//    int safetyAreaCnt = calSafetyCnt.getSafetyAreaCnt();
+//    System.out.println("safetyAreaCnt = " + safetyAreaCnt);
+    int maxSafetyAreaCnt = calSafetyCnt.getMaxSafetyAreaCnt();
+    System.out.println("maxSafetyAreaCnt = " + maxSafetyAreaCnt);
   }
 }
