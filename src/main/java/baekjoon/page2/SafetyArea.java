@@ -1,4 +1,5 @@
 package baekjoon.page2;
+import java.util.Scanner;
 
 /**
  * @author : iyeong-gyo
@@ -6,29 +7,25 @@ package baekjoon.page2;
  * @since : 2022/12/17
  */
 class CalculateSafetyAreaCount {
-
   private static int dx[] = {0, 1, 0, -1};
   private static int dy[] = {-1, 0, 1, 0};
-  private static int[][] matirx = {
-      {6, 8, 2, 6, 2},
-      {3, 2, 3, 4, 6},
-      {6, 7, 3, 3, 2},
-      {7, 2, 5, 3, 6},
-      {8, 9, 5, 2, 7}
-  };
-  private int[][] visited = new int[5][5];
+  private static int[][] matirx;
+  private int[][] visited;
+  private int matrixWidth;
+  private int matrixHeigh;
   private int nx = 0;
   private int ny = 0;
   private int ret = 0;
   private int maxCnt = 0;
   private int waterLevel;
+  private int maxWaterLevel = 0;
 
   void dfs(int x, int y) {
     visited[x][y] = 1;
     for (int i = 0; i < 4; i++) {
-      ny = y + dy[i];
       nx = x + dx[i];
-      if (ny < 0 || nx < 0 || ny >= 5 || nx >= 5) {
+      ny = y + dy[i];
+      if (ny < 0 || nx < 0 || ny >= matrixWidth || nx >= matrixHeigh) {
         continue;
       }
       if (matirx[nx][ny] > waterLevel && visited[nx][ny] == 0) {
@@ -39,8 +36,8 @@ class CalculateSafetyAreaCount {
   }
 
   public int getSafetyAreaCnt() {
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 5; j++) {
+    for (int i = 0; i < matrixWidth; i++) {
+      for (int j = 0; j < matrixHeigh; j++) {
         if (matirx[i][j] > waterLevel && visited[i][j] == 0) {
           ret++;
           dfs(i, j);
@@ -52,7 +49,7 @@ class CalculateSafetyAreaCount {
 
   public int getMaxSafetyAreaCnt() {
     int currentMaxCnt;
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < maxWaterLevel; i++) {
       waterLevel = i;
       clearVisited();
       currentMaxCnt = getSafetyAreaCnt();
@@ -65,20 +62,35 @@ class CalculateSafetyAreaCount {
   }
 
   private void clearVisited() {
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 5; j++) {
+    for (int i = 0; i < matrixWidth; i++) {
+      for (int j = 0; j < matrixHeigh; j++) {
         visited[i][j] = 0;
+      }
+    }
+  }
+
+  public void setMetrix() {
+    Scanner scan = new Scanner(System.in);
+    int N = Integer.parseInt(scan.next());
+    matrixWidth = N;
+    matrixHeigh = N;
+    visited = new int[matrixWidth][matrixHeigh];
+    matirx = new int[matrixWidth][matrixHeigh];
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+        matirx[i][j] = Integer.parseInt(scan.next());
+        if(matirx[i][j] > maxWaterLevel){
+          maxWaterLevel = matirx[i][j];
+        }
       }
     }
   }
 }
 
 public class SafetyArea {
-
   public static void main(String[] args) {
     CalculateSafetyAreaCount calSafetyCnt = new CalculateSafetyAreaCount();
-//    int safetyAreaCnt = calSafetyCnt.getSafetyAreaCnt();
-//    System.out.println("safetyAreaCnt = " + safetyAreaCnt);
+    calSafetyCnt.setMetrix();
     int maxSafetyAreaCnt = calSafetyCnt.getMaxSafetyAreaCnt();
     System.out.println("maxSafetyAreaCnt = " + maxSafetyAreaCnt);
   }
