@@ -15,12 +15,13 @@ class CalculateSafetyAreaCount {
       {7, 2, 5, 3, 6},
       {8, 9, 5, 2, 7}
   };
-  private static int[][] visited = new int[5][5];
-  private static int nx = 0;
-  private static int ny = 0;
-  private static int ret = 0;
+  private int[][] visited = new int[5][5];
+  private int nx = 0;
+  private int ny = 0;
+  private int ret = 0;
+  private int waterLevel = 4;
 
-  static void dfs(int x, int y) {
+  void dfs(int x, int y) {
     visited[x][y] = 1;
     for (int i = 0; i < 4; i++) {
       ny = y + dy[i];
@@ -28,15 +29,30 @@ class CalculateSafetyAreaCount {
       if (ny < 0 || nx < 0 || ny >= 5 || nx >= 5) {
         continue;
       }
-      if (matirx[nx][ny] == 1 && visited[nx][ny] == 0) {
+      if (matirx[nx][ny] > waterLevel && visited[nx][ny] == 0) {
         dfs(nx, ny);
       }
     }
     return;
   }
+
+  public int getSafetyAreaCnt() {
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 5; j++) {
+        if (matirx[i][j] > waterLevel && visited[i][j] == 0) {
+          ret++;
+          dfs(i, j);
+        }
+      }
+    }
+    return ret;
+  }
 }
 
 public class SafetyArea {
   public static void main(String[] args) {
+    CalculateSafetyAreaCount calSafetyCnt = new CalculateSafetyAreaCount();
+    int safetyAreaCnt = calSafetyCnt.getSafetyAreaCnt();
+    System.out.println("safetyAreaCnt = " + safetyAreaCnt);
   }
 }
