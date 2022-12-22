@@ -1,8 +1,8 @@
 package baekjoon.dfs.recursion;
 
 public class JonghwaIsBB {
-    private static int dy[] = {-1, 0, 1, 0};
     private static int dx[] = {0, 1, 0, -1};
+    private static int dy[] = {-1, 0, 1, 0};
     private static int[][] matirx = {
             {1, 0, 1, 0, 1},
             {1, 1, 0, 0, 1},
@@ -38,7 +38,6 @@ public class JonghwaIsBB {
                 }
             }
         }
-
         System.out.println(ret);
     }
 }
