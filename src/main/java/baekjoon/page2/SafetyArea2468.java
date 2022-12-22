@@ -5,8 +5,9 @@ import java.util.Scanner;
  * @author : iyeong-gyo
  * @package : baekjoon.page2
  * @since : 2022/12/17
+ * 2468
  */
-class CalculateSafetyAreaCount2468 {
+class CalculateSafetyAreaCount {
   private static int dx[] = {0, 1, 0, -1};
   private static int dy[] = {-1, 0, 1, 0};
   private static int[][] matirx;
@@ -87,9 +88,9 @@ class CalculateSafetyAreaCount2468 {
   }
 }
 
-public class SafetyArea {
+public class SafetyArea2468 {
   public static void main(String[] args) {
-    CalculateSafetyAreaCount2468 calSafetyCnt = new CalculateSafetyAreaCount2468();
+    CalculateSafetyAreaCount calSafetyCnt = new CalculateSafetyAreaCount();
     calSafetyCnt.setMetrix();
     int maxSafetyAreaCnt = calSafetyCnt.getMaxSafetyAreaCnt();
     System.out.println("maxSafetyAreaCnt = " + maxSafetyAreaCnt);
