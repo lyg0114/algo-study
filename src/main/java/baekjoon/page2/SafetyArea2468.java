@@ -5,6 +5,7 @@ import java.util.Scanner;
  * @author : iyeong-gyo
  * @package : baekjoon.page2
  * @since : 2022/12/17
+ * 2468
  */
 class CalculateSafetyAreaCount {
   private static int dx[] = {0, 1, 0, -1};
@@ -87,7 +88,7 @@ class CalculateSafetyAreaCount {
   }
 }
 
-public class SafetyArea {
+public class SafetyArea2468 {
   public static void main(String[] args) {
     CalculateSafetyAreaCount calSafetyCnt = new CalculateSafetyAreaCount();
     calSafetyCnt.setMetrix();
