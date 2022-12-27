@@ -16,7 +16,6 @@ public class OrganicCabbage {
       {0, 0, 1, 1, 0, 0, 0, 1, 1, 1},
       {0, 0, 0, 0, 1, 0, 0, 1, 1, 1}
   };
-
   private static int[][] visited = new int[104][104];
   private static int nx = 0;
   private static int ny = 0;
@@ -46,7 +45,9 @@ public class OrganicCabbage {
         }
       }
     }
+    System.out.println("#########");
     System.out.println(ret);
+    System.out.println("#########");
   }
 
 }
