@@ -3,22 +3,15 @@ package leetCode.topInterView.easy.Array;
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.easy.Array
- * @since : 2023/03/02
- * https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/
+ * @since : 2023/03/02 https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/
  */
 public class RotateArray {
   public static void main(String[] args) {
-    int[] nums = {1,2,3,4,5,6,7};
+    int[] nums = {1, 2, 3, 4, 5, 6, 7};
     printArray(nums);
-    rotate(nums,3);
+    rotate(nums, 3);
     System.out.println("");
     printArray(nums);
-  }
-
-  private static void printArray(int[] nums) {
-    for (int i = 0; i < nums.length; i++) {
-      System.out.print(nums[i] + " ");
-    }
   }
 
   public static void rotate(int[] nums, int k) {
@@ -35,6 +28,12 @@ public class RotateArray {
       nums[start] = temp;
       start++;
       end--;
+    }
+  }
+
+  private static void printArray(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+      System.out.print(nums[i] + " ");
     }
   }
 }
