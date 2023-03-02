@@ -9,13 +9,13 @@ import java.util.HashSet;
 public class ContainsDuplicate {
 
   public static void main(String[] args) {
-    Solution solution = new Solution();
+    ContainsDuplicateSolution solution = new ContainsDuplicateSolution();
     int[] nums = {1, 2, 3, 1};
     System.out.println(solution.containsDuplicate(nums));
   }
 }
 
-class Solution {
+class ContainsDuplicateSolution {
   public boolean containsDuplicate(int[] nums) {
     HashSet<Integer> set = new HashSet<Integer>();
     for (int i = 0; i < nums.length; i++) {
