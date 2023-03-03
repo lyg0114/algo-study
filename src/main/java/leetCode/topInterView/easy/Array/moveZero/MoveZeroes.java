@@ -6,10 +6,10 @@ package leetCode.topInterView.easy.Array.moveZero;
  * @since : 2023/03/02 https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/567/
  */
 public class MoveZeroes {
-
   public static void main(String[] args) {
-    int[] nums = {0,0,0,0,0,0,1,1,1};
-    MoveZeroesSolutionInterface solution = new MoveZeroesMoveZeroesSolution();
+    int[] nums = {0,1,0,3,12};
+    MoveZeroesSolutionInterface solution
+        = new MoveZeroesMoveZeroesSolution2();
     for (int i = 0; i < nums.length; i++) {
       System.out.print(nums[i] + ",");
     }
