@@ -27,12 +27,18 @@ public class ValidSudoku {
 class ValidSudokuSolution {
 
   public boolean isValidSudoku(String[][] board) {
-    for (String[] strings : board) {
-      for (String string : strings) {
-        System.out.print(string + ", ");
-      }
-      System.out.println("");
-    }
+    return checkRow(board) && checkColumn(board) && checkGroup(board);
+  }
+
+  private boolean checkGroup(String[][] board) {
+    return false;
+  }
+
+  private boolean checkColumn(String[][] board) {
+    return false;
+  }
+
+  private boolean checkRow(String[][] board) {
     return false;
   }
 }
