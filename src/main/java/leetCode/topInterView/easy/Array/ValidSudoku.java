@@ -1,5 +1,7 @@
 package leetCode.topInterView.easy.Array;
 
+import java.util.HashMap;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.easy.Array
@@ -9,16 +11,16 @@ public class ValidSudoku {
 
   public static void main(String[] args) {
     ValidSudokuSolution solution = new ValidSudokuSolution();
-    String[][] board = {
-        {"5", "3", ".", ".", "7", ".", ".", ".", "."},
-        {"6", ".", ".", "1", "9", "5", ".", ".", "."},
-        {".", "9", "8", ".", ".", ".", ".", "6", "."},
-        {"8", ".", ".", ".", "6", ".", ".", ".", "3"},
-        {"4", ".", ".", "8", ".", "3", ".", ".", "1"},
-        {"7", ".", ".", ".", "2", ".", ".", ".", "6"},
-        {".", "6", ".", ".", ".", ".", "2", "8", "."},
-        {".", ".", ".", "4", "1", "9", ".", ".", "5"},
-        {".", ".", ".", ".", "8", ".", ".", "7", "9"},
+    char[][] board = {
+        {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+        {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+        {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+        {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+        {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+        {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+        {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+        {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+        {'.', '.', '.', '.', '8', '.', '.', '7', '9'},
     };
 //    System.out.println(solution.isValidSudoku(board));
   }
@@ -26,19 +28,21 @@ public class ValidSudoku {
 
 class ValidSudokuSolution {
 
-  public boolean isValidSudoku(String[][] board) {
+  private HashMap<String, Object> strMap = new HashMap<>();
+
+  public boolean isValidSudoku(char[][] board) {
     return checkRow(board) && checkColumn(board) && checkGroup(board);
   }
 
-  private boolean checkGroup(String[][] board) {
+  private boolean checkGroup(char[][] board) {
     return false;
   }
 
-  private boolean checkColumn(String[][] board) {
+  private boolean checkColumn(char[][] board) {
     return false;
   }
 
-  private boolean checkRow(String[][] board) {
+  private boolean checkRow(char[][] board) {
     return false;
   }
 }
