@@ -6,6 +6,7 @@ import java.util.HashMap;
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.easy.Array
  * @since : 2023/03/06
+ * https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/769/
  */
 public class ValidSudoku {
 
