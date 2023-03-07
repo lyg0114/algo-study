@@ -28,7 +28,7 @@ public class ValidSudoku {
 
 class ValidSudokuSolution {
 
-  private HashMap<String, Object> strMap = new HashMap<>();
+  private HashMap<Character, Integer> strMap = new HashMap<>();
 
   public boolean isValidSudoku(char[][] board) {
     return checkRow(board) && checkColumn(board) && checkGroup(board);
@@ -38,11 +38,33 @@ class ValidSudokuSolution {
     return false;
   }
 
-  private boolean checkColumn(char[][] board) {
-    return false;
+  public boolean checkColumn(char[][] board) {
+    for (int i = 0; i < board.length; i++) {
+      for (int j = 0; j < board.length; j++) {
+        if (strMap.containsKey(board[j][i])) {
+          return false;
+        }
+        if (board[j][i] != '.') {
+          strMap.put(board[j][i], 1);
+        }
+      }
+      strMap.clear();
+    }
+    return true;
   }
 
-  private boolean checkRow(char[][] board) {
-    return false;
+  public boolean checkRow(char[][] board) {
+    for (char[] chars : board) {
+      for (char aChar : chars) {
+        if (strMap.containsKey(aChar)) {
+          return false;
+        }
+        if (aChar != '.') {
+          strMap.put(aChar, 1);
+        }
+      }
+      strMap.clear();
+    }
+    return true;
   }
 }
