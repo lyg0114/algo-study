@@ -22,7 +22,7 @@ public class ValidSudoku {
         {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
         {'.', '.', '.', '.', '8', '.', '.', '7', '9'},
     };
-//    System.out.println(solution.isValidSudoku(board));
+    System.out.println(solution.isValidSudoku(board));
   }
 }
 
@@ -34,9 +34,30 @@ class ValidSudokuSolution {
     return checkRow(board) && checkColumn(board) && checkGroup(board);
   }
 
-  private boolean checkGroup(char[][] board) {
-    return false;
+  public boolean checkGroup(char[][] board) {
+    //0,0 //3,0 //6,0
+    //0,3 //3,3 //6,3
+    //0,6 //3,6 //6,6
+    for (int i = 0; i < 7; i += 3) {
+      for (int j = 0; j < 7; j += 3) {
+
+        for (int k = i; k < i + 3; k++) {
+          for (int l = j; l < j + 3; l++) {
+            if (strMap.containsKey(board[k][l])) {
+              return false;
+            }
+            if (board[k][l] != '.') {
+              strMap.put(board[k][l], 1);
+            }
+          }
+          strMap.clear();
+        }
+
+      }
+    }
+    return true;
   }
+
 
   public boolean checkColumn(char[][] board) {
     for (int i = 0; i < board.length; i++) {
