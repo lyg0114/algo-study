@@ -8,8 +8,9 @@ package leetCode.topInterView.easy.Strings.firstuniq;
 public class firstUniqChar {
 
   public static void main(String[] args) {
-    FirstUniqCharSolution solution = new FirstUniqCharSolution1();
-    String str = "aabb";
+    FirstUniqCharSolution solution = new FirstUniqCharSolution2();
+//    String str = "leetcode";
+    String str = "aacbb";
     System.out.println(solution.firstUniqChar(str));
   }
 }
