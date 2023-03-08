@@ -3,7 +3,8 @@ package leetCode.topInterView.easy.Strings;
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.easy.Strings
- * @since : 2023/03/08 https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/880/
+ * @since : 2023/03/08
+ * https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/880/
  */
 public class ReverseInteger {
 
