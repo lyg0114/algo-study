@@ -17,16 +17,16 @@ public class ReverseInteger {
 
 class ReverseIntegerSolution {
 
-  public int reverse(int n) {
+  public int reverse(int x) {
     int rev = 0;
-    while (n != 0) {
-      int m = n % 10;
-      n = n / 10;
+    while (x != 0) {
+      int m = x % 10;
+      x = x / 10;
       if (rev > Integer.MAX_VALUE / 10 || rev < Integer.MIN_VALUE / 10) {
         return 0;
       }
       rev = (rev * 10) + m;
     }
-    return 0;
+    return rev;
   }
 }
