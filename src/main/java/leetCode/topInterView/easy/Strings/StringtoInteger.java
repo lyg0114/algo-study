@@ -17,30 +17,42 @@ public class StringtoInteger {
 class StringtoIntegerSolution {
 
   private boolean isNegative = false;
+  private int indexOfFirstDigit = -1;
 
   public int myAtoi(String input) {
-    String trim = input.trim();
-    char[] chars = trim.toCharArray();
-    for (int i = 0; i < chars.length; i++) {
-      if (i == 0) {
-        checkNegative(chars[i]);
-      }
-      if (!checkValidation(chars[i])) {
-        return 0;
-      }
-    }
+    validation(input);
+
     return 0;
   }
 
-  private boolean checkValidation(char aChar) {
-    return isNumber(aChar);
+  private void validation(String input) {
+    String trimInput = input.trim();
+    char[] chars = trimInput.toCharArray();
+    for (int i = 0; i < chars.length; i++) {
+      charValidation(chars, i);
+    }
   }
 
-  private boolean isNumber(char aChar) {
+  public void charValidation(char[] chars, int index) {
+    if (index == 0) {
+      checkNegative(chars[index]);
+    }
+    checkFirstDigit(chars[index], index);
+  }
+
+  public void checkFirstDigit(char aChar, int index) {
+    if (indexOfFirstDigit == -1) {
+      if (aChar > 48 && aChar < 58) {
+        indexOfFirstDigit = index;
+      }
+    }
+  }
+
+  public boolean isNumber(char aChar) {
     return aChar > 47 && aChar < 58;
   }
 
-  private void checkNegative(char aChar) {
+  public void checkNegative(char aChar) {
     if (aChar == '-') {
       isNegative = true;
     } else if (aChar == '+') {
@@ -48,5 +60,13 @@ class StringtoIntegerSolution {
     } else {
       isNegative = false;
     }
+  }
+
+  public boolean isNegative() {
+    return isNegative;
+  }
+
+  public int getIndexOfFirstDigit() {
+    return indexOfFirstDigit;
   }
 }
