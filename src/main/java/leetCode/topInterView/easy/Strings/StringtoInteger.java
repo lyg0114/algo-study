@@ -20,8 +20,14 @@ class StringtoIntegerSolution {
   private int indexOfFirstDigit = -1;
 
   public int myAtoi(String input) {
-    validation(input);
-
+    try {
+      validation(input);
+    } catch (NumberFormatException e) {
+      System.out.println("################");
+      System.out.println(e.getMessage());
+      System.out.println("################");
+      return 0;
+    }
     return 0;
   }
 
@@ -38,6 +44,15 @@ class StringtoIntegerSolution {
       checkNegative(chars[index]);
     }
     checkFirstDigit(chars[index], index);
+    checkNumber(chars[index]);
+  }
+
+  private void checkNumber(char aChar) {
+    if (indexOfFirstDigit > 0) {
+      if (!isNumber(aChar)) {
+        throw new NumberFormatException(aChar + "is Not Number");
+      }
+    }
   }
 
   public void checkFirstDigit(char aChar, int index) {
