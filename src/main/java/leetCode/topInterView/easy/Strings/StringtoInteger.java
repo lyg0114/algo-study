@@ -25,10 +25,16 @@ class StringtoIntegerSolution {
   private int resultValue;
 
   public int myAtoi(String s) {
-    validation(s);
-    createFinalStr();
-    result();
-    return resultValue;
+    try {
+      validation(s);
+      createFinalStr();
+      result();
+      return resultValue;
+    } catch (NumberFormatException e) {
+      System.out.println("e.getMessage() = " + e.getMessage());
+      e.printStackTrace();
+      return 0;
+    }
   }
 
   private void result() {
@@ -85,6 +91,11 @@ class StringtoIntegerSolution {
     if (indexOfFirstDigit == -1) {
       if (aChar > 48 && aChar < 58) {
         indexOfFirstDigit = index;
+      } else {
+        if ((aChar == '+' || aChar == '-') || isNumber(aChar)) {
+          return;
+        }
+        throw new NumberFormatException(aChar + "is not number");
       }
     }
   }

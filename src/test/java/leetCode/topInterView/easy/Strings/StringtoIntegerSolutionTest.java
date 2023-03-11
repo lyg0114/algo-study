@@ -19,14 +19,13 @@ public class StringtoIntegerSolutionTest {
     System.out.println(solution.myAtoi("123"));
     assertEquals(0, solution.getIndexOfFirstDigit());
 
+    StringtoIntegerSolution solution2 = new StringtoIntegerSolution();
+    solution2.myAtoi(" 123");
+    assertEquals(0, solution2.getIndexOfFirstDigit());
 
-//    StringtoIntegerSolution solution2 = new StringtoIntegerSolution();
-//    solution2.myAtoi(" 123");
-//    assertEquals(0, solution2.getIndexOfFirstDigit());
-//
-//    StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
-//    solution3.myAtoi("+123");
-//    assertEquals(0, solution3.getIndexOfFirstDigit());
+    StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
+    System.out.println(solution3.myAtoi("+123"));
+    assertEquals(1, solution3.getIndexOfFirstDigit());
 
   }
 
@@ -45,17 +44,15 @@ public class StringtoIntegerSolutionTest {
 
   @Test
   public void testLetters() {
-//    StringtoIntegerSolution solution = new StringtoIntegerSolution();
-//    solution.myAtoi("A123");
-//    assertEquals(1, solution.getIndexOfFirstDigit());
-//    assertFalse(solution.isNegative());
-//
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    solution.myAtoi("A123");
+    assertEquals(1, solution.getIndexOfFirstDigit());
+    assertFalse(solution.isNegative());
 
-//    StringtoIntegerSolution solutio2 = new StringtoIntegerSolution();
-//    solutio2.myAtoi("-A1asdf23");
-//    assertEquals(2, solutio2.getIndexOfFirstDigit());
-//    assertTrue(solutio2.isNegative());
-//    System.out.println(solutio2.getResultChars());
+    StringtoIntegerSolution solutio2 = new StringtoIntegerSolution();
+    solutio2.myAtoi("-A1asdf23");
+    assertEquals(2, solutio2.getIndexOfFirstDigit());
+    assertTrue(solutio2.isNegative());
 
     StringtoIntegerSolution solutio3 = new StringtoIntegerSolution();
     solutio3.myAtoi("-41999999999999999999999999999999999999999999993 with words");
@@ -63,4 +60,15 @@ public class StringtoIntegerSolutionTest {
     assertTrue(solutio3.isNegative());
   }
 
+  @Test
+  public void finalTestCase() {
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(0, solution.myAtoi("words and 987"));
+
+    StringtoIntegerSolution solution2 = new StringtoIntegerSolution();
+    assertEquals(42, solution2.myAtoi("42"));
+
+    StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
+    assertEquals(4193, solution3.myAtoi("4193 with words"));
+  }
 }
