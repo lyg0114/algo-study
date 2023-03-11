@@ -70,5 +70,8 @@ public class StringtoIntegerSolutionTest {
 
     StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
     assertEquals(4193, solution3.myAtoi("4193 with words"));
+
+    StringtoIntegerSolution solution4 = new StringtoIntegerSolution();
+    assertEquals(-2147483648, solution4.myAtoi("-91283472332"));
   }
 }

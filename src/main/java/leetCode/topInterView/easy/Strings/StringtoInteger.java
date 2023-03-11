@@ -40,12 +40,20 @@ class StringtoIntegerSolution {
   private void result() {
     resultValue = convertCharToInt(resultStr.get(0));
     int index = 1;
-    while (resultValue < Integer.MAX_VALUE / 10) {
+    while (true) {
       resultValue = (resultValue * 10) + convertCharToInt(resultStr.get(index));
       if (++index == resultStr.size()) {
         break;
       }
+      if (resultValue > Integer.MAX_VALUE / 10) {
+        resultValue = Integer.MAX_VALUE;
+        if (isNegative) {
+          resultValue = Integer.MIN_VALUE;
+        }
+        break;
+      }
     }
+
     if (isNegative) {
       resultValue *= -1;
     }
