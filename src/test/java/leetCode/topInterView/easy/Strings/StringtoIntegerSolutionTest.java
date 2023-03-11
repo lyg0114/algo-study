@@ -1,10 +1,7 @@
 package leetCode.topInterView.easy.Strings;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -41,6 +38,27 @@ public class StringtoIntegerSolutionTest {
     solution2.myAtoi("+00123");
     assertEquals(3, solution2.getIndexOfFirstDigit());
     assertFalse(solution2.isNegative());
+  }
+
+  @Test
+  public void testLetters() {
+//    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+//    solution.myAtoi("A123");
+//    assertEquals(1, solution.getIndexOfFirstDigit());
+//    assertFalse(solution.isNegative());
+//
+
+//    StringtoIntegerSolution solutio2 = new StringtoIntegerSolution();
+//    solutio2.myAtoi("-A1asdf23");
+//    assertEquals(2, solutio2.getIndexOfFirstDigit());
+//    assertTrue(solutio2.isNegative());
+//    System.out.println(solutio2.getResultChars());
+
+    StringtoIntegerSolution solutio2 = new StringtoIntegerSolution();
+    solutio2.myAtoi("4193 with words");
+    assertEquals(0, solutio2.getIndexOfFirstDigit());
+    assertFalse(solutio2.isNegative());
+    System.out.println(solutio2.getResultChars());
   }
 
 }

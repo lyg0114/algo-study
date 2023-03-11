@@ -1,5 +1,7 @@
 package leetCode.topInterView.easy.Strings;
 
+import java.util.ArrayList;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.easy.Strings
@@ -18,25 +20,34 @@ class StringtoIntegerSolution {
 
   private boolean isNegative = false;
   private int indexOfFirstDigit = -1;
+  char[] chars;
+  private ArrayList<Character> resultStr = new ArrayList<>();
 
   public int myAtoi(String input) {
     try {
       validation(input);
+      createFinalStr();
     } catch (NumberFormatException e) {
-      System.out.println("################");
-      System.out.println(e.getMessage());
-      System.out.println("################");
       return 0;
     }
     return 0;
   }
 
+  private void createFinalStr() {
+    for (int i = indexOfFirstDigit; i < chars.length; i++) {
+      if (chars[i] != ' ') {
+        resultStr.add(chars[i]);
+      }
+    }
+  }
+
   private void validation(String input) {
     String trimInput = input.trim();
-    char[] chars = trimInput.toCharArray();
+    chars = trimInput.toCharArray();
     for (int i = 0; i < chars.length; i++) {
       charValidation(chars, i);
     }
+
   }
 
   public void charValidation(char[] chars, int index) {
@@ -44,13 +55,13 @@ class StringtoIntegerSolution {
       checkNegative(chars[index]);
     }
     checkFirstDigit(chars[index], index);
-    checkNumber(chars[index]);
+    checkNumber(chars, index);
   }
 
-  private void checkNumber(char aChar) {
-    if (indexOfFirstDigit > 0) {
-      if (!isNumber(aChar)) {
-        throw new NumberFormatException(aChar + "is Not Number");
+  private void checkNumber(char[] chars, int index) {
+    if (indexOfFirstDigit > -1) {
+      if (!isNumber(chars[index])) {
+        chars[index] = ' ';
       }
     }
   }
@@ -83,5 +94,9 @@ class StringtoIntegerSolution {
 
   public int getIndexOfFirstDigit() {
     return indexOfFirstDigit;
+  }
+
+  public ArrayList<Character> getResultChars() {
+    return resultStr;
   }
 }
