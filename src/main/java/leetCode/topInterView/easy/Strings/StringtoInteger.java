@@ -22,15 +22,31 @@ class StringtoIntegerSolution {
   private int indexOfFirstDigit = -1;
   char[] chars;
   private ArrayList<Character> resultStr = new ArrayList<>();
+  private int resultValue;
 
-  public int myAtoi(String input) {
-    try {
-      validation(input);
-      createFinalStr();
-    } catch (NumberFormatException e) {
-      return 0;
+  public int myAtoi(String s) {
+    validation(s);
+    createFinalStr();
+    result();
+    return resultValue;
+  }
+
+  private void result() {
+    resultValue = convertCharToInt(resultStr.get(0));
+    int index = 1;
+    while (resultValue < Integer.MAX_VALUE / 10) {
+      resultValue = (resultValue * 10) + convertCharToInt(resultStr.get(index));
+      if (++index == resultStr.size()) {
+        break;
+      }
     }
-    return 0;
+    if (isNegative) {
+      resultValue *= -1;
+    }
+  }
+
+  private int convertCharToInt(Character ch) {
+    return ch - 48;
   }
 
   private void createFinalStr() {
@@ -47,7 +63,6 @@ class StringtoIntegerSolution {
     for (int i = 0; i < chars.length; i++) {
       charValidation(chars, i);
     }
-
   }
 
   public void charValidation(char[] chars, int index) {
@@ -94,9 +109,5 @@ class StringtoIntegerSolution {
 
   public int getIndexOfFirstDigit() {
     return indexOfFirstDigit;
-  }
-
-  public ArrayList<Character> getResultChars() {
-    return resultStr;
   }
 }

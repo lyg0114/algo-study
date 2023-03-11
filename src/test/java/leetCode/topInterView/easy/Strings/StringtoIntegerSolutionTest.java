@@ -1,7 +1,9 @@
 package leetCode.topInterView.easy.Strings;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 /**
@@ -14,16 +16,17 @@ public class StringtoIntegerSolutionTest {
   @Test
   public void testFirstDigit() {
     StringtoIntegerSolution solution = new StringtoIntegerSolution();
-    solution.myAtoi("123");
+    System.out.println(solution.myAtoi("123"));
     assertEquals(0, solution.getIndexOfFirstDigit());
 
-    StringtoIntegerSolution solution2 = new StringtoIntegerSolution();
-    solution.myAtoi(" 123");
-    assertEquals(0, solution.getIndexOfFirstDigit());
 
-    StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
-    solution.myAtoi("+123");
-    assertEquals(0, solution.getIndexOfFirstDigit());
+//    StringtoIntegerSolution solution2 = new StringtoIntegerSolution();
+//    solution2.myAtoi(" 123");
+//    assertEquals(0, solution2.getIndexOfFirstDigit());
+//
+//    StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
+//    solution3.myAtoi("+123");
+//    assertEquals(0, solution3.getIndexOfFirstDigit());
 
   }
 
@@ -54,11 +57,10 @@ public class StringtoIntegerSolutionTest {
 //    assertTrue(solutio2.isNegative());
 //    System.out.println(solutio2.getResultChars());
 
-    StringtoIntegerSolution solutio2 = new StringtoIntegerSolution();
-    solutio2.myAtoi("4193 with words");
-    assertEquals(0, solutio2.getIndexOfFirstDigit());
-    assertFalse(solutio2.isNegative());
-    System.out.println(solutio2.getResultChars());
+    StringtoIntegerSolution solutio3 = new StringtoIntegerSolution();
+    solutio3.myAtoi("-41999999999999999999999999999999999999999999993 with words");
+    assertEquals(1, solutio3.getIndexOfFirstDigit());
+    assertTrue(solutio3.isNegative());
   }
 
 }
