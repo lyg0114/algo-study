@@ -39,18 +39,20 @@ class StringtoIntegerSolution {
 
   private void result() {
     resultValue = convertCharToInt(resultStr.get(0));
-    int index = 1;
-    while (true) {
-      resultValue = (resultValue * 10) + convertCharToInt(resultStr.get(index));
-      if (++index == resultStr.size()) {
-        break;
-      }
-      if (resultValue > Integer.MAX_VALUE / 10) {
-        resultValue = Integer.MAX_VALUE;
-        if (isNegative) {
-          resultValue = Integer.MIN_VALUE;
+    if (resultStr.size() > 1) {
+      int index = 1;
+      while (true) {
+        resultValue = (resultValue * 10) + convertCharToInt(resultStr.get(index));
+        if (++index == resultStr.size()) {
+          break;
         }
-        break;
+        if (resultValue > Integer.MAX_VALUE / 10) {
+          resultValue = Integer.MAX_VALUE;
+          if (isNegative) {
+            resultValue = Integer.MIN_VALUE;
+          }
+          break;
+        }
       }
     }
 
@@ -64,6 +66,9 @@ class StringtoIntegerSolution {
   }
 
   private void createFinalStr() {
+    if(indexOfFirstDigit < 0)
+      throw new NumberFormatException("emtpy string");
+
     for (int i = indexOfFirstDigit; i < chars.length; i++) {
       if (chars[i] != ' ') {
         resultStr.add(chars[i]);
@@ -74,8 +79,15 @@ class StringtoIntegerSolution {
   private void validation(String input) {
     String trimInput = input.trim();
     chars = trimInput.toCharArray();
-    for (int i = 0; i < chars.length; i++) {
-      charValidation(chars, i);
+    int i = 0;
+    try {
+      for (i = 0; i < chars.length; i++) {
+        charValidation(chars, i);
+      }
+    } catch (RuntimeException e) {
+      for (int j = i; j < chars.length; j++) {
+        chars[j] = ' ';
+      }
     }
   }
 
@@ -89,6 +101,9 @@ class StringtoIntegerSolution {
 
   private void checkNumber(char[] chars, int index) {
     if (indexOfFirstDigit > -1) {
+      if (chars[index] == '.') {
+        throw new RuntimeException(". has occured");
+      }
       if (!isNumber(chars[index])) {
         chars[index] = ' ';
       }
