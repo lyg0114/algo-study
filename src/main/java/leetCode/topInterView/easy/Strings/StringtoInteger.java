@@ -137,11 +137,4 @@ class StringtoIntegerSolution {
     }
   }
 
-  public boolean isNegative() {
-    return isNegative;
-  }
-
-  public int getIndexOfFirstDigit() {
-    return indexOfFirstDigit;
-  }
 }

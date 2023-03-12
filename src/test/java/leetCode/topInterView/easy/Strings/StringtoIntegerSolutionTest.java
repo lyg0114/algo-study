@@ -19,25 +19,32 @@ public class StringtoIntegerSolutionTest {
 
   @Test
   public void finalTestCase2() {
-    StringtoIntegerSolution solution2 = new StringtoIntegerSolution();
-    assertEquals(42, solution2.myAtoi("42"));
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(42, solution.myAtoi("42"));
   }
 
   @Test
   public void finalTestCase3() {
-    StringtoIntegerSolution solution3 = new StringtoIntegerSolution();
-    assertEquals(4193, solution3.myAtoi("4193 with words"));
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(4193, solution.myAtoi("4193 with words"));
   }
 
   @Test
   public void finalTestCase4() {
-    StringtoIntegerSolution solution4 = new StringtoIntegerSolution();
-    assertEquals(-2147483648, solution4.myAtoi("-91283472332"));
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(-2147483648, solution.myAtoi("-91283472332"));
   }
 
   @Test
   public void finalTestCase5() {
-    StringtoIntegerSolution solution5 = new StringtoIntegerSolution();
-    assertEquals(3, solution5.myAtoi("3.14159"));
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(3, solution.myAtoi("3.14159"));
   }
+
+  @Test
+  public void finalTestCase6() {
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(0, solution.myAtoi("+-12"));
+  }
+
 }
