@@ -47,4 +47,9 @@ public class StringtoIntegerSolutionTest {
     assertEquals(0, solution.myAtoi("+-12"));
   }
 
+  @Test
+  public void finalTestCase7() {
+    StringtoIntegerSolution solution = new StringtoIntegerSolution();
+    assertEquals(0, solution.myAtoi("00000-42a1234"));
+  }
 }

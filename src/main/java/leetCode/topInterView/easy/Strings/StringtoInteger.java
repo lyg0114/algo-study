@@ -86,6 +86,9 @@ class StringtoIntegerSolution {
         charValidation(chars, i);
       }
     } catch (RuntimeException e) {
+      if (e.getMessage().equals("bf")) {
+        throw new NumberFormatException("bf");
+      }
       for (int j = i; j < chars.length; j++) {
         chars[j] = ' ';
       }
@@ -107,6 +110,11 @@ class StringtoIntegerSolution {
       }
       if (!isNumber(chars[index])) {
         chars[index] = ' ';
+        int before = index - 1;
+        int after = index + 1;
+        if (isNumber(chars[before]) && isNumber(chars[after])) {
+          throw new NumberFormatException("bf");
+        }
       }
     }
   }
