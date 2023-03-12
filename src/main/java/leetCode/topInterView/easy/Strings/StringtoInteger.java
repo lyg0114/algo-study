@@ -66,8 +66,9 @@ class StringtoIntegerSolution {
   }
 
   private void createFinalStr() {
-    if(indexOfFirstDigit < 0)
+    if (indexOfFirstDigit < 0) {
       throw new NumberFormatException("emtpy string");
+    }
 
     for (int i = indexOfFirstDigit; i < chars.length; i++) {
       if (chars[i] != ' ') {
@@ -93,7 +94,7 @@ class StringtoIntegerSolution {
 
   public void charValidation(char[] chars, int index) {
     if (index == 0) {
-      checkNegative(chars[index]);
+      checkNegative(chars, index);
     }
     checkFirstDigit(chars[index], index);
     checkNumber(chars, index);
@@ -127,10 +128,17 @@ class StringtoIntegerSolution {
     return aChar > 47 && aChar < 58;
   }
 
-  public void checkNegative(char aChar) {
-    if (aChar == '-') {
+  public void checkNegative(char[] chars, int index) {
+    if (chars[index] == '-' || chars[index] == '+') {
+      int next = index + 1;
+      if (chars[next] == '-' || chars[next] == '+') {
+        throw new NumberFormatException("wrong str");
+      }
+    }
+
+    if (chars[index] == '-') {
       isNegative = true;
-    } else if (aChar == '+') {
+    } else if (chars[index] == '+') {
       isNegative = false;
     } else {
       isNegative = false;
