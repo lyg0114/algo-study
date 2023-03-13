@@ -104,6 +104,13 @@ public class StringtoIntegerSolutionTest2 {
   }
 
   @Test
+  public void finalTestCase16() {
+    StringtoIntegerSolution solution = new StringtoIntegerSolution2();
+    assertEquals(-2147483648, solution.myAtoi("-21474836482"));
+  }
+
+
+  @Test
   public void tmpTest() {
 //    2147483647
     System.out.println(Integer.MAX_VALUE);

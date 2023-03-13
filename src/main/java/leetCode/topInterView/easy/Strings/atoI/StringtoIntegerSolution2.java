@@ -49,7 +49,8 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
           break;
         }
         if (resultValue == Integer.MAX_VALUE / 10) {
-          if (resultStr.get(index) == '8' || resultStr.get(index) == '9') {
+          if (resultStr.get(index) == '8' || resultStr.get(index) == '9'
+              || resultStr.size() > 10) {
             resultValue = Integer.MAX_VALUE;
             break;
           }
@@ -59,8 +60,13 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
   }
 
   private void convertNegativeInteger() {
-    resultValue = convertCharToInt(resultStr.get(0));
+    if (resultStr.size() == 1) {
+      resultValue = convertCharToInt(resultStr.get(0));
+      resultValue *= -1;
+      return;
+    }
     if (resultStr.size() > 1) {
+      resultValue = convertCharToInt(resultStr.get(0));
       int index = 1;
       while (true) {
         resultValue = (resultValue * 10) + convertCharToInt(resultStr.get(index));
@@ -73,7 +79,7 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
           break;
         }
         if (resultValue == Integer.MAX_VALUE / 10) {
-          if (resultStr.get(index) == '9') {
+          if (resultStr.get(index) == '9' || resultStr.size() > 10) {
             resultValue = Integer.MIN_VALUE;
             break;
           }
