@@ -27,7 +27,15 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
     if (resultStr.size() == 0) {
       return;
     }
+    if (!isNegative) {
+      convertPositiveInteger();
+    }
+    if (isNegative) {
+      convertNegativeInteger();
+    }
+  }
 
+  private void convertPositiveInteger() {
     resultValue = convertCharToInt(resultStr.get(0));
     if (resultStr.size() > 1) {
       int index = 1;
@@ -38,16 +46,39 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
         }
         if (resultValue > Integer.MAX_VALUE / 10) {
           resultValue = Integer.MAX_VALUE;
-          if (isNegative) {
-            resultValue = Integer.MIN_VALUE;
-          }
           break;
+        }
+        if (resultValue == Integer.MAX_VALUE / 10) {
+          if (resultStr.get(index) == '8' || resultStr.get(index) == '9') {
+            resultValue = Integer.MAX_VALUE;
+            break;
+          }
         }
       }
     }
+  }
 
-    if (isNegative) {
-      resultValue *= -1;
+  private void convertNegativeInteger() {
+    resultValue = convertCharToInt(resultStr.get(0));
+    if (resultStr.size() > 1) {
+      int index = 1;
+      while (true) {
+        resultValue = (resultValue * 10) + convertCharToInt(resultStr.get(index));
+        if (++index == resultStr.size()) {
+          resultValue *= -1;
+          break;
+        }
+        if (resultValue > Integer.MAX_VALUE / 10) {
+          resultValue = Integer.MIN_VALUE;
+          break;
+        }
+        if (resultValue == Integer.MAX_VALUE / 10) {
+          if (resultStr.get(index) == '9') {
+            resultValue = Integer.MIN_VALUE;
+            break;
+          }
+        }
+      }
     }
   }
 
@@ -56,15 +87,17 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
   }
 
   private void readLetters() {
-    int start = 0;
-    if (chars[0] == '+' || chars[0] == '-') {
-      start = 1;
-    }
-    for (int i = start; i < chars.length; i++) {
-      if (!isNumber(chars[i])) {
-        break;
+    if (chars.length > 0) {
+      int start = 0;
+      if (chars[0] == '+' || chars[0] == '-') {
+        start = 1;
       }
-      resultStr.add(chars[i]);
+      for (int i = start; i < chars.length; i++) {
+        if (!isNumber(chars[i])) {
+          break;
+        }
+        resultStr.add(chars[i]);
+      }
     }
   }
 
@@ -73,8 +106,10 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
   }
 
   private void checkNegativeOrPositive() {
-    if (chars[0] == '-') {
-      isNegative = true;
+    if (chars.length > 0) {
+      if (chars[0] == '-') {
+        isNegative = true;
+      }
     }
   }
 
