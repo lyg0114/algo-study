@@ -11,8 +11,9 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
 
   private char[] chars;
   private boolean isNegative = false;
-  private ArrayList<Character> resultStr = new ArrayList<>();
+  private final ArrayList<Character> resultStr = new ArrayList<>();
   private int resultValue = 0;
+  private final int PREVIOUS_MAX_INTEGER = Integer.MAX_VALUE / 10;
 
   @Override
   public int myAtoi(String s) {
@@ -44,11 +45,11 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
         if (++index == resultStr.size()) {
           break;
         }
-        if (resultValue > Integer.MAX_VALUE / 10) {
+        if (resultValue > PREVIOUS_MAX_INTEGER) {
           resultValue = Integer.MAX_VALUE;
           break;
         }
-        if (resultValue == Integer.MAX_VALUE / 10) {
+        if (resultValue == PREVIOUS_MAX_INTEGER) {
           if (resultStr.get(index) == '8' || resultStr.get(index) == '9'
               || resultStr.size() > 10) {
             resultValue = Integer.MAX_VALUE;
@@ -74,11 +75,11 @@ public class StringtoIntegerSolution2 implements StringtoIntegerSolution {
           resultValue *= -1;
           break;
         }
-        if (resultValue > Integer.MAX_VALUE / 10) {
+        if (resultValue > PREVIOUS_MAX_INTEGER) {
           resultValue = Integer.MIN_VALUE;
           break;
         }
-        if (resultValue == Integer.MAX_VALUE / 10) {
+        if (resultValue == PREVIOUS_MAX_INTEGER) {
           if (resultStr.get(index) == '9' || resultStr.size() > 10) {
             resultValue = Integer.MIN_VALUE;
             break;
