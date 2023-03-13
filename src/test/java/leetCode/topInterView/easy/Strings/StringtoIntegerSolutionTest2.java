@@ -108,16 +108,4 @@ public class StringtoIntegerSolutionTest2 {
     StringtoIntegerSolution solution = new StringtoIntegerSolution2();
     assertEquals(-2147483648, solution.myAtoi("-21474836482"));
   }
-
-
-  @Test
-  public void tmpTest() {
-//    2147483647
-    System.out.println(Integer.MAX_VALUE);
-//    -2147483648
-    System.out.println(Integer.MIN_VALUE);
-//    Integer.MAX_VALUE / 10 = 214748364
-    // 마지막 숫자가 8, 9
-    System.out.println(Integer.MIN_VALUE / 10);
-  }
 }
