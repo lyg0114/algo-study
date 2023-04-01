@@ -21,20 +21,29 @@ public class LongestCommonPrefix {
 class LongestCommonPrefixSolution {
 
   public String longestCommonPrefix(String[] strs) {
-    List<String> collect = Arrays.stream(strs)
-        .sorted((s1, s2) -> s1.length() - s2.length())
-        .collect(Collectors.toList());
-
-    String target = collect.get(0);
-    for (int i = 1; i < collect.size(); i++) {
-      getCommonTargets(target, collect.get(i));
+    try {
+      List<String> collect = Arrays.stream(strs)
+          .sorted((s1, s2) -> s1.length() - s2.length())
+          .collect(Collectors.toList());
+      String target = collect.get(0);
+      for (int i = 1; i < collect.size(); i++) {
+        target = getCommonTarget(target, collect.get(i));
+        if (target.equals("")) {
+          return target;
+        }
+      }
+      return target;
+    } catch (Exception e) {
+      return "";
     }
-    return target;
   }
 
-  public String getCommonTarget(Stack<String> stack) {
-
-    return null;
+  public String getCommonTarget(String target, String strs) {
+    Stack<String> commonTargets = getCommonTargets(target, strs);
+    return commonTargets.stream()
+        .max((s1, s2) -> s1.length() - s2.length())
+        .orElse("")
+        ;
   }
 
   public Stack<String> getCommonTargets(String target, String str) {
@@ -54,6 +63,9 @@ class LongestCommonPrefixSolution {
       while (true) {
         if (chTargets[i] == chStrs[startIndex + i]) {
           chrs.add(chTargets[i]);
+        } else {
+          tmpTargetStack.push(converToString(chrs));
+          break;
         }
         if (chTargets.length == ++i) {
           tmpTargetStack.push(converToString(chrs));

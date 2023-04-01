@@ -2,7 +2,6 @@ package leetCode.topInterView.easy.Strings;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Stack;
 import org.junit.Test;
 
 /**
@@ -20,20 +19,24 @@ public class LongestCommonPrefixTest {
   }
 
   @Test
-  public void getCommonTargetwCase1() {
+  public void testCase2() {
     LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
-    String target = "flow";
-    String strs = "xxxflower";
-    assertEquals("flow", prefix.getCommonTargets(target, strs));
+    String[] strs = {"dog", "racecar", "car"};
+    assertEquals("", prefix.longestCommonPrefix(strs));
   }
 
   @Test
-  public void getCommonTargetwCase2() {
+  public void testCase3() {
     LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
-    String target = "flow";
-    String strs = "floxxxflower";
-    Stack<String> commonTargets = prefix.getCommonTargets(target, strs);
-    assertEquals("flow", commonTargets.pop());
-    assertEquals("flo", commonTargets.pop());
+    String[] strs = {"", "b"};
+    assertEquals("", prefix.longestCommonPrefix(strs));
   }
+
+  @Test
+  public void testCase4() {
+    LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
+    String[] strs = {"cir", "car"};
+    assertEquals("c", prefix.longestCommonPrefix(strs));
+  }
+
 }
