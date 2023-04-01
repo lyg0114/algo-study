@@ -3,8 +3,7 @@ package leetCode.topInterView.easy.Strings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 /**
@@ -28,15 +27,17 @@ class LongestCommonPrefixSolution {
 
     String target = collect.get(0);
     for (int i = 1; i < collect.size(); i++) {
-      getCommonTarget(target, collect.get(i));
+      getCommonTargets(target, collect.get(i));
     }
     return target;
   }
 
-  //[x] 1.target의 첫번째 문자열이 str의 모든 문자에 대해 출현하는 시작 포인트를 stack에 저장한다.
-  //[]  2.시작 포이트로부터 한칸씩 이동하면서 동일한 문자열인지 검사한다.
-  //[]  3.모든 시작 포인트에 대하여 2의 연산을 수행한다.
-  public String getCommonTarget(String target, String str) {
+  public String getCommonTarget(Stack<String> stack) {
+
+    return null;
+  }
+
+  public Stack<String> getCommonTargets(String target, String str) {
     char[] chTargets = target.toCharArray();
     char[] chStrs = str.toCharArray();
     List<Integer> starts = new ArrayList<>();
@@ -46,20 +47,22 @@ class LongestCommonPrefixSolution {
       }
     }
 
-    List<Character> chrs = new ArrayList<>();
+    Stack<String> tmpTargetStack = new Stack<>();
     for (Integer startIndex : starts) {
       int i = 0;
+      List<Character> chrs = new ArrayList<>();
       while (true) {
         if (chTargets[i] == chStrs[startIndex + i]) {
           chrs.add(chTargets[i]);
         }
         if (chTargets.length == ++i) {
+          tmpTargetStack.push(converToString(chrs));
           break;
         }
       }
     }
 
-    return converToString(chrs);
+    return tmpTargetStack;
   }
 
   public String converToString(List<Character> chrs) {
