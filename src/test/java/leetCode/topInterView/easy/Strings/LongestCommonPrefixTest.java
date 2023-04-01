@@ -14,7 +14,15 @@ public class LongestCommonPrefixTest {
   @Test
   public void testCase1() {
     LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
-    String[] strs = {"flower", "flow", "flight"};
+    String[] strs = {"flow", "xxxflower", "flozzflower", "flower", "flight"};
     assertEquals("fl", prefix.longestCommonPrefix(strs));
+  }
+
+  @Test
+  public void getCommonTargetCase1() {
+    LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
+    String target = "flow";
+    String strs = "xxxflower";
+    assertEquals("flow", prefix.getCommonTarget(target, strs));
   }
 }
