@@ -13,28 +13,28 @@ public class LongestCommonPrefixTest {
 
   @Test
   public void testCase1() {
-    LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
+    LongestCommonPrefixSolution2 prefix = new LongestCommonPrefixSolution2();
     String[] strs = {"flow", "xxxflower", "flozzflower", "flower", "flight"};
     assertEquals("fl", prefix.longestCommonPrefix(strs));
   }
 
   @Test
   public void testCase2() {
-    LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
+    LongestCommonPrefixSolution2 prefix = new LongestCommonPrefixSolution2();
     String[] strs = {"dog", "racecar", "car"};
     assertEquals("", prefix.longestCommonPrefix(strs));
   }
 
   @Test
   public void testCase3() {
-    LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
+    LongestCommonPrefixSolution2 prefix = new LongestCommonPrefixSolution2();
     String[] strs = {"", "b"};
     assertEquals("", prefix.longestCommonPrefix(strs));
   }
 
   @Test
   public void testCase4() {
-    LongestCommonPrefixSolution prefix = new LongestCommonPrefixSolution();
+    LongestCommonPrefixSolution2 prefix = new LongestCommonPrefixSolution2();
     String[] strs = {"cir", "car"};
     assertEquals("c", prefix.longestCommonPrefix(strs));
   }
