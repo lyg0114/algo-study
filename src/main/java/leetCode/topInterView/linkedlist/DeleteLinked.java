@@ -15,9 +15,9 @@ public class DeleteLinked {
     node3.next = node4;
     node4.next = node5;
 
-    solution.showNodes(node1);
+    LinkedListUtils.showNodes(node1);
     solution.deleteNode(node3);
-    solution.showNodes(node1);
+    LinkedListUtils.showNodes(node1);
   }
 
 }
@@ -27,13 +27,5 @@ class DeleteLinkedSolution {
   public void deleteNode(ListNode node) {
     node.val = node.next.val;
     node.next = node.next.next;
-  }
-
-  public void showNodes(ListNode head) {
-    while (head != null) {
-      System.out.print(head.val + " ");
-      head = head.next;
-    }
-    System.out.println("");
   }
 }
