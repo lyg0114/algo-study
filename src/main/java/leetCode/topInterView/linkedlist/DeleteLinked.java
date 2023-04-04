@@ -17,7 +17,6 @@ public class DeleteLinked {
 
     LinkedListUtils.showNodes(node1);
     solution.deleteNode(node3);
-    LinkedListUtils.showNodes(node1);
   }
 
 }
