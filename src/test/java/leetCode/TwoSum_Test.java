@@ -2,7 +2,7 @@ package leetCode;
 
 import static org.junit.Assert.*;
 
-import leetCode.topInterView.easy.Array.TwoSum;
+import leetCode.topInterView.Array.TwoSum;
 import org.junit.Test;
 
 public class TwoSum_Test {
