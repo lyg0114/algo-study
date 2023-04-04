@@ -6,7 +6,6 @@ package leetCode.topInterView.linkedlist;
  * @url : https://leetcode.com/explore/featured/card/top-interview-questions-easy/93/linked-list/603/
  * @since : 2023/04/04
  */
-
 public class RemoveNthNode {
 
   public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class RemoveNthNode {
     node4.next = node5;
 
     LinkedListUtils.showNodes(node1);
-    solution.removeNthFromEnd(node1, 1);
+    solution.removeNthFromEnd(node1, 2);
     LinkedListUtils.showNodes(node1);
   }
 }
@@ -31,16 +30,16 @@ public class RemoveNthNode {
 class RemoveNthNodeSolution {
 
   public ListNode removeNthFromEnd(ListNode head, int n) {
-    ListNode reHead = head;
-    ListNode start = head;
     if (head == null || head.next == null) {
       return null;
     }
+    ListNode start = head;
     int totalIndex = 1;
-    while (head.next != null) {
+    while (start.next != null) {
       totalIndex++;
-      head = head.next;
+      start = start.next;
     }
+    start = head;
     if (totalIndex < n) {
       return null;
     }
@@ -53,26 +52,25 @@ class RemoveNthNodeSolution {
         start.val = start.next.val;
         start.next = null;
       }
-    } else {
-      if (totalIndex > 2) {
-        if (n == 1) {
-          int index = 1;
-          while ((totalIndex - n) != index) {
-            start = start.next;
-            index++;
-          }
-          start.next = null;
-        } else {
-          int index = 1;
-          while ((totalIndex - n) + 1 != index) {
-            start = start.next;
-            index++;
-          }
-          start.val = start.next.val;
-          start.next = start.next.next;
+    }
+
+    if (totalIndex > 2) {
+      int index = 1;
+      if (n == 1) {
+        while ((totalIndex - n) != index) {
+          start = start.next;
+          index++;
         }
+        start.next = null;
+      } else {
+        while ((totalIndex - n) + 1 != index) {
+          start = start.next;
+          index++;
+        }
+        start.val = start.next.val;
+        start.next = start.next.next;
       }
     }
-    return reHead;
+    return head;
   }
 }
