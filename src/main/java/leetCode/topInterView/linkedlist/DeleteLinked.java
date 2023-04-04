@@ -18,8 +18,7 @@ class ListNode {
 public class DeleteLinked {
 
   public static void main(String[] args) {
-    ListNode head = null;
-
+    DeleteLinkedSolution solution = new DeleteLinkedSolution();
     ListNode node1 = new ListNode(1);
     ListNode node2 = new ListNode(2);
     ListNode node3 = new ListNode(3);
@@ -31,20 +30,25 @@ public class DeleteLinked {
     node3.next = node4;
     node4.next = node5;
 
-    head = node1;
-
-    while (head != null) {
-      System.out.print(head.val + " ");
-      head = head.next;
-    }
-
-
+    solution.showNodes(node1);
+    solution.deleteNode(node3);
+    solution.showNodes(node1);
   }
+
 }
 
 class DeleteLinkedSolution {
 
   public void deleteNode(ListNode node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+  }
 
+  public void showNodes(ListNode head) {
+    while (head != null) {
+      System.out.print(head.val + " ");
+      head = head.next;
+    }
+    System.out.println("");
   }
 }
