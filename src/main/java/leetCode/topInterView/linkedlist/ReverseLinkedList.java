@@ -48,8 +48,27 @@ public class ReverseLinkedList {
 class ReverseLinkedListSolution {
 
   public ListNode reverseList(ListNode head) {
-    if(head == null) return null;
-    if(head.next == null) return head;
+    ListNode curr = head;
+    ListNode prev = null;
+    ListNode next;
+
+    while (curr != null) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+
+    return prev;
+  }
+
+  public ListNode reverseList2(ListNode head) {
+    if (head == null) {
+      return null;
+    }
+    if (head.next == null) {
+      return head;
+    }
 
     ListNode before = head;
     ListNode after = head.next;
@@ -70,6 +89,19 @@ class ReverseLinkedListSolution {
       before.next = null;
     }
     return rHead;
+  }
+
+  public ListNode reverseList3(ListNode head) {
+    ListNode prev = null;
+    ListNode curr = head;
+    while (curr != null) {
+      ListNode next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    System.gc();
+    return prev;
   }
 }
 
