@@ -11,7 +11,6 @@ class RemoveNthNodeSolution2 implements RemoveNthNodeInterface {
 
   @Override
   public ListNode removeNthFromEnd(ListNode head, int n) {
-
     return null;
   }
 }
