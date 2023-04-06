@@ -20,7 +20,7 @@ public class ValidateBinarySearchTreeTest {
        4   6
   */
   @Test
-  public void testCase1() {
+  public void testCaseTrue1() {
     ValidateBinarySearchTreeInter solution = getSolution();
     TreeNode n1 = new TreeNode(1);
     TreeNode n2 = new TreeNode(2);
@@ -42,7 +42,7 @@ public class ValidateBinarySearchTreeTest {
        3   6
   */
   @Test
-  public void testCase2() {
+  public void testCaseFalse1() {
     ValidateBinarySearchTreeInter solution = getSolution();
     TreeNode node1 = new TreeNode(1);
     TreeNode node5 = new TreeNode(5);
