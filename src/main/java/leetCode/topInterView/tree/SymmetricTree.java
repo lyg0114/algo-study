@@ -11,7 +11,6 @@ import java.util.Stack;
 public class SymmetricTree {
 
   public static void main(String[] args) {
-
   }
 
   private static class SymmetricTreeSolution {
@@ -20,14 +19,35 @@ public class SymmetricTree {
       if (root == null) {
         return false;
       }
-
       Stack<Integer> lStack = new Stack<>();
       Stack<Integer> rStack = new Stack<>();
 
-      leftTraversal(root.left, lStack);
-      rightTraversal(root.right, rStack);
+      leftFirstTraversal(root.left, lStack);
+      rightFirstTraversal(root.right, rStack);
 
       return checkResult(lStack, rStack);
+    }
+
+    private void leftFirstTraversal(TreeNode left, Stack<Integer> lStack) {
+      if (left == null) {
+        lStack.push(null);
+        return;
+      }
+
+      lStack.push(left.val);
+      leftFirstTraversal(left.left, lStack);
+      leftFirstTraversal(left.right, lStack);
+    }
+
+    private void rightFirstTraversal(TreeNode right, Stack<Integer> rStack) {
+      if (right == null) {
+        rStack.push(null);
+        return;
+      }
+
+      rStack.push(right.val);
+      rightFirstTraversal(right.right, rStack);
+      rightFirstTraversal(right.left, rStack);
     }
 
     private boolean checkResult(Stack<Integer> lStack, Stack<Integer> rStack) {
@@ -42,18 +62,16 @@ public class SymmetricTree {
           return false;
         }
       }
-
       return true;
     }
 
-    private void rightTraversal(TreeNode right, Stack<Integer> rStack) {
-
+    private void printResult(Stack<Integer> lStack, Stack<Integer> rStack) {
+      int sSize = lStack.size();
+      for (int i = 0; i < sSize; i++) {
+        Integer l = lStack.pop();
+        Integer r = rStack.pop();
+        System.out.println(i + " : [ l , r ]" + "[ " + l + " , " + r + " ]");
+      }
     }
-
-    private void leftTraversal(TreeNode left, Stack<Integer> lStack) {
-
-    }
-
-
   }
 }
