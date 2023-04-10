@@ -1,7 +1,9 @@
 package leetCode.topInterView.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 /**
@@ -26,7 +28,7 @@ public class BinaryTreeLevelOrderTraversal {
     node20.left = node15;
     node20.right = node7;
 
-    Solution solution = new Solution();
+    SolInterface solution = getSolInterface();
     List<List<Integer>> lists = solution.levelOrder(node3);
     lists.forEach(i -> {
       i.forEach(System.out::println);
@@ -34,8 +36,18 @@ public class BinaryTreeLevelOrderTraversal {
     });
   }
 
-  private static class Solution {
+  private static SolInterface getSolInterface() {
+    return new Solution2();
+  }
 
+  private interface SolInterface {
+
+    List<List<Integer>> levelOrder(TreeNode root);
+  }
+
+  private static class Solution implements SolInterface {
+
+    @Override
     public List<List<Integer>> levelOrder(TreeNode root) {
       List<List<Integer>> lists = new ArrayList<>();
       if (root == null) {
@@ -65,6 +77,35 @@ public class BinaryTreeLevelOrderTraversal {
 
       traversal(node.left, lists);
       traversal(node.right, lists);
+    }
+  }
+
+  private static class Solution2 implements SolInterface {
+
+    @Override
+    public List<List<Integer>> levelOrder(TreeNode root) {
+      List<List<Integer>> result = new ArrayList<>();
+      if (root == null) {
+        return result;
+      }
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.offer(root);
+      while (!queue.isEmpty()) {
+        int size = queue.size();
+        List<Integer> level = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+          TreeNode node = queue.poll();
+          level.add(node.val);
+          if (node.left != null) {
+            queue.offer(node.left);
+          }
+          if (node.right != null) {
+            queue.offer(node.right);
+          }
+        }
+        result.add(level);
+      }
+      return result;
     }
   }
 }
