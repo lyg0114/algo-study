@@ -31,13 +31,30 @@ public class SymmetricTree {
     rNode2.left = rNode4;
     rNode2.right = rNode3;
 
-    SymmetricTreeSolution solution = new SymmetricTreeSolution();
+    SymmetricTreeInterface solution = getSolution();
     System.out.println("##########################################");
     System.out.println(solution.isSymmetric(root));
     System.out.println("##########################################");
   }
 
-  private static class SymmetricTreeSolution {
+  private static SymmetricTreeInterface getSolution() {
+    return new SymmetricTreeSolution();
+  }
+
+  private interface SymmetricTreeInterface {
+
+    boolean isSymmetric(TreeNode root);
+  }
+
+  private static class SymmetricTreeSolution2 implements SymmetricTreeInterface {
+
+    public boolean isSymmetric(TreeNode root) {
+
+      return false;
+    }
+  }
+
+  private static class SymmetricTreeSolution implements SymmetricTreeInterface {
 
     public boolean isSymmetric(TreeNode root) {
       if (root == null) {
@@ -90,8 +107,9 @@ public class SymmetricTree {
         Integer lPop = lStack.pop();
         Integer rPop = rStack.pop();
         if (lPop != null && rPop != null) {
-          if(!lPop.equals(rPop))
+          if (!lPop.equals(rPop)) {
             return false;
+          }
         } else if (lPop == null && rPop == null) {
         } else {
           return false;
