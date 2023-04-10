@@ -2,6 +2,7 @@ package leetCode.topInterView.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : iyeong-gyo
@@ -23,12 +24,10 @@ public class BinaryTreeLevelOrderTraversal {
 
     Solution solution = new Solution();
     List<List<Integer>> lists = solution.levelOrder(node3);
-    for (List<Integer> list : lists) {
-      for (Integer integer : list) {
-        System.out.println("integer = " + integer);
-      }
-      System.out.println("------------------------------------");
-    }
+    lists.forEach(i -> {
+      i.forEach(System.out::println);
+      System.out.println("==================");
+    });
   }
 
   private static class Solution {
@@ -39,19 +38,17 @@ public class BinaryTreeLevelOrderTraversal {
       }
       List<List<Integer>> lists = new ArrayList<>();
       List<Integer> roots = new ArrayList<>();
+      roots.add(root.val);
       lists.add(roots);
-
       traversal(root, lists);
-      return lists;
+      return lists.stream().filter(i -> !(i.isEmpty()))
+          .collect(Collectors.toList());
     }
 
     public void traversal(TreeNode node, List<List<Integer>> lists) {
       if (node == null) {
         return;
       }
-
-      traversal(node.left, lists);
-      traversal(node.right, lists);
 
       ArrayList<Integer> nums = new ArrayList<>();
       if (node.left != null) {
@@ -61,6 +58,9 @@ public class BinaryTreeLevelOrderTraversal {
         nums.add(node.right.val);
       }
       lists.add(nums);
+
+      traversal(node.left, lists);
+      traversal(node.right, lists);
     }
   }
 }
