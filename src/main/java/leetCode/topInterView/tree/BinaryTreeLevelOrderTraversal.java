@@ -37,10 +37,10 @@ public class BinaryTreeLevelOrderTraversal {
   private static class Solution {
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-      if (root == null) {
-        return null;
-      }
       List<List<Integer>> lists = new ArrayList<>();
+      if (root == null) {
+        return lists;
+      }
       List<Integer> roots = new ArrayList<>();
       roots.add(root.val);
       lists.add(roots);
