@@ -28,12 +28,12 @@ public class SymmetricTree {
     lNode2.right = lNode4;
 
     root.right = rNode2;
-    rNode2.right = rNode3;
     rNode2.left = rNode4;
+    rNode2.right = rNode3;
 
     SymmetricTreeSolution solution = new SymmetricTreeSolution();
     System.out.println("##########################################");
-    solution.isSymmetric(root);
+    System.out.println(solution.isSymmetric(root));
     System.out.println("##########################################");
   }
 
@@ -49,20 +49,13 @@ public class SymmetricTree {
       leftFirstTraversal(root.left, lStack);
       rightFirstTraversal(root.right, rStack);
 
-      printResult(lStack, rStack);
-
-      return false;
+      return checkResult(lStack, rStack);
     }
 
     private void printResult(Stack<Integer> lStack, Stack<Integer> rStack) {
       while (!lStack.isEmpty()) {
         System.out.println(lStack.pop());
       }
-      System.out.println("------------------------------------");
-      System.out.println("------------------------------------");
-      System.out.println("------------------------------------");
-      System.out.println("------------------------------------");
-
       while (!rStack.isEmpty()) {
         System.out.println(rStack.pop());
       }
@@ -93,16 +86,18 @@ public class SymmetricTree {
       if (lStack.size() != rStack.size()) {
         return false;
       }
-      int sSize = lStack.size();
-      for (int i = 0; i < sSize; i++) {
-        Integer l = lStack.pop();
-        Integer r = rStack.pop();
-        if (!l.equals(r)) {
+      while (lStack.size() > 0) {
+        Integer lPop = lStack.pop();
+        Integer rPop = rStack.pop();
+        if (lPop != null && rPop != null) {
+          if(!lPop.equals(rPop))
+            return false;
+        } else if (lPop == null && rPop == null) {
+        } else {
           return false;
         }
       }
       return true;
     }
-
   }
 }
