@@ -18,6 +18,10 @@ public class BinaryTreeLevelOrderTraversal {
     TreeNode node15 = new TreeNode(15);
     TreeNode node7 = new TreeNode(7);
     node3.left = node9;
+
+    TreeNode node11 = new TreeNode(11);
+    node9.left = node11;
+
     node3.right = node20;
     node20.left = node15;
     node20.right = node7;
