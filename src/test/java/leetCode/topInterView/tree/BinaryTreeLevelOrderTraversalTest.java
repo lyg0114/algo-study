@@ -2,7 +2,8 @@ package leetCode.topInterView.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import leetCode.topInterView.tree.BinaryTreeLevelOrderTraversal.SolInterface;
+import leetCode.topInterView.tree.BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalInterface;
+import leetCode.topInterView.tree.BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalSolution;
 import org.junit.Test;
 
 /**
@@ -12,9 +13,9 @@ import org.junit.Test;
  */
 public class BinaryTreeLevelOrderTraversalTest {
 
-  private SolInterface getSolution() {
-//    return new BinaryTreeLevelOrderTraversal.Solution2();
-    return new BinaryTreeLevelOrderTraversal.Solution();
+  private BinaryTreeLevelOrderTraversalInterface getSolution() {
+//    return new BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalSolution2();
+    return new BinaryTreeLevelOrderTraversalSolution();
   }
 
   /*
@@ -26,7 +27,7 @@ public class BinaryTreeLevelOrderTraversalTest {
   */
   @Test
   public void testCaseTrue1() {
-    SolInterface solution = getSolution();
+    BinaryTreeLevelOrderTraversalInterface solution = getSolution();
     TreeNode n1 = new TreeNode(1);
     TreeNode n2 = new TreeNode(2);
     TreeNode n3 = new TreeNode(5);
@@ -48,7 +49,7 @@ public class BinaryTreeLevelOrderTraversalTest {
   */
   @Test
   public void testCaseTrue2() {
-    SolInterface solution = getSolution();
+    BinaryTreeLevelOrderTraversalInterface solution = getSolution();
     TreeNode n1 = new TreeNode(1);
     TreeNode n2 = new TreeNode(2);
     TreeNode n4 = new TreeNode(4);
@@ -70,7 +71,7 @@ public class BinaryTreeLevelOrderTraversalTest {
   */
   @Test
   public void testCaseTrue3() {
-    SolInterface solution = getSolution();
+    BinaryTreeLevelOrderTraversalInterface solution = getSolution();
     TreeNode n2 = new TreeNode(2);
     TreeNode n1 = new TreeNode(1);
     TreeNode n5 = new TreeNode(5);
