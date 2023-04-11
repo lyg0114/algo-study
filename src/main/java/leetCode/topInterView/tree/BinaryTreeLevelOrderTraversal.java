@@ -13,6 +13,14 @@ import java.util.stream.Collectors;
  */
 public class BinaryTreeLevelOrderTraversal {
 
+  /*
+        3
+       / \
+      9   20
+          / \
+         15  7
+ */
+
   public static void main(String[] args) {
     TreeNode node3 = new TreeNode(3);
     TreeNode node9 = new TreeNode(9);
@@ -20,10 +28,6 @@ public class BinaryTreeLevelOrderTraversal {
     TreeNode node15 = new TreeNode(15);
     TreeNode node7 = new TreeNode(7);
     node3.left = node9;
-
-    TreeNode node11 = new TreeNode(11);
-    node9.left = node11;
-
     node3.right = node20;
     node20.left = node15;
     node20.right = node7;
@@ -40,12 +44,12 @@ public class BinaryTreeLevelOrderTraversal {
     return new Solution2();
   }
 
-  private interface SolInterface {
+  public interface SolInterface {
 
     List<List<Integer>> levelOrder(TreeNode root);
   }
 
-  private static class Solution implements SolInterface {
+  public static class Solution implements SolInterface {
 
     @Override
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -80,7 +84,7 @@ public class BinaryTreeLevelOrderTraversal {
     }
   }
 
-  private static class Solution2 implements SolInterface {
+  public static class Solution2 implements SolInterface {
 
     @Override
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -90,9 +94,12 @@ public class BinaryTreeLevelOrderTraversal {
       }
       Queue<TreeNode> queue = new LinkedList<>();
       queue.offer(root);
+
       while (!queue.isEmpty()) {
+
         int size = queue.size();
         List<Integer> level = new ArrayList<>();
+
         for (int i = 0; i < size; i++) {
           TreeNode node = queue.poll();
           level.add(node.val);
@@ -103,9 +110,12 @@ public class BinaryTreeLevelOrderTraversal {
             queue.offer(node.right);
           }
         }
+
         result.add(level);
+
       }
       return result;
     }
+
   }
 }
