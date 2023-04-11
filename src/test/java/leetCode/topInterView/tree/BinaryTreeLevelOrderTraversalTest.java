@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import leetCode.topInterView.tree.BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalInterface;
 import leetCode.topInterView.tree.BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalSolution;
+import leetCode.topInterView.tree.BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalSolution3;
 import org.junit.Test;
 
 /**
@@ -15,7 +16,7 @@ public class BinaryTreeLevelOrderTraversalTest {
 
   private BinaryTreeLevelOrderTraversalInterface getSolution() {
 //    return new BinaryTreeLevelOrderTraversal.BinaryTreeLevelOrderTraversalSolution2();
-    return new BinaryTreeLevelOrderTraversalSolution();
+    return new BinaryTreeLevelOrderTraversalSolution3();
   }
 
   /*

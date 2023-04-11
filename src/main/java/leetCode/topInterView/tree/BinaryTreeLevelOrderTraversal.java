@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -14,10 +15,12 @@ import java.util.Queue;
 public class BinaryTreeLevelOrderTraversal {
 
   public interface BinaryTreeLevelOrderTraversalInterface {
+
     List<List<Integer>> levelOrder(TreeNode root);
   }
 
-  public static class BinaryTreeLevelOrderTraversalSolution implements BinaryTreeLevelOrderTraversalInterface {
+  public static class BinaryTreeLevelOrderTraversalSolution implements
+      BinaryTreeLevelOrderTraversalInterface {
 
     @Override
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -31,14 +34,12 @@ public class BinaryTreeLevelOrderTraversal {
       int level = 1;
       map.put(level, roots);
       traversal(root, map, ++level);
-
       for (Integer index : map.keySet()) {
         Queue<Integer> queue = map.get(index);
-        if(queue.size()>0){
+        if (queue.size() > 0) {
           results.add((List<Integer>) queue);
         }
       }
-
       return results;
     }
 
@@ -67,7 +68,8 @@ public class BinaryTreeLevelOrderTraversal {
     }
   }
 
-  public static class BinaryTreeLevelOrderTraversalSolution2 implements BinaryTreeLevelOrderTraversalInterface {
+  public static class BinaryTreeLevelOrderTraversalSolution2 implements
+      BinaryTreeLevelOrderTraversalInterface {
 
     @Override
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -79,7 +81,6 @@ public class BinaryTreeLevelOrderTraversal {
       queue.offer(root);
 
       while (!queue.isEmpty()) {
-
         int size = queue.size();
         List<Integer> level = new ArrayList<>();
         for (int i = 0; i < size; i++) {
@@ -98,5 +99,38 @@ public class BinaryTreeLevelOrderTraversal {
       return result;
     }
 
+  }
+
+  public static class BinaryTreeLevelOrderTraversalSolution3 implements BinaryTreeLevelOrderTraversalInterface {
+
+    @Override
+    public List<List<Integer>> levelOrder(TreeNode root) {
+      List<List<Integer>> results = new ArrayList<>();
+      if (root == null) {
+        return results;
+      }
+
+      Map<Integer, List<Integer>> levelMap = new HashMap<>();
+      traverse(root, levelMap, 1);
+
+      for (int level : levelMap.keySet()) {
+        results.add(levelMap.get(level));
+      }
+
+      return results;
+    }
+
+    private void traverse(TreeNode node, Map<Integer, List<Integer>> levelMap, int level) {
+      if (node == null) {
+        return;
+      }
+
+      List<Integer> levelList = levelMap.getOrDefault(level, new ArrayList<>());
+      levelList.add(node.val);
+      levelMap.put(level, levelList);
+
+      traverse(node.left, levelMap, level + 1);
+      traverse(node.right, levelMap, level + 1);
+    }
   }
 }
