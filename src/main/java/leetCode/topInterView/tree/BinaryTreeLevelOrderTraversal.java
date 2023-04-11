@@ -1,6 +1,7 @@
 package leetCode.topInterView.tree;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -53,34 +54,50 @@ public class BinaryTreeLevelOrderTraversal {
 
     @Override
     public List<List<Integer>> levelOrder(TreeNode root) {
-      List<List<Integer>> lists = new ArrayList<>();
+      List<List<Integer>> results = new ArrayList<>();
       if (root == null) {
-        return lists;
+        return results;
       }
-      List<Integer> roots = new ArrayList<>();
+      HashMap<Integer, Queue<Integer>> map = new HashMap<>();
+      Queue<Integer> roots = new LinkedList<>();
       roots.add(root.val);
-      lists.add(roots);
-      traversal(root, lists);
-      return lists.stream().filter(i -> !(i.isEmpty()))
-          .collect(Collectors.toList());
+      int level = 1;
+      map.put(level, roots);
+      traversal(root, map, ++level);
+
+      for (Integer index : map.keySet()) {
+        Queue<Integer> queue = map.get(index);
+        if(queue.size()>0){
+          results.add((List<Integer>) queue);
+        }
+      }
+
+      return results;
     }
 
-    public void traversal(TreeNode node, List<List<Integer>> lists) {
+    public void traversal(TreeNode node, HashMap<Integer, Queue<Integer>> map, int level) {
       if (node == null) {
         return;
       }
 
-      ArrayList<Integer> nums = new ArrayList<>();
+      Queue<Integer> nDataQueue = new LinkedList<>();
       if (node.left != null) {
-        nums.add(node.left.val);
+        nDataQueue.offer(node.left.val);
       }
       if (node.right != null) {
-        nums.add(node.right.val);
+        nDataQueue.offer(node.right.val);
       }
-      lists.add(nums);
 
-      traversal(node.left, lists);
-      traversal(node.right, lists);
+      Queue<Integer> queue = map.get(level);
+      if (queue != null) {
+        queue.addAll(nDataQueue);
+      } else {
+        map.put(level, nDataQueue);
+      }
+
+      traversal(node.left, map, ++level);
+      level--;
+      traversal(node.right, map, ++level);
     }
   }
 
@@ -99,7 +116,6 @@ public class BinaryTreeLevelOrderTraversal {
 
         int size = queue.size();
         List<Integer> level = new ArrayList<>();
-
         for (int i = 0; i < size; i++) {
           TreeNode node = queue.poll();
           level.add(node.val);
@@ -110,10 +126,9 @@ public class BinaryTreeLevelOrderTraversal {
             queue.offer(node.right);
           }
         }
-
         result.add(level);
-
       }
+
       return result;
     }
 
