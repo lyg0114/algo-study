@@ -11,11 +11,32 @@ public class ConvertSortedArrayToBST {
     SolutionInterface solution = getSolution();
     int[] nums = {1, 2, 3};
     TreeNode treeNode = solution.sortedArrayToBST(nums);
-    solution.printNodes(null);
   }
 
-  private static Solution getSolution() {
-    return new Solution();
+  private static SolutionInterface getSolution() {
+    return new Solution1();
+  }
+
+
+  public static class Solution1 implements SolutionInterface {
+
+    public TreeNode sortedArrayToBST(int[] nums) {
+      if (nums == null || nums.length == 0) {
+        return null;
+      }
+      return constructBST(nums, 0, nums.length - 1);
+    }
+
+    private TreeNode constructBST(int[] nums, int start, int end) {
+      if (start > end) {
+        return null;
+      }
+      int mid = start + (end - start) / 2;
+      TreeNode root = new TreeNode(nums[mid]);
+      root.left = constructBST(nums, start, mid - 1);
+      root.right = constructBST(nums, mid + 1, end);
+      return root;
+    }
   }
 
   public interface SolutionInterface {
@@ -25,29 +46,5 @@ public class ConvertSortedArrayToBST {
     default void printNodes(TreeNode root) {
       // print BST
     }
-  }
-
-  public static class Solution implements SolutionInterface {
-
-    public TreeNode sortedArrayToBST(int[] nums) {
-      if (nums == null || nums.length == 0) {
-        return null;
-      }
-      if (nums.length == 1) {
-        return new TreeNode(nums[0]);
-      }
-
-      TreeNode root = new TreeNode(nums[0]);
-      for (int i = 1; i < nums.length; i++) {
-        makeBST(nums[i], root);
-      }
-
-      return null;
-    }
-
-    private void makeBST(int num, TreeNode node) {
-
-    }
-
   }
 }
