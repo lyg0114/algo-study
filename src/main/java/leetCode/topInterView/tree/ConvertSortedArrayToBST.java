@@ -40,30 +40,31 @@ public class ConvertSortedArrayToBST {
   }
 
   public static class Solution1AddComment implements SolutionInterface {
-    // This method takes in an array of integers representing a sorted sequence
-    // and returns a binary search tree (BST) where the root is the middle value
-    // of the array and the left and right subtrees are the BSTs constructed from
-    // the left and right subarrays respectively.
+    /*
+     - This method takes in an array of integers representing a sorted sequence.
+     - It returns a binary search tree (BST) where the root is the middle value of the array.
+     - The left and right subtrees are the BSTs constructed from the left and right subarrays respectively.
+    */
     public TreeNode sortedArrayToBST(int[] nums) {
-      // Check if the input array is null or empty. If so, return null.
+      //  - Check if the input array is null or empty. If so, return null. 10
       if (nums == null || nums.length == 0) {
         return null;
       }
-      // Otherwise, call the helper method to construct the BST.
+      // - Otherwise, call the helper method to construct the BST. 10
       return constructBST(nums, 0, nums.length - 1);
     }
 
-    // This is a recursive helper method that constructs a BST from a given
-    // subarray of nums[start...end]. It works by recursively dividing the
-    // subarray in halves, setting the middle element as the root of the subtree,
-    // and recursively constructing the left and right subtrees.
+    /*
+     - This is a recursive helper method that constructs a BST from a given subarray of nums[start...end]. 10
+     - It works by recursively dividing the subarray in halves, setting the middle element as the root of the subtree, and recursively constructing the left and right subtrees. 10
+     */
     private TreeNode constructBST(int[] nums, int start, int end) {
-      // If the start index is greater than the end index, the subarray is empty
-      // so return null to indicate an empty subtree.
+      // If the start index is greater than the end index, the subarray is empty 10
+      // so return null to indicate an empty subtree. 10
       if (start > end) {
         return null;
       }
-      // Calculate the middle index of the subarray.
+      // Calculate the middle index of the subarray. 3
       int mid = start + (end - start) / 2;
       // Create a new TreeNode with the middle value as its value.
       TreeNode root = new TreeNode(nums[mid]);
