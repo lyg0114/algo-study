@@ -51,12 +51,18 @@ public class ConvertSortedArrayToBST {
         return null;
       }
       // - Otherwise, call the helper method to construct the BST. 10
+      /*
+       - I am going to declare a method named constructBST
+            that takes an array of integers and two integer values as arguments.
+       */
       return constructBST(nums, 0, nums.length - 1);
     }
 
     /*
      - This is a recursive helper method that constructs a BST from a given subarray of nums[start...end]. 10
-     - It works by recursively dividing the subarray in halves, setting the middle element as the root of the subtree, and recursively constructing the left and right subtrees. 10
+     - It works by recursively dividing the subarray in halves,
+       setting the middle element as the root of the subtree,
+       and recursively constructing the left and right subtrees. 10
      */
     private TreeNode constructBST(int[] nums, int start, int end) {
       // If the start index is greater than the end index, the subarray is empty 10
