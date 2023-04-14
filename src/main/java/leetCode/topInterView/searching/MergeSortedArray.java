@@ -3,6 +3,7 @@ package leetCode.topInterView.searching;
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.searching
+ * @url : https://leetcode.com/explore/featured/card/top-interview-questions-easy/96/sorting-and-searching/587/
  * @since : 2023/04/14
  */
 public class MergeSortedArray {
@@ -19,28 +20,65 @@ public class MergeSortedArray {
 }
 
 class MergeSortedArraySolution implements MergeSortedArrayInterface {
+
   @Override
   public void merge(int[] nums1, int m, int[] nums2, int n) {
-    int i = m - 1; // nums1에서 사용할 인덱스
-    int j = n - 1; // nums2에서 사용할 인덱스
-    int k = m + n - 1; // nums1에서 결과를 저장할 위치
-
-    // 두 배열 중 큰 값을 nums1 뒤에서부터 저장하면서 병합
-    while (i >= 0 && j >= 0) {
-      if (nums1[i] >= nums2[j]) {
-        nums1[k--] = nums1[i--];
+    int i = m - 1; // declare i whcih is index of array nums1
+    int j = n - 1; // declare j which is index of array nums2
+    int k = m + n - 1; // delcare k which is index of entire of array
+    while (i >= 0 && j >= 0) { // while roop run when i,j is greater than 0
+      if (nums1[i] >= nums2[j]) { // if nums1[i] is greater than nums2[j]
+        nums1[k--] = nums1[i--]; // Copy the i-th element of the nums1 array to the k-th position. Then, decrease i and k by 1 each.
       } else {
         nums1[k--] = nums2[j--];
       }
     }
 
-    // nums2의 나머지 값이 있다면 nums1 앞부분에 저장
     while (j >= 0) {
       nums1[k--] = nums2[j--];
     }
   }
 }
 
+class MergeSortedArraySolution2 implements MergeSortedArrayInterface {
+
+  @Override
+  public void merge(int[] nums1, int m, int[] nums2, int n) {
+  }
+}
+
 interface MergeSortedArrayInterface {
   void merge(int[] nums1, int m, int[] nums2, int n);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
