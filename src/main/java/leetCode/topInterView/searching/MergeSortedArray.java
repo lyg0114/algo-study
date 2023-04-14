@@ -7,7 +7,6 @@ package leetCode.topInterView.searching;
  * @since : 2023/04/14
  */
 public class MergeSortedArray {
-
   public static void main(String[] args) {
     int nums1[] = {1, 2, 3, 0, 0, 0};
     int nums2[] = {2, 5, 6};
@@ -20,7 +19,6 @@ public class MergeSortedArray {
 }
 
 class MergeSortedArraySolution implements MergeSortedArrayInterface {
-
   @Override
   public void merge(int[] nums1, int m, int[] nums2, int n) {
     int i = m - 1; // declare i whcih is index of array nums1
@@ -34,30 +32,35 @@ class MergeSortedArraySolution implements MergeSortedArrayInterface {
       }
     }
 
+    while (j >= 0) { // while loop run when j is greater than zero.
+      nums1[k--] = nums2[j--];  // copy the j-th index of nums2 to k-th index of nums1 and minus one respectively
+    }
+  }
+}
+
+class MergeSortedArraySolution2 implements MergeSortedArrayInterface {
+  @Override
+  public void merge(int[] nums1, int m, int[] nums2, int n) {
+    int i = m - 1;
+    int j = n - 1;
+    int k = m + n - 1;
+
+    while (i >= 0 && j >= 0) {
+      if (nums1[i] > nums2[j]) {
+        nums1[k--] = nums1[i--];
+      } else {
+        nums1[k--] = nums2[j--];
+      }
+    }
     while (j >= 0) {
       nums1[k--] = nums2[j--];
     }
   }
 }
 
-class MergeSortedArraySolution2 implements MergeSortedArrayInterface {
-
-  @Override
-  public void merge(int[] nums1, int m, int[] nums2, int n) {
-  }
-}
-
 interface MergeSortedArrayInterface {
   void merge(int[] nums1, int m, int[] nums2, int n);
 }
-
-
-
-
-
-
-
-
 
 
 
