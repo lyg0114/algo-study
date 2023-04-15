@@ -60,7 +60,12 @@ class ValidateBinarySearchTreeSolution2 implements ValidateBinarySearchTreeInter
   }
 
   private boolean isValidBST(TreeNode node, Integer minLimit, Integer maxLimit) {
-    return false;
+    if(node == null)
+      return true;
+
+    boolean left = isValidBST(node.left, minLimit, node.val);
+    boolean right = isValidBST(node.right, node.val, maxLimit);
+    return left && right;
   }
 }
 
