@@ -7,6 +7,7 @@ package leetCode.topInterView.searching;
  * @since : 2023/04/14
  */
 public class MergeSortedArray {
+
   public static void main(String[] args) {
     int nums1[] = {1, 2, 3, 0, 0, 0};
     int nums2[] = {2, 5, 6};
@@ -19,6 +20,7 @@ public class MergeSortedArray {
 }
 
 class MergeSortedArraySolution implements MergeSortedArrayInterface {
+
   @Override
   public void merge(int[] nums1, int m, int[] nums2, int n) {
     int i = m - 1; // declare i whcih is index of array nums1
@@ -39,6 +41,7 @@ class MergeSortedArraySolution implements MergeSortedArrayInterface {
 }
 
 class MergeSortedArraySolution2 implements MergeSortedArrayInterface {
+
   @Override
   public void merge(int[] nums1, int m, int[] nums2, int n) {
     int i = m - 1;
@@ -52,13 +55,16 @@ class MergeSortedArraySolution2 implements MergeSortedArrayInterface {
         nums1[k--] = nums2[j--];
       }
     }
+
     while (j >= 0) {
       nums1[k--] = nums2[j--];
     }
+
   }
 }
 
 interface MergeSortedArrayInterface {
+
   void merge(int[] nums1, int m, int[] nums2, int n);
 }
 
