@@ -72,6 +72,41 @@ public class ValidateBinarySearchTreeTest {
   }
 
   /*
+        2
+      /   \
+     1     5
+         /   \
+        4     7
+       / \     \
+      3   6     8
+                 \
+                  9
+  */
+  @Test
+  public void testCaseTrue2_1() {
+    ValidateBinarySearchTreeInter solution = getSolution();
+    TreeNode n1 = new TreeNode(1);
+    TreeNode n2 = new TreeNode(2);
+    TreeNode n3 = new TreeNode(3);
+    TreeNode n4 = new TreeNode(4);
+    TreeNode n5 = new TreeNode(5);
+    TreeNode n6 = new TreeNode(6);
+    TreeNode n7 = new TreeNode(7);
+    TreeNode n8 = new TreeNode(8);
+    TreeNode n9 = new TreeNode(9);
+
+    n2.left = n1;
+    n2.right = n5;
+    n5.left = n4;
+    n5.right = n7;
+    n4.left = n3;
+    n4.right = n6;
+    n7.right = n8;
+    n8.right = n9;
+
+    assertTrue(solution.isValidBST(n2));
+  }
+  /*
        5
       / \
      1   4

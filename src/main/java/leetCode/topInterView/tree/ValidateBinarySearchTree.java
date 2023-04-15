@@ -22,15 +22,15 @@ class ValidateBinarySearchTreeSolution implements ValidateBinarySearchTreeInter 
     return helper(root, null, null);
   }
 
-  private boolean helper(TreeNode node, Integer min, Integer max) {
+  private boolean helper(TreeNode node, Integer minLimit, Integer maxLimit) {
     if (node == null) {
       return true;
     }
-    if ((min != null && node.val <= min) || (max != null && node.val >= max)) {
+    if ((minLimit != null && node.val <= minLimit) || (maxLimit != null && node.val >= maxLimit)) {
       return false;
     }
-    boolean left = helper(node.left, min, node.val);
-    boolean right = helper(node.right, node.val, max);
+    boolean left = helper(node.left, minLimit, node.val);
+    boolean right = helper(node.right, node.val, maxLimit);
     return left && right;
   }
 }
