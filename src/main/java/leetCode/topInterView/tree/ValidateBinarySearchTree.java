@@ -12,6 +12,9 @@ public class ValidateBinarySearchTree {
   }
 }
 
+
+//  노드의 왼쪽 서브트리에는 그 노드의 값보다 작은 값들을 지닌 노드들로 이루어져 있다.
+//  노드의 오른쪽 서브트리에는 그 노드의 값보다 큰 값들을 지닌 노드들로 이루어져 있다.
 class ValidateBinarySearchTreeSolution implements ValidateBinarySearchTreeInter {
 
   @Override

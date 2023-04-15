@@ -94,7 +94,6 @@ public class ValidateBinarySearchTreeTest {
     assertFalse(solution.isValidBST(node5));
   }
 
-
   /*
        3
       / \
@@ -116,7 +115,6 @@ public class ValidateBinarySearchTreeTest {
     n5.right = n6;
     assertFalse(solution.isValidBST(n3));
   }
-
 
   private ValidateBinarySearchTreeInter getSolution() {
     return new ValidateBinarySearchTreeSolution();
