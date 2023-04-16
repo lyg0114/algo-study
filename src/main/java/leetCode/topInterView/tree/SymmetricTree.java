@@ -11,45 +11,30 @@ import java.util.Stack;
 public class SymmetricTree {
 
   public static void main(String[] args) {
-
     TreeNode root = new TreeNode(1);
-
     TreeNode lNode2 = new TreeNode(2);
     TreeNode lNode3 = new TreeNode(3);
     TreeNode lNode4 = new TreeNode(4);
-
     TreeNode rNode2 = new TreeNode(2);
     TreeNode rNode3 = new TreeNode(3);
     TreeNode rNode4 = new TreeNode(4);
 
     root.left = lNode2;
-
     lNode2.left = lNode3;
     lNode2.right = lNode4;
-
     root.right = rNode2;
     rNode2.left = rNode4;
     rNode2.right = rNode3;
 
     SymmetricTreeInterface solution = getSolution();
-    System.out.println("##########################################");
-    System.out.println(solution.isSymmetric(root));
-    System.out.println("##########################################");
   }
 
   private static SymmetricTreeInterface getSolution() {
     return new SymmetricTreeSolution();
   }
 
-  private interface SymmetricTreeInterface {
-
-    boolean isSymmetric(TreeNode root);
-  }
-
   private static class SymmetricTreeSolution2 implements SymmetricTreeInterface {
-
     public boolean isSymmetric(TreeNode root) {
-
       return false;
     }
   }
@@ -117,5 +102,9 @@ public class SymmetricTree {
       }
       return true;
     }
+  }
+
+  private interface SymmetricTreeInterface {
+    boolean isSymmetric(TreeNode root);
   }
 }
