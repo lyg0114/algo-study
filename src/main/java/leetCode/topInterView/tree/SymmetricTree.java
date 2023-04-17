@@ -27,6 +27,7 @@ public class SymmetricTree {
     rNode2.right = rNode3;
 
     SymmetricTreeInterface solution = getSolution();
+    System.out.println(solution.isSymmetric(root));
   }
 
   private static SymmetricTreeInterface getSolution() {
@@ -34,7 +35,6 @@ public class SymmetricTree {
   }
 
   private static class SymmetricTreeSolution2 implements SymmetricTreeInterface {
-
     @Override
     public boolean isSymmetric(TreeNode root) {
       if (root == null) {
@@ -51,20 +51,17 @@ public class SymmetricTree {
       if (left == null || right == null || left.val != right.val) {
         return false;
       }
-
       return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
     }
   }
 
   private static class SymmetricTreeSolution implements SymmetricTreeInterface {
-
     public boolean isSymmetric(TreeNode root) {
       if (root == null) {
         return false;
       }
       Stack<Integer> lStack = new Stack<>();
       Stack<Integer> rStack = new Stack<>();
-
       leftFirstTraversal(root.left, lStack);
       rightFirstTraversal(root.right, rStack);
 
@@ -95,7 +92,6 @@ public class SymmetricTree {
         rStack.push(null);
         return;
       }
-
       rStack.push(right.val);
       rightFirstTraversal(right.right, rStack);
       rightFirstTraversal(right.left, rStack);
@@ -122,7 +118,6 @@ public class SymmetricTree {
   }
 
   private interface SymmetricTreeInterface {
-
     boolean isSymmetric(TreeNode root);
   }
 }
