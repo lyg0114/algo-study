@@ -6,7 +6,6 @@ package leetCode.topInterView.DP;
  * @since : 2023/04/17
  */
 public class ClimbingStairs {
-
   public static void main(String[] args) {
     ClimbingStairsInterface solution = getSolution();
     System.out.println(solution.climbStairs(4));
@@ -17,7 +16,6 @@ public class ClimbingStairs {
   }
 
   private static class ClimbingStairsArraySolution implements ClimbingStairsInterface {
-
     @Override
     public int climbStairs(int n) {
       if (n == 1) {
@@ -34,7 +32,6 @@ public class ClimbingStairs {
   }
 
   private static class ClimbingStairsRecursiveSolution implements ClimbingStairsInterface {
-
     @Override
     public int climbStairs(int n) {
       if (n == 1) {
@@ -48,7 +45,6 @@ public class ClimbingStairs {
   }
 
   private interface ClimbingStairsInterface {
-
     int climbStairs(int n);
   }
 }
