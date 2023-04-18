@@ -33,6 +33,13 @@ class BestTimeToBuySellStockSolution implements BestTimeToBuySellStockInterface 
   }
 }
 
+class BestTimeToBuySellStockSolution2 implements BestTimeToBuySellStockInterface {
+  @Override
+  public int maxProfit(int[] prices) {
+    return 0;
+  }
+}
+
 interface BestTimeToBuySellStockInterface {
   int maxProfit(int[] prices);
 }
