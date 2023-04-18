@@ -15,6 +15,7 @@ public class BestTimeToBuySellStock {
   }
 }
 
+// maxProfit is obtained when price[i] - minPrice;
 class BestTimeToBuySellStockSolution implements BestTimeToBuySellStockInterface {
   @Override
   public int maxProfit(int[] prices) {
