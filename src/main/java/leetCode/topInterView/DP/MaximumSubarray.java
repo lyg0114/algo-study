@@ -27,7 +27,7 @@ class MaximumSubarraySolution implements MaximumSubarrayInterface {
 
     for (int i = 1; i < nums.length; i++) {
       currentSum = Math.max(nums[i], currentSum + nums[i]);
-      // 이전까지의 합과 현재 원소의 합 중 더 큰 값을 선택
+      // 이전까지의 합 + 현재 원소 vs 현재 원소 중 더 큰 값을 선택
       maxSum = Math.max(maxSum, currentSum);
       // 현재까지의 최대값보다 크면 최대값을 갱신
     }
