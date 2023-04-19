@@ -8,15 +8,21 @@ package leetCode.topInterView.Design;
 public class ShuffleAnArray {
 
   public static void main(String[] args) {
-    ShuffleAnArrayInterface solution = getSolution();
+    ShuffleAnArrayInterface solution = getSolution(null);
   }
 
-  private static ShuffleAnArraySolution getSolution() {
-    return new ShuffleAnArraySolution();
+  private static ShuffleAnArraySolution getSolution(int[] nums) {
+    return new ShuffleAnArraySolution(nums);
   }
 }
 
 class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
+
+  private int[] nums;
+
+  public ShuffleAnArraySolution(int[] nums) {
+    this.nums = nums;
+  }
 
   @Override
   public int[] reset() {
