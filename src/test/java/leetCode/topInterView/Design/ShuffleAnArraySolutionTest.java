@@ -17,4 +17,14 @@ public class ShuffleAnArraySolutionTest {
     System.out.println(random.nextInt());
     System.out.println(random.nextInt());
   }
+
+  @Test
+  public void makeRandomNumberTest2() {
+    int[] nums = {1, 2, 3, 4, 5, 6};
+    ShuffleAnArraySolution solution = new ShuffleAnArraySolution(nums);
+    int[] shuffle = solution.shuffle();
+    for (int i = 0; i < shuffle.length; i++) {
+      System.out.println("shuffle[i] = " + shuffle[i]);
+    }
+  }
 }

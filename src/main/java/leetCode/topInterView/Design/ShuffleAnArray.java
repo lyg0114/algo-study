@@ -36,7 +36,7 @@ class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
 
   @Override
   public int[] shuffle() {
-    return new int[0];
+    return nums;
   }
 }
 
