@@ -28,7 +28,7 @@ public class ShuffleAnArraySolutionTest {
   }
 
   @Test
-  public void  ShufflArrayTest() {
+  public void ShufflArrayTest() {
     int[] nums = {1, 2, 3, 4, 5, 6};
     ShuffleAnArraySolution solution = new ShuffleAnArraySolution(nums);
     int[] shuffle = solution.shuffle();
