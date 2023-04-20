@@ -21,31 +21,29 @@ public class ShuffleAnArray {
 
 class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
 
-  private int[] originNums;
   private int[] nums;
+  private Random random;
 
   public ShuffleAnArraySolution(int[] nums) {
-    this.originNums = nums;
     this.nums = nums;
+    this.random = new Random();
   }
 
   @Override
   public int[] reset() {
-    nums = Arrays.copyOf(originNums, originNums.length);
     return nums;
   }
 
   @Override
   public int[] shuffle() {
-    Random random = new Random();
-    int temp;
+    int[] shuffled = nums.clone();
     for (int i = 0; i < nums.length; i++) {
-      int chnageIndex = random.nextInt(nums.length);
-      temp = nums[i];
-      nums[i] = nums[chnageIndex];
-      nums[chnageIndex] = temp;
+      int j = random.nextInt(nums.length - i) + i;
+      int temp = shuffled[i];
+      shuffled[i] = shuffled[j];
+      shuffled[j] = temp;
     }
-    return nums;
+    return shuffled;
   }
 }
 
