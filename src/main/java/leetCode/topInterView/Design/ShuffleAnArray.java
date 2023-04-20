@@ -21,14 +21,17 @@ public class ShuffleAnArray {
 class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
 
   private int[] originNums;
+  private int[] nums;
 
   public ShuffleAnArraySolution(int[] nums) {
     this.originNums = nums;
+    this.nums = nums;
   }
 
   @Override
   public int[] reset() {
-    return Arrays.copyOf(originNums, originNums.length);
+    nums = Arrays.copyOf(originNums, originNums.length);
+    return nums;
   }
 
   @Override
