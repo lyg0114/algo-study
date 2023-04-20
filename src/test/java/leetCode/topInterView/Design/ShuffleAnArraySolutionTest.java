@@ -21,6 +21,10 @@ public class ShuffleAnArraySolutionTest {
   @Test
   public void makeRandomNumberTest2() {
     Random random = new Random();
+    System.out.println(random.nextInt(3) + 1);
+    System.out.println(random.nextInt(3) + 1);
+    System.out.println(random.nextInt(3) + 1);
+    System.out.println(random.nextInt(3) + 1);
   }
 
   @Test
