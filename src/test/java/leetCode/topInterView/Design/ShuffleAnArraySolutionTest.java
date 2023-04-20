@@ -30,10 +30,14 @@ public class ShuffleAnArraySolutionTest {
   @Test
   public void ShufflArrayTest() {
     int[] nums = {1, 2, 3, 4, 5, 6};
-    ShuffleAnArraySolution solution = new ShuffleAnArraySolution(nums);
+    ShuffleAnArrayInterface solution = getSolution(nums);
     int[] shuffle = solution.shuffle();
     for (int i = 0; i < shuffle.length; i++) {
       System.out.println("shuffle[i] = " + shuffle[i]);
     }
+  }
+
+  private ShuffleAnArrayInterface getSolution(int[] nums) {
+    return new ShuffleAnArraySolution(nums);
   }
 }

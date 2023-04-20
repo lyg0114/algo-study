@@ -1,6 +1,5 @@
 package leetCode.topInterView.Design;
 
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -39,6 +38,34 @@ class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
     int[] shuffled = nums.clone();
     for (int i = 0; i < nums.length; i++) {
       int j = random.nextInt(nums.length - i) + i;
+      int temp = shuffled[i];
+      shuffled[i] = shuffled[j];
+      shuffled[j] = temp;
+    }
+    return shuffled;
+  }
+}
+
+class ShuffleAnArraySolution2 implements ShuffleAnArrayInterface {
+
+  private int[] nums;
+  private Random random;
+
+  public ShuffleAnArraySolution2(int[] nums) {
+    this.nums = nums;
+    this.random = new Random();
+  }
+
+  @Override
+  public int[] reset() {
+    return nums;
+  }
+
+  @Override
+  public int[] shuffle() {
+    int[] shuffled = nums.clone();
+    for (int i = nums.length - 1; i > 0; i--) {
+      int j = random.nextInt(i + 1);
       int temp = shuffled[i];
       shuffled[i] = shuffled[j];
       shuffled[j] = temp;
