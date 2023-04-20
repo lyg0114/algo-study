@@ -1,5 +1,7 @@
 package leetCode.topInterView.Design;
 
+import java.util.Arrays;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.Design
@@ -18,15 +20,15 @@ public class ShuffleAnArray {
 
 class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
 
-  private int[] nums;
+  private int[] originNums;
 
   public ShuffleAnArraySolution(int[] nums) {
-    this.nums = nums;
+    this.originNums = nums;
   }
 
   @Override
   public int[] reset() {
-    return new int[0];
+    return Arrays.copyOf(originNums, originNums.length);
   }
 
   @Override
