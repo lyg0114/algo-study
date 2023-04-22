@@ -10,7 +10,6 @@ import java.util.HashMap;
  *
  */
 public class Anagrams {
-
   public static void main(String[] args) {
     Anagrams anagrams = new Anagrams();
     String arr1[] = {"r","a","t"};

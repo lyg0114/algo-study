@@ -14,7 +14,6 @@ import java.util.HashMap;
  *
  */
 public class FrequencyCounter {
-
   public static void main(String[] args) {
     FrequencyCounter frequencyCounter = new FrequencyCounter();
     int arr1[] = {1,2,3,2,5};
@@ -41,7 +40,6 @@ public class FrequencyCounter {
         return false;
       }
     }
-
     return true;
   }
 
@@ -54,5 +52,4 @@ public class FrequencyCounter {
       }
     }
   }
-
 }
