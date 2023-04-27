@@ -47,7 +47,6 @@ class ShuffleAnArraySolution implements ShuffleAnArrayInterface {
 }
 
 class ShuffleAnArraySolution2 implements ShuffleAnArrayInterface {
-
   private int[] nums;
   private Random random;
 
@@ -75,8 +74,6 @@ class ShuffleAnArraySolution2 implements ShuffleAnArrayInterface {
 }
 
 interface ShuffleAnArrayInterface {
-
   int[] reset();
-
   int[] shuffle();
 }
