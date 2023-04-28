@@ -7,7 +7,6 @@ import java.util.HashSet;
  * @since : 2023/03/02 https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/578/
  */
 public class ContainsDuplicate {
-
   public static void main(String[] args) {
     ContainsDuplicateSolution solution = new ContainsDuplicateSolution();
     int[] nums = {1, 2, 3, 1};

@@ -9,7 +9,6 @@ import java.util.HashMap;
  * @since : 2023/03/02 https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/674/
  */
 public class IntersectionOfTwoArrays {
-
   public static void main(String[] args) {
     int[] nums1 = {1, 2, 2, 1};
     int[] nums2 = {2, 2};
@@ -22,7 +21,6 @@ public class IntersectionOfTwoArrays {
 }
 
 class IntersectionOfTwoArraysSolutoin {
-
   public int[] intersect(int[] nums1, int[] nums2) {
     HashMap<Integer, Integer> map1 = converToHashMap(nums1);
     HashMap<Integer, Integer> map2 = converToHashMap(nums2);

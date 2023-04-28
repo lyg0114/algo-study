@@ -6,7 +6,6 @@ package leetCode.topInterView.Array;
  * @since : 2023/03/02
  */
 public class PlusOne {
-
   public static void main(String[] args) {
     int[] nums = {1, 2, 3, 4};
     PlusOneSolution solution = new PlusOneSolution();
@@ -18,7 +17,6 @@ public class PlusOne {
 }
 
 class PlusOneSolution {
-
   public int[] plusOne(int[] digits) {
     if (digits.length == 1 && digits[0] == 9) {
       int[] results = {1, 0};
