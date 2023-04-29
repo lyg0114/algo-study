@@ -7,12 +7,17 @@ package leetCode.topInterView.Design;
  * @since : 2023/04/29
  */
 public class MinStack {
+
   public static void main(String[] args) {
 
   }
 }
 
 class MinStackSolution implements MinStackInterface {
+
+  private int min;
+  private int top;
+  private int[] minStack = new int[30000];
 
   public MinStackSolution() {
   }
