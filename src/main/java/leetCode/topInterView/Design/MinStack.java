@@ -9,47 +9,75 @@ package leetCode.topInterView.Design;
 public class MinStack {
 
   public static void main(String[] args) {
+    MinStackInterface solution = getSolution();
+    solution.push(-2);
+    solution.push(0);
+    solution.push(-3);
+    System.out.println("solution.getMin() = " + solution.getMin());
+    solution.pop();
+    System.out.println("solution.top() = " + solution.top());
+    System.out.println("solution.getMin() = " + solution.getMin());
+  }
 
+  private static MinStackInterface getSolution() {
+    return new MinStackSolution();
   }
 }
 
 class MinStackSolution implements MinStackInterface {
 
-  private int min;
-  private int top;
-  private int[] minStack = new int[30000];
+  private static class Node {
+
+    int val;
+    Node next;
+    int min;
+  }
+
+  Node top;
+  int size;
 
   public MinStackSolution() {
+    size = 0;
   }
 
   @Override
   public void push(int val) {
-
+    if (size == 0) {
+      top = new Node();
+      top.val = val;
+      top.next = null;
+      top.min = val;
+      size++;
+    } else {
+      Node temp = new Node();
+      temp.val = val;
+      temp.next = top;
+      temp.min = Math.min(val, top.min);
+      top = temp;
+      size++;
+    }
   }
 
   @Override
   public void pop() {
-
+    top = top.next;
+    size--;
   }
 
   @Override
   public int top() {
-    return 0;
+    return top.val;
   }
 
   @Override
   public int getMin() {
-    return 0;
+    return top.min;
   }
 }
 
 interface MinStackInterface {
-
   void push(int val);
-
   void pop();
-
   int top();
-
   int getMin();
 }
