@@ -1,5 +1,7 @@
 package leetCode.topInterView.Design;
 
+import java.util.Stack;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.Design
@@ -27,6 +29,7 @@ public class MinStack {
 class MinStackSolution implements MinStackInterface {
 
   private static class Node {
+
     int val;
     Node next;
     int min;
@@ -44,14 +47,14 @@ class MinStackSolution implements MinStackInterface {
     if (size == 0) {
       top = new Node();
       top.val = val;
-      top.next = null;
       top.min = val;
+      top.next = null;
       size++;
     } else {
       Node temp = new Node();
       temp.val = val;
+      temp.min = Math.min(top.min, val);
       temp.next = top;
-      temp.min = Math.min(val, top.min);
       top = temp;
       size++;
     }
@@ -74,25 +77,49 @@ class MinStackSolution implements MinStackInterface {
   }
 }
 
-class MinStackSolutionPrac implements MinStackInterface {
+class MinStackSolutionV2 implements MinStackInterface {
 
-  private static class Node {
+  private Stack<Integer> stack;
+  private Stack<Integer> minStack;
 
+  public MinStackSolutionV2() {
+    stack = new Stack<>();
+    minStack = new Stack<>();
   }
 
-  Node top;
-  int size;
-
-  public MinStackSolutionPrac() {
-    size = 0;
+  public void push(int val) {
+    stack.push(val);
+    if (minStack.isEmpty() || val <= minStack.peek()) {
+      minStack.push(val);
+    }
   }
+
+  public void pop() {
+    if (stack.peek().equals(minStack.peek())) {
+      minStack.pop();
+    }
+    stack.pop();
+  }
+
+  public int top() {
+    return stack.peek();
+  }
+
+  public int getMin() {
+    return minStack.peek();
+  }
+}
+
+class MinStackGround implements MinStackInterface {
 
   @Override
   public void push(int val) {
+
   }
 
   @Override
   public void pop() {
+
   }
 
   @Override
