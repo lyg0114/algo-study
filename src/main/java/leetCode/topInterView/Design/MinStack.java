@@ -74,6 +74,38 @@ class MinStackSolution implements MinStackInterface {
   }
 }
 
+class MinStackSolutionPrac implements MinStackInterface {
+
+  private static class Node {
+
+  }
+
+  Node top;
+  int size;
+
+  public MinStackSolutionPrac() {
+    size = 0;
+  }
+
+  @Override
+  public void push(int val) {
+  }
+
+  @Override
+  public void pop() {
+  }
+
+  @Override
+  public int top() {
+    return 0;
+  }
+
+  @Override
+  public int getMin() {
+    return 0;
+  }
+}
+
 interface MinStackInterface {
 
   void push(int val);
