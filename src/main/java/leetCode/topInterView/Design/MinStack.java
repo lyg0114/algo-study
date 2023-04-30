@@ -27,7 +27,6 @@ public class MinStack {
 class MinStackSolution implements MinStackInterface {
 
   private static class Node {
-
     int val;
     Node next;
     int min;
@@ -76,8 +75,12 @@ class MinStackSolution implements MinStackInterface {
 }
 
 interface MinStackInterface {
+
   void push(int val);
+
   void pop();
+
   int top();
+
   int getMin();
 }
