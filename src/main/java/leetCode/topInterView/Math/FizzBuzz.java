@@ -9,32 +9,29 @@ import java.util.List;
  * @since : 2023/05/01
  */
 public class FizzBuzz {
-
-}
-
-class FizzBuzzSolution implements FizzBuzzInterface {
-
-  @Override
-  public List<String> fizzBuzz(int n) {
-    ArrayList<String> results = new ArrayList<>();
-    for (int i = 1; i <= n; i++) {
-      if (i < 3) {
-        results.add(String.valueOf(i));
-      } else if (i % 3 == 0 && i % 5 == 0) {
-        results.add("FizzBuzz");
-      } else if (i % 3 == 0) {
-        results.add("Fizz");
-      } else if (i % 5 == 0) {
-        results.add("Buzz");
-      } else {
-        results.add(String.valueOf(i));
+  public static class FizzBuzzSolution implements FizzBuzzInterface {
+    @Override
+    public List<String> fizzBuzz(int n) {
+      ArrayList<String> results = new ArrayList<>();
+      for (int i = 1; i <= n; i++) {
+        if (i < 3) {
+          results.add(String.valueOf(i));
+        } else if (i % 3 == 0 && i % 5 == 0) {
+          results.add("FizzBuzz");
+        } else if (i % 3 == 0) {
+          results.add("Fizz");
+        } else if (i % 5 == 0) {
+          results.add("Buzz");
+        } else {
+          results.add(String.valueOf(i));
+        }
       }
+      return results;
     }
-    return results;
+  }
+
+  public interface FizzBuzzInterface {
+    List<String> fizzBuzz(int n);
   }
 }
 
-interface FizzBuzzInterface {
-
-  List<String> fizzBuzz(int n);
-}

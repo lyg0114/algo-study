@@ -2,6 +2,8 @@ package leetCode.topInterView.Math;
 
 import java.util.Arrays;
 import java.util.List;
+import leetCode.topInterView.Math.FizzBuzz.FizzBuzzInterface;
+import leetCode.topInterView.Math.FizzBuzz.FizzBuzzSolution;
 import org.junit.Assert;
 import org.junit.Test;
 
