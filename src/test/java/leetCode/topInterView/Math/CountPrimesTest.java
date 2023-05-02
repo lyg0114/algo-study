@@ -23,4 +23,11 @@ public class CountPrimesTest {
     Assert.assertEquals(4, result);
   }
 
+  @Test
+  public void test_when_n_equals_2() {
+    CountPrimesInterface solution = getSolution();
+    int result = solution.countPrimes(2);
+    Assert.assertEquals(0, result);
+  }
+
 }
