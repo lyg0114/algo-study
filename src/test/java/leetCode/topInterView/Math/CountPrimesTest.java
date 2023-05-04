@@ -17,6 +17,13 @@ public class CountPrimesTest {
   }
 
   @Test
+  public void test_when_n_equals_30() {
+    CountPrimesInterface solution = getSolution();
+    int result = solution.countPrimes(30);
+    Assert.assertEquals(10, result);
+  }
+
+  @Test
   public void test_when_n_equals_10() {
     CountPrimesInterface solution = getSolution();
     int result = solution.countPrimes(10);
