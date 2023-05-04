@@ -33,6 +33,14 @@ public class CountPrimes {
     }
   }
 
+  public static class CountPrimesPlayGround implements CountPrimesInterface {
+
+    @Override
+    public int countPrimes(int n) {
+      return 0;
+    }
+  }
+
   public interface CountPrimesInterface {
 
     int countPrimes(int n);
