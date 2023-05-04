@@ -1,5 +1,7 @@
 package leetCode.topInterView.Math;
 
+import java.util.Arrays;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.Math
@@ -12,31 +14,22 @@ public class CountPrimes {
 
     @Override
     public int countPrimes(int n) {
-      int countOfPrimes = 0;
-
-      for (int i = 1; i <= n; i++) {
-        if (isPrime(i)) {
-          countOfPrimes++;
-        }
-      }
-
-      return countOfPrimes;
-    }
-
-    private boolean isPrime(int number) {
-      boolean isPrime = true;
-      if (number == 1) {
-        isPrime = false;
-      } else {
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-          if (number % i == 0) {
-            isPrime = false;
-            break;
+      boolean[] isPrime = new boolean[n];
+      Arrays.fill(isPrime, true);
+      for (int i = 2; i * i < n; i++) {
+        if (isPrime[i]) {
+          for (int j = i * i; j < n; j += i) {
+            isPrime[j] = false;
           }
         }
       }
-
-      return isPrime;
+      int count = 0;
+      for (int i = 2; i < n; i++) {
+        if (isPrime[i]) {
+          count++;
+        }
+      }
+      return count;
     }
   }
 
