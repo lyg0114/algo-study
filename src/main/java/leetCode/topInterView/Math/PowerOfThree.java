@@ -7,6 +7,11 @@ package leetCode.topInterView.Math;
  */
 public class PowerOfThree {
 
+  public static void main(String[] args) {
+    PowerOfThreeSolution solution = new PowerOfThreeSolution();
+    boolean powerOfThree = solution.isPowerOfThree(28);
+    System.out.println("powerOfThree = " + powerOfThree);
+  }
 
   public static class PowerOfThreeSolution implements PowerOfThreeInterface {
 
@@ -15,8 +20,17 @@ public class PowerOfThree {
       if (n == 0 || n < 0) {
         return false;
       }
+      if (n == 1162261467) {
+        return true;
+      }
 
-      return false;
+      int limit = Integer.MAX_VALUE / 3;
+      int start = 1;
+      while ((start < n && n < limit)) {
+        start *= 3;
+      }
+
+      return start == n;
     }
   }
 
