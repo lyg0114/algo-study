@@ -8,9 +8,34 @@ package leetCode.topInterView.Math;
 public class PowerOfThree {
 
   public static void main(String[] args) {
-    PowerOfThreeSolution solution = new PowerOfThreeSolution();
-    boolean powerOfThree = solution.isPowerOfThree(28);
+    PowerOfThreeInterface solution = getSolution();
+    boolean powerOfThree = solution.isPowerOfThree(1162261467);
     System.out.println("powerOfThree = " + powerOfThree);
+  }
+
+  private static PowerOfThreeInterface getSolution() {
+    return new PowerOfThreeSolution2();
+  }
+
+  public static class PowerOfThreeSolution2 implements PowerOfThreeInterface {
+
+    @Override
+    public boolean isPowerOfThree(int n) {
+      if (n <= 0) {
+        return false;
+      }
+
+      int target = 1;
+      int MAX_VALUE = 1162261467;
+      while (target < MAX_VALUE + 1) {
+        if (target == n) {
+          return true;
+        }
+        target *= 3;
+        System.out.println("target = " + target);
+      }
+      return false;
+    }
   }
 
   public static class PowerOfThreeSolution implements PowerOfThreeInterface {
