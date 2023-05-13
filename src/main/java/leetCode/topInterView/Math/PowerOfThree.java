@@ -9,12 +9,30 @@ public class PowerOfThree {
 
   public static void main(String[] args) {
     PowerOfThreeInterface solution = getSolution();
-    boolean powerOfThree = solution.isPowerOfThree(1162261467);
-    System.out.println("powerOfThree = " + powerOfThree);
+    System.out.println(solution.isPowerOfThree(1162261467));
+    System.out.println(solution.isPowerOfThree(28));
+    System.out.println(solution.isPowerOfThree(27));
+    System.out.println(solution.isPowerOfThree(2));
   }
 
   private static PowerOfThreeInterface getSolution() {
-    return new PowerOfThreeSolution2();
+    return new PowerOfThreeSolution();
+  }
+
+  public static class PowerOfThreeSolution implements PowerOfThreeInterface {
+
+    @Override
+    public boolean isPowerOfThree(int n) {
+      if (n <= 0) {
+        return false;
+      } else if (n == 1) {
+        return true;
+      } else if (n % 3 != 0) { // n이 3의
+        return false;
+      } else {
+        return isPowerOfThree(n / 3);
+      }
+    }
   }
 
   public static class PowerOfThreeSolution2 implements PowerOfThreeInterface {
@@ -37,28 +55,6 @@ public class PowerOfThree {
       return false;
     }
   }
-
-  public static class PowerOfThreeSolution implements PowerOfThreeInterface {
-
-    @Override
-    public boolean isPowerOfThree(int n) {
-      if (n == 0 || n < 0) {
-        return false;
-      }
-      if (n == 1162261467) {
-        return true;
-      }
-
-      int limit = Integer.MAX_VALUE / 3;
-      int start = 1;
-      while ((start < n && n < limit)) {
-        start *= 3;
-      }
-
-      return start == n;
-    }
-  }
-
 
   public interface PowerOfThreeInterface {
 
