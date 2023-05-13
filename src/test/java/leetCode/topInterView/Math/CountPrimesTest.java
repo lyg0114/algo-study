@@ -1,7 +1,9 @@
 package leetCode.topInterView.Math;
 
 import leetCode.topInterView.Math.CountPrimes.CountPrimesInterface;
+import leetCode.topInterView.Math.CountPrimes.CountPrimesPlayGround;
 import leetCode.topInterView.Math.CountPrimes.CountPrimesSolution;
+import leetCode.topInterView.Math.CountPrimes.CountPrimesSolution2;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +15,7 @@ import org.junit.Test;
 public class CountPrimesTest {
 
   private CountPrimesInterface getSolution() {
-    return new CountPrimesSolution();
+    return new CountPrimesSolution2();
   }
 
   @Test
@@ -35,6 +37,13 @@ public class CountPrimesTest {
     CountPrimesInterface solution = getSolution();
     int result = solution.countPrimes(2);
     Assert.assertEquals(0, result);
+  }
+
+  @Test
+  public void test_when_n_equals_3() {
+    CountPrimesInterface solution = getSolution();
+    int result = solution.countPrimes(3);
+    Assert.assertEquals(1, result);
   }
 
 }

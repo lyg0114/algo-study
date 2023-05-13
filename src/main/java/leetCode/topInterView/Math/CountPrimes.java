@@ -10,6 +10,45 @@ import java.util.Arrays;
  */
 public class CountPrimes {
 
+  public static void main(String[] args) {
+    CountPrimesPlayGround solution = new CountPrimesPlayGround();
+    System.out.println(solution.countPrimes(10));
+  }
+
+  public static class CountPrimesPlayGround implements CountPrimesInterface {
+
+    @Override
+    public int countPrimes(int n) {
+      return 0;
+    }
+  }
+
+  public static class CountPrimesSolution2 implements CountPrimesInterface {
+
+    @Override
+    public int countPrimes(int n) {
+      n -= 1;
+      if (n < 0 || n == 0 || n == 1) {
+        return 0;
+      }
+
+      int result = 0;
+      boolean[] check = new boolean[n + 1];
+      for (int i = 1; i < check.length; i++) {
+        if (i > 1) {
+          if (!check[i]) {
+            result++;
+            for (int j = i; j < check.length; j += i) {
+              check[j] = true;
+            }
+          }
+        }
+      }
+      return result;
+    }
+  }
+
+
   public static class CountPrimesSolution implements CountPrimesInterface {
 
     @Override
@@ -33,17 +72,8 @@ public class CountPrimes {
     }
   }
 
-  public static class CountPrimesPlayGround implements CountPrimesInterface {
-
-    @Override
-    public int countPrimes(int n) {
-      return 0;
-    }
-  }
-
   public interface CountPrimesInterface {
 
     int countPrimes(int n);
   }
-
 }
