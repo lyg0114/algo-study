@@ -9,7 +9,6 @@ public class NumberOf1Bits {
 
   public static void main(String[] args) {
     NumberOf1BitsInterface solution = getNumberOf1BitsSolution();
-    System.out.println(solution.hammingWeight(00000000000000000000000000001011));
   }
 
   private static NumberOf1BitsInterface getNumberOf1BitsSolution() {
@@ -20,7 +19,12 @@ public class NumberOf1Bits {
 
     @Override
     public int hammingWeight(int n) {
-      return 0;
+      int count = 0;
+      while (n != 0) {
+        count += n & 1;
+        n >>>= 1;
+      }
+      return count;
     }
   }
 
