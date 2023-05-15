@@ -11,7 +11,7 @@ public class HammingDistance {
 
   public static void main(String[] args) {
     HammingDistanceInterfae solution = getSolution();
-    System.out.println(solution.hammingDistance(1,4));
+    System.out.println(solution.hammingDistance(2147483647, 0));
   }
 
   private static HammingDistanceInterfae getSolution() {
@@ -22,11 +22,13 @@ public class HammingDistance {
 
     @Override
     public int hammingDistance(int x, int y) {
+      if (!(validation(x) && validation(x))) {
+        return 0;
+      }
+
       String xStr = changeBinary(x);
       String yStr = changeBinary(y);
-
-      String maxStr = null;
-      String minStr = null;
+      String maxStr, minStr = null;
       if (xStr.length() > yStr.length()) {
         maxStr = xStr;
         minStr = yStr;
@@ -39,20 +41,25 @@ public class HammingDistance {
       int minLength = Math.min(xStr.length(), yStr.length()) - 1;
       int result = 0;
 
-      while (maxLength > 0) {
-        if (maxLength > 0 && minLength > 0) {
-          result += maxStr.charAt(maxLength) == minStr.charAt(minLength) ? 1 : 0;
+      while (maxLength > -1) {
+        if (maxLength > -1 && minLength > -1) {
+          result += maxStr.charAt(maxLength) != minStr.charAt(minLength) ? 1 : 0;
           maxLength--;
           minLength--;
         } else {
-          result += maxStr.charAt(maxLength) == '0' ? 1 : 0;
+          result += maxStr.charAt(maxLength) == '1' ? 1 : 0;
           maxLength--;
         }
       }
+
       return result;
     }
 
-    private String changeBinary(int target) {
+    public String changeBinary(int target) {
+      if (target == 0) {
+        return "0";
+      }
+
       Stack<String> stack = new Stack<>();
       while (target != 1) {
         stack.push(String.valueOf(target % 2));
@@ -66,6 +73,15 @@ public class HammingDistance {
       }
       return sb.toString();
     }
+
+    private boolean validation(int target) {
+      if (Integer.MIN_VALUE <= target && Integer.MAX_VALUE >= target) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
   }
 
 
