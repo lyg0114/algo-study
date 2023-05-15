@@ -18,6 +18,22 @@ public class HammingDistance {
     return new HammingDistanceSolution();
   }
 
+  public static class HammingDistanceSolution2 implements HammingDistanceInterfae {
+
+    @Override
+    public int hammingDistance(int x, int y) {
+      int xor = x ^ y;
+      int distance = 0;
+
+      while (xor != 0) {
+        distance += xor & 1;
+        xor >>= 1;
+      }
+
+      return distance;
+    }
+  }
+
   public static class HammingDistanceSolution implements HammingDistanceInterfae {
 
     @Override
