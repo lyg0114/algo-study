@@ -21,11 +21,9 @@ public class AddTwoNumbers {
       if (l1 == null && l2 == null) {
         return null;
       }
-
       if (l1 != null && l2 == null) {
         return l1;
       }
-
       if (l1 == null && l2 != null) {
         return l2;
       }
