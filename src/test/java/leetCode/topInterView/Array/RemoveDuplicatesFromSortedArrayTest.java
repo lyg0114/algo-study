@@ -3,6 +3,7 @@ package leetCode.topInterView.Array;
 
 import static org.junit.Assert.assertEquals;
 
+import leetCode.topInterView.Array.RemoveDuplicatesFromSortedArray.RemoveDuplicatesFromSortedArrayInterface;
 import org.junit.Test;
 
 public class RemoveDuplicatesFromSortedArrayTest {
@@ -10,12 +11,9 @@ public class RemoveDuplicatesFromSortedArrayTest {
   @Test
   public void TESTremoveDuplicates() {
     int[] nums = {1, 1, 2};
-    RemoveDuplicatesFromSortedArray rdfs = new RemoveDuplicatesFromSortedArray();
-    int result = rdfs.removeDuplicates(nums);
+    RemoveDuplicatesFromSortedArrayInterface solution = RemoveDuplicatesFromSortedArray
+        .getSolution();
+    int result = solution.removeDuplicates(nums);
     assertEquals(2, result);
-  }
-
-  @Test
-  public void TESTdistinctArray() {
   }
 }
