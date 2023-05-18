@@ -9,7 +9,7 @@ public class RotateArray {
 
   public static void main(String[] args) {
     RotateArrayInterface solution = getSolution();
-    int[] nums = {1,2,3,4};
+    int[] nums = {1, 2, 3, 4};
     int k = 2;
     solution.rotate(nums, k);
     for (int i = 0; i < nums.length; i++) {
@@ -18,7 +18,27 @@ public class RotateArray {
   }
 
   public static RotateArrayInterface getSolution() {
-    return new RotateArraySolutionV1();
+    return new RotateArraySolutionV2();
+  }
+
+  public static class RotateArraySolutionV2 implements RotateArrayInterface {
+
+    @Override
+    public void rotate(int[] nums, int k) {
+      reverse(nums, 0, nums.length - 1);
+      reverse(nums, 0, k - 1);
+      reverse(nums, k, nums.length - 1);
+    }
+
+    private void reverse(int[] nums, int start, int end) {
+      while (start < end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start++;
+        end--;
+      }
+    }
   }
 
   public static class RotateArraySolutionV1 implements RotateArrayInterface {
@@ -38,13 +58,6 @@ public class RotateArray {
         }
         nums[0] = last;
       }
-    }
-  }
-
-  public static class RotateArraySolutionV2 implements RotateArrayInterface {
-
-    @Override
-    public void rotate(int[] nums, int k) {
     }
   }
 
