@@ -16,4 +16,11 @@ public class RemoveDuplicatesFromSortedArrayTest {
     int result = solution.removeDuplicates(nums);
     assertEquals(2, result);
   }
+
+  @Test
+  public void test_operation() {
+    int num = 3;
+    System.out.println("num-- = " + --num);
+    System.out.println("num = " + num);
+  }
 }

@@ -13,8 +13,49 @@ public class RemoveDuplicatesFromSortedArray {
   }
 
   public static RemoveDuplicatesFromSortedArrayInterface getSolution() {
-    return new RemoveDuplicatesFromSortedArraySolution();
+    return new RemoveDuplicatesFromSortedArraySolutionV2();
   }
+
+  public static class RemoveDuplicatesFromSortedArraySolutionV2 implements
+      RemoveDuplicatesFromSortedArrayInterface {
+
+    @Override
+    public int removeDuplicates(int[] nums) {
+      if (nums == null || nums.length == 0) {
+        return 0;
+      }
+
+      if (nums.length == 1) {
+        return 1;
+      }
+
+      int[] tmp = new int[nums.length];
+      tmp[0] = nums[0];
+      int tmpCur = 1;
+      int before;
+
+      for (int i = 0; i < nums.length; i++) {
+        if (i > 0) {
+          before = i;
+          before--;
+          if (nums[before] != nums[i]) {
+            tmp[tmpCur++] = nums[i];
+          }
+        }
+      }
+
+      for (int i = 0; i < nums.length; i++) {
+        if (i < tmpCur) {
+          nums[i] = tmp[i];
+        } else {
+          nums[i] = 0;
+        }
+      }
+
+      return tmpCur;
+    }
+  }
+
 
   public static class RemoveDuplicatesFromSortedArraySolution implements
       RemoveDuplicatesFromSortedArrayInterface {
