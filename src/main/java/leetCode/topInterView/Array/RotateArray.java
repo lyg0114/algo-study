@@ -8,33 +8,48 @@ package leetCode.topInterView.Array;
 public class RotateArray {
 
   public static void main(String[] args) {
-    int[] nums = {1, 2, 3, 4, 5, 6, 7};
-    printArray(nums);
-    rotate(nums, 3);
-    System.out.println("");
-    printArray(nums);
-  }
-
-  public static void rotate(int[] nums, int k) {
-    k %= nums.length;
-    reverse(nums, 0, nums.length - 1);
-    reverse(nums, 0, k - 1);
-    reverse(nums, k, nums.length - 1);
-  }
-
-  private static void reverse(int[] nums, int start, int end) {
-    while (start < end) {
-      int temp = nums[end];
-      nums[end] = nums[start];
-      nums[start] = temp;
-      start++;
-      end--;
-    }
-  }
-
-  private static void printArray(int[] nums) {
+    RotateArrayInterface solution = getSolution();
+    int[] nums = {1,2,3,4};
+    int k = 2;
+    solution.rotate(nums, k);
     for (int i = 0; i < nums.length; i++) {
-      System.out.print(nums[i] + " ");
+      System.out.println(nums[i]);
     }
+  }
+
+  public static RotateArrayInterface getSolution() {
+    return new RotateArraySolutionV1();
+  }
+
+  public static class RotateArraySolutionV1 implements RotateArrayInterface {
+
+    @Override
+    public void rotate(int[] nums, int k) {
+      if (nums == null || k < 1) {
+        return;
+      }
+
+      int last;
+      for (int i = 0; i < k; i++) {
+        last = nums[nums.length - 1];
+        int before;
+        for (int j = nums.length - 1; j > 0; j--) {
+          nums[j] = nums[j - 1];
+        }
+        nums[0] = last;
+      }
+    }
+  }
+
+  public static class RotateArraySolutionV2 implements RotateArrayInterface {
+
+    @Override
+    public void rotate(int[] nums, int k) {
+    }
+  }
+
+  interface RotateArrayInterface {
+
+    void rotate(int[] nums, int k);
   }
 }
