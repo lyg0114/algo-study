@@ -8,7 +8,15 @@ package leetCode.topInterView.Strings;
 public class LongestSubstringWithoutRepeatingCharacters {
 
   public static void main(String[] args) {
+    LongestSubstringWithoutRepeatingCharactersInterface solution = getSolution();
 
+    String s = "abcabcbb";
+    int results = solution.lengthOfLongestSubstring(s);
+    System.out.println("results = " + results);
+  }
+
+  public static LongestSubstringWithoutRepeatingCharactersInterface getSolution() {
+    return new LongestSubstringWithoutRepeatingCharactersInterfaceSolution();
   }
 
   public static class LongestSubstringWithoutRepeatingCharactersInterfaceSolution implements
