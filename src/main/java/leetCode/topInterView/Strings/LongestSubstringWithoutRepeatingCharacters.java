@@ -1,6 +1,7 @@
 package leetCode.topInterView.Strings;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * @author : iyeong-gyo
@@ -11,13 +12,42 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
   public static void main(String[] args) {
     LongestSubstringWithoutRepeatingCharactersInterface solution = getSolution();
-    String s = "dvdf";
+//    String s = "dvdf";
+//    String s = "dkavaf";
+    String s = "pwwkew";
+
     int results = solution.lengthOfLongestSubstring(s);
     System.out.println("results = " + results);
   }
 
   public static LongestSubstringWithoutRepeatingCharactersInterface getSolution() {
-    return new LongestSubstringWithoutRepeatingCharactersInterfaceSolutionV1();
+    return new LongestSubstringWithoutRepeatingCharactersInterfaceSolutionV2();
+  }
+
+  public static class LongestSubstringWithoutRepeatingCharactersInterfaceSolutionV2 implements
+      LongestSubstringWithoutRepeatingCharactersInterface {
+
+    @Override
+    public int lengthOfLongestSubstring(String s) {
+      int n = s.length();
+      int left = 0;
+      int right = 0;
+      int maxLength = 0;
+      HashSet<Character> uniqueCharsSet = new HashSet<>();
+
+      while (right < n) {
+        if (!uniqueCharsSet.contains(s.charAt(right))) {
+          uniqueCharsSet.add(s.charAt(right));
+          maxLength = Math.max(maxLength, uniqueCharsSet.size());
+          right++;
+        } else {
+          uniqueCharsSet.remove(s.charAt(left));
+          left++;
+        }
+      }
+
+      return maxLength;
+    }
   }
 
   public static class LongestSubstringWithoutRepeatingCharactersInterfaceSolutionV1 implements
@@ -25,8 +55,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     @Override
     public int lengthOfLongestSubstring(String s) {
-      if (s == null) { return 0; }
-      if (s.length() == 1) { return 1; }
+      if (s == null) {
+        return 0;
+      }
+      if (s.length() == 1) {
+        return 1;
+      }
       if (s.length() == 2) {
         if (s.charAt(0) != s.charAt(1)) {
           return 2;
