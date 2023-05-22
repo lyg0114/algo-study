@@ -7,32 +7,10 @@ package leetCode.topInterView.Strings;
  */
 public class LongestPalindromicSubstring {
 
-  public static void main(String[] args) {
-    LongestPalindromicSubstringInterface solution = getSolution();
-    String input = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth";
+  public static void main(String[] args) {}
 
-    long startTime = System.currentTimeMillis();
-    String output = solution.longestPalindrome(input);
-    System.out.println("output = " + output);
-    long endTime = System.currentTimeMillis();
-    long duration = endTime - startTime;
-    System.out.println("실행 시간: " + duration + "ms");
-
-    System.out.println("######################################################################");
-    System.out.println("######################################################################");
-
-
-    long startTime2 = System.currentTimeMillis();
-    LongestPalindromicSubstringSolutionV2 solutionV2 = new LongestPalindromicSubstringSolutionV2();
-    String s = solutionV2.longestPalindrome(input);
-    System.out.println("s = " + s);
-    long endTime2 = System.currentTimeMillis();
-    long duration2 = endTime2 - startTime;
-    System.out.println("실행 시간: " + duration2 + "ms");
-  }
-
-  private static LongestPalindromicSubstringInterface getSolution() {
-    return new LongestPalindromicSubstringSolutionV1();
+  public static LongestPalindromicSubstringInterface getSolution() {
+    return new LongestPalindromicSubstringSolutionV2();
   }
 
   public static class LongestPalindromicSubstringSolutionV2 implements
@@ -52,8 +30,8 @@ public class LongestPalindromicSubstring {
         int len2 = expandAroundCenter(s, i, i + 1); // 짝수 길이의 팰린드롬 검사
         int len = Math.max(len1, len2);
 
-        if (len > end - start) {
-          start = i - (len - 1) / 2;
+        if (len > end - start) { //새로운 start, end를 구하는 검사
+          start = i - ((len - 1) / 2);
           end = i + len / 2;
         }
       }
@@ -62,11 +40,12 @@ public class LongestPalindromicSubstring {
     }
 
     private int expandAroundCenter(String s, int left, int right) {
-      while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+      while (left >= 0 && right < s.length()
+          && s.charAt(left) == s.charAt(right)) {
         left--;
         right++;
       }
-
+      System.out.println(right - left - 1);
       return right - left - 1;
     }
   }
