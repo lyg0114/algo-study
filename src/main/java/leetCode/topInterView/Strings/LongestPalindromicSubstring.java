@@ -28,8 +28,7 @@ public class LongestPalindromicSubstring {
         int len2 = expandAroundCenter(s, i, i + 1); // 짝수 길이의 팰린드롬 검사
         int len = Math.max(len1, len2); // 둘중 길이가 긴 팰린드롬을 len에 저장
 
-        if (len
-            > end - start) { // 기존의 최대길이 팰린드롬과 비교후 기존의 팰린드롬보다 // len 값이 클경우 새로운 start, end를 구하는 검사
+        if (len > end - start) { // 기존의 최대길이 팰린드롬과 비교후 기존의 팰린드롬보다 // len 값이 클경우 새로운 start, end를 구하는 검사
           start = i - ((len - 1) / 2); // i(중앙값)을 기준으로 왼쪽값 계산
           end = i + len / 2; // i(중앙값)을 기준으로 오른쪽값 계산
         }
