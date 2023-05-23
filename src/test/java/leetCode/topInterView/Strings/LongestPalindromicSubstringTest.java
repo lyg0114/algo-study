@@ -23,7 +23,7 @@ public class LongestPalindromicSubstringTest {
 
   @Test
   public void test_2() {
-    String input = "qwefdfrlkjasdf";
+    String input = "qwefdfrlkjasdffd";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
     System.out.println("result = " + result);
@@ -32,6 +32,22 @@ public class LongestPalindromicSubstringTest {
   @Test
   public void test_3() {
     String input = "abba";
+    LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
+    String result = solution.longestPalindrome(input);
+    System.out.println("result = " + result);
+  }
+
+  @Test
+  public void test_4() {
+    String input = "babad";
+    LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
+    String result = solution.longestPalindrome(input);
+    System.out.println("result = " + result);
+  }
+
+  @Test
+  public void test_5() {
+    String input = "cbbd";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
     System.out.println("result = " + result);
@@ -52,4 +68,8 @@ public class LongestPalindromicSubstringTest {
     System.out.println("substring = " + substring);
   }
 
+  @Test
+  public void test_calculate(){
+    System.out.println(-1/2);
+  }
 }
