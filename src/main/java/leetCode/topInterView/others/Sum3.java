@@ -43,6 +43,7 @@ public class Sum3 {
                   + " || nums[i], nums[j], nums[k] = " + nums[i] + "," + nums[j] + "," + nums[k]
                   + " || sum = " + sum + " target = " + target);
           if (sum == target) {
+            s.add(Arrays.asList(nums[i], nums[j], nums[k]));
             j++;
             k--;
           } else if (sum < target) {
