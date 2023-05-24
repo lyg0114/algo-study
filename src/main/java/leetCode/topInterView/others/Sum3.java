@@ -2,7 +2,9 @@ package leetCode.topInterView.others;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author : iyeong-gyo
@@ -19,18 +21,52 @@ public class Sum3 {
   }
 
   private static Sum3Interface getSolution() {
-    return new Sum3Solution();
+    return new Sum3SolutionV2();
   }
 
-  public static class Sum3Solution implements Sum3Interface {
+  public static class Sum3SolutionV2 implements Sum3Interface {
 
     @Override
     public List<List<Integer>> threeSum(int[] nums) {
-      Arrays.sort(nums); // 배열을 오름차순으로 정렬
+      int target = 0;
+      Arrays.sort(nums);
+      Set<List<Integer>> s = new HashSet<>();
+      List<List<Integer>> output = new ArrayList<>();
+
+      for (int i = 0; i < nums.length; i++) {
+        int j = i + 1;
+        int k = nums.length - 1;
+        while (j < k) {
+          int sum = nums[i] + nums[j] + nums[k];
+          System.out.println(
+              "i,j,k = " + i + "," + j + "," + k
+                  + " || nums[i], nums[j], nums[k] = " + nums[i] + "," + nums[j] + "," + nums[k]
+                  + " || sum = " + sum + " target = " + target);
+          if (sum == target) {
+            j++;
+            k--;
+          } else if (sum < target) {
+            j++;
+          } else {
+            k--;
+          }
+        }
+      }
+
+      output.addAll(s);
+      return output;
+    }
+
+  }
+
+  public static class Sum3SolutionV1 implements Sum3Interface {
+
+    @Override
+    public List<List<Integer>> threeSum(int[] nums) {
+      Arrays.sort(nums);
       List<List<Integer>> result = new ArrayList<>();
 
       for (int i = 0; i < nums.length - 2; i++) {
-        // 중복된 숫자는 건너뛰기
         if (i > 0 && nums[i] == nums[i - 1]) {
           continue;
         }
@@ -43,8 +79,6 @@ public class Sum3 {
           int sum = nums[left] + nums[right];
           if (sum == target) {
             result.add(Arrays.asList(nums[i], nums[left], nums[right]));
-
-            // 중복된 숫자는 건너뛰기
             while (left < right && nums[left] == nums[left + 1]) {
               left++;
             }
