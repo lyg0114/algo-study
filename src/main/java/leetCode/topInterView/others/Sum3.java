@@ -57,7 +57,6 @@ public class Sum3 {
       output.addAll(s);
       return output;
     }
-
   }
 
   public static class Sum3SolutionV1 implements Sum3Interface {
