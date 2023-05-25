@@ -14,7 +14,7 @@ public class LetterCombinationsofPhoneNumber {
 
   public static void main(String[] args) {
     LetterCombinationsofPhoneNumberInterface solution = getSolution();
-    List<String> strings = solution.letterCombinations("22");
+    List<String> strings = solution.letterCombinations("222");
     System.out.println("strings = " + strings);
   }
 
@@ -36,94 +36,93 @@ public class LetterCombinationsofPhoneNumber {
       put('9', "wxyz");
     }};
 
-    private final Map<Character, Character> reversePnm = new HashMap<>() {{
-      put('a', '2');
-      put('b', '2');
-      put('c', '2');
-      put('d', '3');
-      put('e', '3');
-      put('f', '3');
-      put('g', '4');
-      put('h', '4');
-      put('i', '4');
-      put('j', '5');
-      put('k', '5');
-      put('l', '5');
-      put('m', '6');
-      put('n', '6');
-      put('o', '6');
-      put('p', '7');
-      put('q', '7');
-      put('r', '7');
-      put('s', '7');
-      put('t', '8');
-      put('u', '8');
-      put('v', '8');
-      put('w', '9');
-      put('x', '9');
-      put('y', '9');
-      put('z', '9');
-    }};
-
     @Override
     public List<String> letterCombinations(String digits) {
-      if(digits.equals(""))
+      if (digits == null || digits.equals("")) {
         return new ArrayList<>();
-
-      StringBuffer sb = new StringBuffer();
-      for (int i = 0; i < digits.length(); i++) {
-        sb.append(pnm.get(digits.charAt(i)));
       }
 
-      String converStr = sb.toString();
-      List<List<Character>> lists = generateCombinations(converStr.toCharArray(), digits.length());
-
-      List<String> results = new ArrayList<>();
-      for (List<Character> list : lists) {
-        StringBuffer bf = new StringBuffer();
-        for (Character character : list) {
-          bf.append(character);
-        }
-        results.add(bf.toString());
+      char[] chars = convertToChar(digits);
+      List<String> results;
+      switch (digits.length()) {
+        case 1: results = calculateLength1(chars); break;
+        case 2: results = calculateLength2(chars, digits); break;
+        case 3: results = calculateLength3(chars, digits); break;
+        case 4: results = calculateLength4(chars, digits); break;
+        default: results = new ArrayList<>();
       }
 
       return results;
     }
 
-    public List<List<Character>> generateCombinations(char[] arr, int r) {
-      List<List<Character>> combinations = new ArrayList<>();
-      List<Character> combination = new ArrayList<>();
-      generateCombinations(arr, r, 0, combination, combinations);
-      return combinations;
+    private List<String> calculateLength1(char[] chars) {
+      ArrayList<String> strs = new ArrayList<>();
+      for (int i = 0; i < chars.length; i++) {
+        strs.add(String.valueOf(chars[i]));
+      }
+      return strs;
     }
 
-    private void generateCombinations(char[] arr, int r, int index,
-        List<Character> combination, List<List<Character>> combinations) {
-      if (combination.size() == r && checkBtn(combination)) {
-        combinations.add(new ArrayList<>(combination));
-        return;
+    private List<String> calculateLength2(char[] chars, String digits) {
+      String s = pnm.get(digits.charAt(0));
+      ArrayList<String> strs = new ArrayList<>();
+      for (int i = 0; i < s.length(); i++) {
+        for (int j = s.length(); j < chars.length; j++) {
+          StringBuffer sb = new StringBuffer();
+          sb.append(chars[i]);
+          sb.append(chars[j]);
+          strs.add(sb.toString());
+        }
       }
-
-      for (int i = index; i < arr.length; i++) {
-        combination.add(arr[i]);
-        generateCombinations(arr, r, i + 1, combination, combinations);
-        combination.remove(combination.size() - 1);
-      }
+      return strs;
     }
 
-    private boolean checkBtn(List<Character> combination) {
-      HashMap<Character, Integer> tmp = new HashMap<>();
-      for (Character character : combination) {
-        Character ch = reversePnm.get(character);
-        if (tmp.size() == 0) {
-          tmp.put(ch, 1);
-        } else {
-          if (tmp.get(ch) != null && tmp.get(ch) > 0) {
-            return false;
+    private List<String> calculateLength3(char[] chars, String digits) {
+      int firstLength = pnm.get(digits.charAt(0)).length();
+      int secondLength = pnm.get(digits.charAt(1)).length() + firstLength;
+      ArrayList<String> strs = new ArrayList<>();
+      for (int i = 0; i < firstLength; i++) {
+        for (int j = firstLength; j < secondLength; j++) {
+          for (int k = secondLength; k < chars.length; k++) {
+            StringBuffer sb = new StringBuffer();
+            sb.append(chars[i]);
+            sb.append(chars[j]);
+            sb.append(chars[k]);
+            strs.add(sb.toString());
           }
         }
       }
-      return true;
+      return strs;
+    }
+
+    private List<String> calculateLength4(char[] chars, String digits) {
+      int firstLength = pnm.get(digits.charAt(0)).length();
+      int secondLength = pnm.get(digits.charAt(1)).length() + firstLength;
+      int thirdLength = pnm.get(digits.charAt(2)).length() + secondLength;
+      ArrayList<String> strs = new ArrayList<>();
+      for (int i = 0; i < firstLength; i++) {
+        for (int j = firstLength; j < secondLength; j++) {
+          for (int k = secondLength; k < thirdLength; k++) {
+            for (int l = thirdLength; l < chars.length; l++) {
+              StringBuffer sb = new StringBuffer();
+              sb.append(chars[i]);
+              sb.append(chars[j]);
+              sb.append(chars[k]);
+              sb.append(chars[l]);
+              strs.add(sb.toString());
+            }
+          }
+        }
+      }
+      return strs;
+    }
+
+    private char[] convertToChar(String digits) {
+      StringBuffer sb = new StringBuffer();
+      for (int i = 0; i < digits.length(); i++) {
+        sb.append(pnm.get(digits.charAt(i)));
+      }
+      return sb.toString().toCharArray();
     }
   }
 
