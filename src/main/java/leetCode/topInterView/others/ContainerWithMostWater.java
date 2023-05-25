@@ -10,8 +10,8 @@ public class ContainerWithMostWater {
 
   public static void main(String[] args) {
     ContainerWithMostWaterInterface solution = getSolution();
-    int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-    int result = solution.maxArea(height);
+    int[] heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    int result = solution.maxArea(heights);
     System.out.println("result = " + result);
   }
 
@@ -22,16 +22,16 @@ public class ContainerWithMostWater {
   public static class ContainerWithMostWaterSolutionV2 implements ContainerWithMostWaterInterface {
 
     @Override
-    public int maxArea(int[] height) {
+    public int maxArea(int[] heights) {
       int maxArea = 0;
       int left = 0;
-      int right = height.length - 1;
+      int right = heights.length - 1;
 
       while (left < right) {
-        int currentArea = Math.min(height[left], height[right]) * (right - left);
+        int currentArea = Math.min(heights[left], heights[right]) * (right - left);
         maxArea = Math.max(maxArea, currentArea);
 
-        if (height[left] < height[right]) {
+        if (heights[left] < heights[right]) {
           left++;
         } else {
           right--;
