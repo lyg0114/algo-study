@@ -22,4 +22,13 @@ public class LetterCombinationsofPhoneNumberTest {
     assertEquals(Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"),
         results);
   }
+
+  @Test
+  public void test_letterCombinations_2() {
+    LetterCombinationsofPhoneNumberInterface solution = LetterCombinationsofPhoneNumber
+        .getSolution();
+    List<String> results = solution.letterCombinations("234");
+    System.out.println("results = " + results);
+  }
+
 }
