@@ -14,11 +14,11 @@ public class LetterCombinationsofPhoneNumber {
 
   public static void main(String[] args) {
     LetterCombinationsofPhoneNumberInterface solution = getSolution();
-    List<String> strings = solution.letterCombinations("222");
+    List<String> strings = solution.letterCombinations("23");
     System.out.println("strings = " + strings);
   }
 
-  private static LetterCombinationsofPhoneNumberInterface getSolution() {
+  public static LetterCombinationsofPhoneNumberInterface getSolution() {
     return new LetterCombinationsofPhoneNumberSolutionV2();
   }
 
@@ -44,6 +44,7 @@ public class LetterCombinationsofPhoneNumber {
       }
 
       backtrack(digits, 0, new StringBuilder(), results);
+
       return results;
     }
 
