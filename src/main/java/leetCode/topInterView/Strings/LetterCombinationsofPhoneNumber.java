@@ -19,7 +19,48 @@ public class LetterCombinationsofPhoneNumber {
   }
 
   private static LetterCombinationsofPhoneNumberInterface getSolution() {
-    return new LetterCombinationsofPhoneNumberSolutionV1();
+    return new LetterCombinationsofPhoneNumberSolutionV2();
+  }
+
+  public static class LetterCombinationsofPhoneNumberSolutionV2 implements
+      LetterCombinationsofPhoneNumberInterface {
+
+    private final Map<Character, String> pnm = new HashMap<>() {{
+      put('2', "abc");
+      put('3', "def");
+      put('4', "ghi");
+      put('5', "jkl");
+      put('6', "mno");
+      put('7', "pqrs");
+      put('8', "tuv");
+      put('9', "wxyz");
+    }};
+
+    @Override
+    public List<String> letterCombinations(String digits) {
+      List<String> results = new ArrayList<>();
+      if (digits == null || digits.isEmpty()) {
+        return results;
+      }
+
+      backtrack(digits, 0, new StringBuilder(), results);
+      return results;
+    }
+
+    private void backtrack(String digits, int index, StringBuilder current, List<String> results) {
+      if (index == digits.length()) {
+        results.add(current.toString());
+        return;
+      }
+
+      char digit = digits.charAt(index);
+      String letters = pnm.get(digit);
+      for (char letter : letters.toCharArray()) {
+        current.append(letter);
+        backtrack(digits, index + 1, current, results);
+        current.deleteCharAt(current.length() - 1);
+      }
+    }
   }
 
   public static class LetterCombinationsofPhoneNumberSolutionV1 implements
@@ -45,11 +86,20 @@ public class LetterCombinationsofPhoneNumber {
       char[] chars = convertToChar(digits);
       List<String> results;
       switch (digits.length()) {
-        case 1: results = calculateLength1(chars); break;
-        case 2: results = calculateLength2(chars, digits); break;
-        case 3: results = calculateLength3(chars, digits); break;
-        case 4: results = calculateLength4(chars, digits); break;
-        default: results = new ArrayList<>();
+        case 1:
+          results = calculateLength1(chars);
+          break;
+        case 2:
+          results = calculateLength2(chars, digits);
+          break;
+        case 3:
+          results = calculateLength3(chars, digits);
+          break;
+        case 4:
+          results = calculateLength4(chars, digits);
+          break;
+        default:
+          results = new ArrayList<>();
       }
 
       return results;
