@@ -87,20 +87,11 @@ public class LetterCombinationsofPhoneNumber {
       char[] chars = convertToChar(digits);
       List<String> results;
       switch (digits.length()) {
-        case 1:
-          results = calculateLength1(chars);
-          break;
-        case 2:
-          results = calculateLength2(chars, digits);
-          break;
-        case 3:
-          results = calculateLength3(chars, digits);
-          break;
-        case 4:
-          results = calculateLength4(chars, digits);
-          break;
-        default:
-          results = new ArrayList<>();
+        case 1: results = calculateLength1(chars); break;
+        case 2: results = calculateLength2(chars, digits); break;
+        case 3: results = calculateLength3(chars, digits); break;
+        case 4: results = calculateLength4(chars, digits); break;
+        default: results = new ArrayList<>();
       }
 
       return results;
@@ -108,8 +99,8 @@ public class LetterCombinationsofPhoneNumber {
 
     private List<String> calculateLength1(char[] chars) {
       ArrayList<String> strs = new ArrayList<>();
-      for (int i = 0; i < chars.length; i++) {
-        strs.add(String.valueOf(chars[i]));
+      for (char aChar : chars) {
+        strs.add(String.valueOf(aChar));
       }
       return strs;
     }
