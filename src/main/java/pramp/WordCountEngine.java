@@ -23,7 +23,67 @@ public class WordCountEngine {
   }
 
   public static WordCountEngineInterface getSolution() {
-    return new WordCountEngineSolutionV2();
+    return new WordCountEngineSolutionV3();
+  }
+
+  public static class WordCountEngineSolutionV3 implements WordCountEngineInterface {
+
+    @Override
+    public String[][] wordCountEngine(String document) {
+      final String SPACE = " ";
+      String[] tokenized = document.split(SPACE);
+      Map<String, Integer> wordCounts = new HashMap<>();
+      List<String> uniqueWords = new ArrayList<>();
+
+      int maxCount = 0;
+      for (String token : tokenized) {
+        String word = getWordFromToken(token);
+        if (word.length() == 0) {
+          continue;
+        }
+        int count = wordCounts.getOrDefault(word, 0) + 1;
+        wordCounts.put(word, count);
+        maxCount = Math.max(maxCount, count);
+        if (!uniqueWords.contains(word)) {
+          uniqueWords.add(word);
+        }
+      }
+
+      List<List<String>> buckets = new ArrayList<>();
+      for (int i = 0; i <= maxCount; i++) {
+        buckets.add(new ArrayList<>());
+      }
+
+      for (String word : uniqueWords) {
+        int count = wordCounts.get(word);
+        buckets.get(count).add(word);
+      }
+
+      String[][] result = new String[uniqueWords.size()][2];
+      int index = 0;
+      for (int i = maxCount; i >= 0; i--) {
+        List<String> bucket = buckets.get(i);
+        for (String word : bucket) {
+          result[index][0] = word;
+          result[index][1] = String.valueOf(i);
+          index++;
+        }
+      }
+
+      return result;
+    }
+
+    private static String getWordFromToken(String token) {
+      StringBuilder word = new StringBuilder();
+      for (char c : token.toCharArray()) {
+        if (Character.isLetter(c)) {
+          word.append(Character.toLowerCase(c));
+        }
+      }
+      return word.toString();
+    }
+
+
   }
 
   public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
