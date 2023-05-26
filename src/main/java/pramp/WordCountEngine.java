@@ -22,9 +22,17 @@ public class WordCountEngine {
   }
 
   public static WordCountEngineInterface getSolution() {
-    return new WordCountEngineSolutionV1();
+    return new WordCountEngineSolutionV2();
   }
 
+  public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
+
+    @Override
+    public String[][] wordCountEngine(String document) {
+      return null;
+    }
+
+  }
 
   public static class WordCountEngineSolutionV1 implements WordCountEngineInterface {
 
