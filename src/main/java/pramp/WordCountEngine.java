@@ -23,7 +23,7 @@ public class WordCountEngine {
   }
 
   public static WordCountEngineInterface getSolution() {
-    return new WordCountEngineSolutionV1();
+    return new WordCountEngineSolutionV2();
   }
 
   public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
@@ -32,7 +32,42 @@ public class WordCountEngine {
 
     @Override
     public String[][] wordCountEngine(String document) {
-      return null;
+      List<String> uniqStrs = new ArrayList();
+      Map<String, Integer> strCntMap = new HashMap<String, Integer>();
+      int maxCnt;
+      List<List<String>> buckets = new ArrayList<>();
+      String[][] result;
+
+      maxCnt = extractWordFromDocument(document, uniqStrs, strCntMap);
+      createBuckets(uniqStrs, strCntMap, maxCnt, buckets);
+      result = new String[uniqStrs.size()][2];
+      calculateResults(strCntMap, buckets, result);
+
+      return result;
+    }
+
+    private void calculateResults(Map<String, Integer> strCntMap, List<List<String>> buckets,
+        String[][] result) {
+      int index = 0;
+      for (int i = buckets.size() - 1; i >= 0; i--) {
+        List<String> strings = buckets.get(i);
+        for (String string : strings) {
+          result[index][0] = string;
+          result[index][1] = String.valueOf(strCntMap.get(string));
+          index++;
+        }
+      }
+    }
+
+    private void createBuckets(List<String> uniqStrs, Map<String, Integer> strCntMap, int maxCnt,
+        List<List<String>> buckets) {
+      for (int i = 0; i < maxCnt; i++) {
+        buckets.add(new ArrayList<String>());
+      }
+      for (String str : uniqStrs) {
+        Integer bucketNum = strCntMap.get(str) - 1;
+        buckets.get(bucketNum).add(str);
+      }
     }
 
     public int extractWordFromDocument(String document, List strings,
