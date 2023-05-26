@@ -1,7 +1,5 @@
 package pramp;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import pramp.WordCountEngine.WordCountEngineInterface;
 
@@ -11,11 +9,18 @@ import pramp.WordCountEngine.WordCountEngineInterface;
  * @since : 2023/05/26
  */
 public class WordCountEngineTest {
+
   @Test
-  public void wordCountEngine_test_1(){
+  public void wordCountEngine_test_1() {
     WordCountEngineInterface solution = WordCountEngine.getSolution();
     String document = "practice makes perfect youll only get perfect by practice just practice";
-    solution.wordCountEngine(document);
+    String[][] strings = solution.wordCountEngine(document);
+    for (String[] string : strings) {
+      for (String s : string) {
+        System.out.print(s + " ");
+      }
+      System.out.println();
+    }
   }
 
 }
