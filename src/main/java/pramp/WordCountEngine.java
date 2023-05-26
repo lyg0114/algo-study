@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author : iyeong-gyo
@@ -27,9 +28,58 @@ public class WordCountEngine {
 
   public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
 
+    public static String getWordFromToken(String input) {
+      final StringBuilder builder = new StringBuilder();
+      for (final char c : input.toCharArray()) {
+        if (Character.isLetterOrDigit(c)) {
+          builder.append(Character.isLowerCase(c) ? c : Character.toLowerCase(c));
+        }
+      }
+      return builder.toString();
+    }
+
     @Override
     public String[][] wordCountEngine(String document) {
-      return null;
+      final String SPACE = " ";
+      String[] tokenized = document.split(SPACE);
+      Map<String, Integer> hm = new HashMap<>();
+      List<String> listStr = new ArrayList<>();
+      int maxCounter = 0;
+      for (String token : tokenized) {
+        String word = getWordFromToken(token);
+        if (word.length() == 0) {
+          continue;
+        }
+        if (!hm.containsKey(word)) {
+          listStr.add(word);
+          hm.put(word, 1);
+        } else {
+          hm.put(word, hm.get(word) + 1);
+        }
+        maxCounter = hm.get(word) > maxCounter ? hm.get(word) : maxCounter;
+      }
+
+      List<List<String>> list = new ArrayList<>();
+      for (int i = 0; i < maxCounter + 1; i++) {
+        list.add(new ArrayList<String>());
+      }
+
+      for (String word : listStr) {
+        list.get(hm.get(word)).add(word);
+      }
+
+      String[][] res = new String[listStr.size()][2];
+      int counter = 0;
+      for (int i = list.size() - 1; i >= 0; i--) {
+        if (list.get(i).size() != 0) {
+          for (String word : list.get(i)) {
+            res[counter][0] = word;
+            res[counter][1] = String.valueOf(i);
+            counter++;
+          }
+        }
+      }
+      return res;
     }
 
   }
