@@ -28,9 +28,35 @@ public class WordCountEngine {
 
   public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
 
+    private final String SPACE = " ";
+
     @Override
     public String[][] wordCountEngine(String document) {
       return null;
+    }
+
+    public void extractWordFromDocument(int maxCnt, String document, List strings,
+        Map<String, Integer> cntMap) {
+      String[] split = document.split(SPACE);
+      for (String token : split) {
+        String word = getWordFromToken(token);
+        if (!strings.contains(word)) {
+          strings.add(word);
+        }
+        int cnt = cntMap.getOrDefault(word, 0) + 1;
+        maxCnt = Math.max(maxCnt, cnt);
+        cntMap.put(word, cnt);
+      }
+    }
+
+    public String getWordFromToken(String token) {
+      StringBuilder word = new StringBuilder();
+      for (char c : token.toCharArray()) {
+        if (Character.isLetter(c)) {
+          word.append(Character.toLowerCase(c));
+        }
+      }
+      return word.toString();
     }
 
   }
