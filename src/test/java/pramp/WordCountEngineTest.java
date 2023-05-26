@@ -36,9 +36,8 @@ public class WordCountEngineTest {
     String document = "To be, or not to be, that is the question:";
     List strings = new ArrayList();
     Map strCntMap = new HashMap<String, Integer>();
-    int maxCnt = 0;
 
-    solution.extractWordFromDocument(maxCnt, document, strings, strCntMap);
+    int maxCnt = solution.extractWordFromDocument(document, strings, strCntMap);
 
     String[] asserts = {"to", "be", "or", "not", "that", "is", "the", "question"};
     for (int i = 0; i < strings.size(); i++) {
@@ -58,5 +57,6 @@ public class WordCountEngineTest {
     for (String s : assetCntMap.keySet()) {
       assertEquals(strCntMap.get(s), assetCntMap.get(s));
     }
+    assertEquals(2, maxCnt);
   }
 }

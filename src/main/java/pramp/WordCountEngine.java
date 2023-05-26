@@ -35,8 +35,9 @@ public class WordCountEngine {
       return null;
     }
 
-    public void extractWordFromDocument(int maxCnt, String document, List strings,
+    public int extractWordFromDocument(String document, List strings,
         Map<String, Integer> cntMap) {
+      int maxCnt = 0;
       String[] split = document.split(SPACE);
       for (String token : split) {
         String word = getWordFromToken(token);
@@ -47,6 +48,7 @@ public class WordCountEngine {
         maxCnt = Math.max(maxCnt, cnt);
         cntMap.put(word, cnt);
       }
+      return maxCnt;
     }
 
     public String getWordFromToken(String token) {
