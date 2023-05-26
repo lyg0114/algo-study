@@ -28,8 +28,6 @@ public class WordCountEngine {
 
   public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
 
-    private final String SPACE = " ";
-
     @Override
     public String[][] wordCountEngine(String document) {
       List<String> uniqStrs = new ArrayList();
@@ -73,6 +71,7 @@ public class WordCountEngine {
     public int extractWordFromDocument(String document, List strings,
         Map<String, Integer> cntMap) {
       int maxCnt = 0;
+      String SPACE = " ";
       String[] split = document.split(SPACE);
       for (String token : split) {
         String word = getWordFromToken(token);
