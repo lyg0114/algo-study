@@ -35,12 +35,10 @@ public class WordCountEngine {
       int maxCnt;
       List<List<String>> buckets = new ArrayList<>();
       String[][] result;
-
       maxCnt = extractWordFromDocument(document, uniqStrs, strCntMap);
       createBuckets(uniqStrs, strCntMap, maxCnt, buckets);
       result = new String[uniqStrs.size()][2];
       calculateResults(strCntMap, buckets, result);
-
       return result;
     }
 
