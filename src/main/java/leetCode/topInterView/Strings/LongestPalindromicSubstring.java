@@ -11,9 +11,17 @@ public class LongestPalindromicSubstring {
     return new LongestPalindromicSubstringSolutionV2();
   }
 
-  public static class LongestPalindromicSubstringSolutionV2 implements
+  public static class LongestPalindromicSubstringSolutionV3 implements
       LongestPalindromicSubstringInterface {
 
+    @Override
+    public String longestPalindrome(String s) {
+      return null;
+    }
+  }
+
+  public static class LongestPalindromicSubstringSolutionV2 implements
+      LongestPalindromicSubstringInterface {
     @Override
     public String longestPalindrome(String s) {
       if (s == null || s.length() < 2) {
