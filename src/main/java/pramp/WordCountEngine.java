@@ -12,7 +12,6 @@ import java.util.Map;
  * @since : 2023/05/25
  */
 public class WordCountEngine {
-
   public static void main(String[] args) {
     WordCountEngineInterface solution = getSolution();
     String document = "Practice makes perfect. you'll only get Perfect by practice. just practice!";
@@ -27,7 +26,6 @@ public class WordCountEngine {
   }
 
   public static class WordCountEngineSolutionV2 implements WordCountEngineInterface {
-
     @Override
     public String[][] wordCountEngine(String document) {
       List<String> uniqStrs = new ArrayList();
@@ -92,11 +90,9 @@ public class WordCountEngine {
       }
       return word.toString();
     }
-
   }
 
   public static class WordCountEngineSolutionV1 implements WordCountEngineInterface {
-
     @Override
     public String[][] wordCountEngine(String document) {
       final String SPACE = " ";
@@ -154,7 +150,6 @@ public class WordCountEngine {
   }
 
   interface WordCountEngineInterface {
-
     String[][] wordCountEngine(String document);
   }
 }
