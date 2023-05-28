@@ -1,5 +1,7 @@
 package leetCode.topInterView.others;
 
+import repeat.RepeatContainerWithMostWater;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.others
@@ -16,7 +18,7 @@ public class ContainerWithMostWater {
   }
 
   public static ContainerWithMostWaterInterface getSolution() {
-    return new ContainerWithMostWaterSolutionV2();
+    return new RepeatContainerWithMostWater();
   }
 
   public static class ContainerWithMostWaterSolutionV2 implements ContainerWithMostWaterInterface {
@@ -70,7 +72,7 @@ public class ContainerWithMostWater {
     }
   }
 
-  interface ContainerWithMostWaterInterface {
+  public interface ContainerWithMostWaterInterface {
 
     int maxArea(int[] height);
   }
