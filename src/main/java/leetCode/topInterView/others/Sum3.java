@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import repeat.RepeatSum3;
 
 /**
  * @author : iyeong-gyo
@@ -13,15 +14,8 @@ import java.util.Set;
  */
 public class Sum3 {
 
-  public static void main(String[] args) {
-    int[] nums = {-1, 0, 1, 2, -1, -4};
-    Sum3Interface solution = getSolution();
-    List<List<Integer>> lists = solution.threeSum(nums);
-    System.out.println("lists = " + lists);
-  }
-
-  private static Sum3Interface getSolution() {
-    return new Sum3SolutionV2();
+  public static Sum3Interface getSolution() {
+    return new RepeatSum3();
   }
 
   public static class Sum3SolutionV2 implements Sum3Interface {
@@ -101,7 +95,7 @@ public class Sum3 {
 
   }
 
-  interface Sum3Interface {
+  public interface Sum3Interface {
 
     List<List<Integer>> threeSum(int[] nums);
   }

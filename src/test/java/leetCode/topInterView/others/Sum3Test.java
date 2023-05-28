@@ -1,9 +1,11 @@
 package leetCode.topInterView.others;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import leetCode.topInterView.others.Sum3.Sum3Interface;
 import org.junit.Test;
 
 /**
@@ -15,21 +17,17 @@ public class Sum3Test {
 
   @Test
   public void hashset_test1() {
-    Set<List<Integer>> s = new HashSet<>();
-    s.add(Arrays.asList(1, 2, 3));
-    s.add(Arrays.asList(1, 2, 3));
-    s.add(Arrays.asList(4, 5, 1));
-    System.out.println("s = " + s);
+    Sum3Interface solution = Sum3.getSolution();
+    int[] nums = {-1, 0, 1, 2, -1, -4};
+    List<List<Integer>> results = solution.threeSum(nums);
+
+    List<List<Integer>> answers = new ArrayList<>();
+    answers.add(Arrays.asList(-1,-1,2));
+    answers.add(Arrays.asList(-1,0,1));
+
+    assertEquals(results, answers);
   }
 
-  @Test
-  public void hashset_test2() {
-    Set<List<Integer>> s = new HashSet<>();
-    s.add(Arrays.asList(1, 2, 3));
-    s.add(Arrays.asList(-11, 2, 3));
-    s.add(Arrays.asList(4, 5, 1));
-    System.out.println("s = " + s);
-  }
 }
 
 
