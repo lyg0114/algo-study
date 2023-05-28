@@ -1,9 +1,8 @@
 package leetCode.topInterView.Strings;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import leetCode.topInterView.Strings.LongestPalindromicSubstring.LongestPalindromicSubstringInterface;
-import leetCode.topInterView.Strings.LongestPalindromicSubstring.LongestPalindromicSubstringSolutionV2;
 import org.junit.Test;
 
 /**
@@ -18,7 +17,7 @@ public class LongestPalindromicSubstringTest {
     String input = "babad";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
-    System.out.println("result = " + result);
+    assertEquals("aba", result);
   }
 
   @Test
@@ -26,7 +25,7 @@ public class LongestPalindromicSubstringTest {
     String input = "qwefdfrlkjasdffd";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
-    System.out.println("result = " + result);
+    assertEquals("dffd", result);
   }
 
   @Test
@@ -34,7 +33,7 @@ public class LongestPalindromicSubstringTest {
     String input = "abba";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
-    System.out.println("result = " + result);
+    assertEquals("abba", result);
   }
 
   @Test
@@ -42,7 +41,7 @@ public class LongestPalindromicSubstringTest {
     String input = "babad";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
-    System.out.println("result = " + result);
+    assertEquals("aba", result);
   }
 
   @Test
@@ -50,26 +49,6 @@ public class LongestPalindromicSubstringTest {
     String input = "cbbd";
     LongestPalindromicSubstringInterface solution = LongestPalindromicSubstring.getSolution();
     String result = solution.longestPalindrome(input);
-    System.out.println("result = " + result);
-  }
-
-  @Test
-  public void test_expandAroundCenter_1() {
-    String input = "alsdkdffdjhba";
-    LongestPalindromicSubstringSolutionV2 solution = new LongestPalindromicSubstringSolutionV2();
-    int i = solution.expandAroundCenter(input, 6, 7);
-    System.out.println("i = " + i);
-  }
-
-  @Test
-  public void test_substr(){
-    String test = "123adfda978";
-    String substring = test.substring(0, 2);
-    System.out.println("substring = " + substring);
-  }
-
-  @Test
-  public void test_calculate(){
-    System.out.println(-1/2);
+    assertEquals("bb", result);
   }
 }

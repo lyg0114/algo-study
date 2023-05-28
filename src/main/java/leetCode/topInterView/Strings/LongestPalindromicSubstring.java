@@ -1,5 +1,7 @@
 package leetCode.topInterView.Strings;
 
+import repeat.RepeatLongestPalindromicSubstring;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.Strings
@@ -8,16 +10,7 @@ package leetCode.topInterView.Strings;
 public class LongestPalindromicSubstring {
 
   public static LongestPalindromicSubstringInterface getSolution() {
-    return new LongestPalindromicSubstringSolutionV2();
-  }
-
-  public static class LongestPalindromicSubstringSolutionV3 implements
-      LongestPalindromicSubstringInterface {
-
-    @Override
-    public String longestPalindrome(String s) {
-      return null;
-    }
+    return new RepeatLongestPalindromicSubstring();
   }
 
   public static class LongestPalindromicSubstringSolutionV2 implements
@@ -111,7 +104,7 @@ public class LongestPalindromicSubstring {
     }
   }
 
-  interface LongestPalindromicSubstringInterface {
+  public interface LongestPalindromicSubstringInterface {
 
     String longestPalindrome(String s);
   }
