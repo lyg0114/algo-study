@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import repeat.RepeatLetterCombinationsofPhoneNumber;
 
 /**
  * @author : iyeong-gyo
@@ -19,7 +20,8 @@ public class LetterCombinationsofPhoneNumber {
   }
 
   public static LetterCombinationsofPhoneNumberInterface getSolution() {
-    return new LetterCombinationsofPhoneNumberSolutionV2();
+//    return new LetterCombinationsofPhoneNumberSolutionV2();
+    return new RepeatLetterCombinationsofPhoneNumber();
   }
 
   public static class LetterCombinationsofPhoneNumberSolutionV2 implements
@@ -87,11 +89,20 @@ public class LetterCombinationsofPhoneNumber {
       char[] chars = convertToChar(digits);
       List<String> results;
       switch (digits.length()) {
-        case 1: results = calculateLength1(chars); break;
-        case 2: results = calculateLength2(chars, digits); break;
-        case 3: results = calculateLength3(chars, digits); break;
-        case 4: results = calculateLength4(chars, digits); break;
-        default: results = new ArrayList<>();
+        case 1:
+          results = calculateLength1(chars);
+          break;
+        case 2:
+          results = calculateLength2(chars, digits);
+          break;
+        case 3:
+          results = calculateLength3(chars, digits);
+          break;
+        case 4:
+          results = calculateLength4(chars, digits);
+          break;
+        default:
+          results = new ArrayList<>();
       }
 
       return results;
@@ -168,7 +179,7 @@ public class LetterCombinationsofPhoneNumber {
     }
   }
 
-  interface LetterCombinationsofPhoneNumberInterface {
+  public interface LetterCombinationsofPhoneNumberInterface {
 
     List<String> letterCombinations(String digits);
   }
