@@ -19,6 +19,32 @@ public class RepeatSum3 implements Sum3Interface {
     int taret = 0;
     Arrays.sort(nums);
     Set<List<Integer>> set = new HashSet<>();
+    int i = 0;
+    int j = i + 1;
+    int k = j + 1;
+    while (i < nums.length - 2) {
+      while (j < nums.length - 1) {
+        while (k < nums.length) {
+          if ((nums[i] + nums[j] + nums[k]) == taret) {
+            set.add(Arrays.asList(nums[i], nums[j], nums[k]));
+          }
+          k++;
+        }
+        j++;
+        k = j + 1;
+      }
+      i++;
+      j = i + 1;
+      k = j + 1;
+    }
+
+    return new ArrayList<>(set);
+  }
+
+  public List<List<Integer>> threeSum2(int[] nums) {
+    int taret = 0;
+    Arrays.sort(nums);
+    Set<List<Integer>> set = new HashSet<>();
     for (int i = 0; i < nums.length; i++) {
       int j = i + 1;
       int k = nums.length - 1;

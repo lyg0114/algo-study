@@ -15,7 +15,8 @@ import repeat.RepeatSum3;
 public class Sum3 {
 
   public static Sum3Interface getSolution() {
-    return new RepeatSum3();
+//    return new RepeatSum3();
+    return new Sum3SolutionV2();
   }
 
   public static class Sum3SolutionV2 implements Sum3Interface {
@@ -32,10 +33,6 @@ public class Sum3 {
         int k = nums.length - 1;
         while (j < k) {
           int sum = nums[i] + nums[j] + nums[k];
-          System.out.println(
-              "i,j,k = " + i + "," + j + "," + k
-                  + " || nums[i], nums[j], nums[k] = " + nums[i] + "," + nums[j] + "," + nums[k]
-                  + " || sum = " + sum + " target = " + target);
           if (sum == target) {
             s.add(Arrays.asList(nums[i], nums[j], nums[k]));
             j++;
