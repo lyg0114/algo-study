@@ -18,9 +18,6 @@ public class GenerateParentheses {
   public static void main(String[] args) {
     GenerateParenthesesInterface solution = getSolution();
     List<String> strings = solution.generateParenthesis(3);
-    for (String string : strings) {
-      System.out.println("string = " + string);
-    }
   }
 
   public static GenerateParenthesesInterface getSolution() {
@@ -33,20 +30,23 @@ public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
       List<String> result = new ArrayList<>();
       backtrack(result, "", 0, 0, n);
+      for (String s : result) {
+        System.out.println("s = " + s);
+      }
       return result;
     }
 
-    private void backtrack(List<String> result, String current, int open, int close, int max) {
-      if (current.length() == max * 2) {
-        result.add(current);
+    private void backtrack(List<String> result, String str, int open, int close, int max) {
+      if (str.length() == max * 2) {
+        result.add(str);
         return;
       }
 
       if (open < max) {
-        backtrack(result, current + "(", open + 1, close, max);
+        backtrack(result, str + "(", open + 1, close, max);
       }
       if (close < open) {
-        backtrack(result, current + ")", open, close + 1, max);
+        backtrack(result, str + ")", open, close + 1, max);
       }
     }
   }
