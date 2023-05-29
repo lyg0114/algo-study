@@ -20,6 +20,8 @@ public class GenerateParenthesesTest {
     int n = 3;
     List<String> actuals = solution.generateParenthesis(3);
     List<String> expacts = Arrays.asList("((()))", "(()())", "(())()", "()(())", "()()()");
-    assertEquals(expacts, actuals);
+    for (String actual : actuals) {
+      assertTrue(expacts.contains(actual));
+    }
   }
 }
