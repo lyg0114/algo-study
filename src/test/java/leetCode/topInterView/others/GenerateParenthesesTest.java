@@ -15,13 +15,33 @@ import org.junit.Test;
 public class GenerateParenthesesTest {
 
   @Test
-  public void test_GenerateParentheses() {
+  public void test_n_equal_3_GenerateParentheses() {
     GenerateParenthesesInterface solution = GenerateParentheses.getSolution();
     int n = 3;
-    List<String> actuals = solution.generateParenthesis(3);
+    List<String> actuals = solution.generateParenthesis(n);
     List<String> expacts = Arrays.asList("((()))", "(()())", "(())()", "()(())", "()()()");
     for (String actual : actuals) {
       assertTrue(expacts.contains(actual));
+    }
+  }
+
+  @Test
+  public void test_n_equal_4_GenerateParentheses() {
+    GenerateParenthesesInterface solution = GenerateParentheses.getSolution();
+    int n = 5;
+    List<String> actuals = solution.generateParenthesis(n);
+    for (String actual : actuals) {
+      System.out.println("actual = " + actual);
+    }
+  }
+
+  @Test
+  public void test_n_equal_6_GenerateParentheses() {
+    GenerateParenthesesInterface solution = GenerateParentheses.getSolution();
+    int n = 6;
+    List<String> actuals = solution.generateParenthesis(n);
+    for (String actual : actuals) {
+      System.out.println("actual = " + actual);
     }
   }
 }
