@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class SearchRotatedSortedArray {
 
   public static void main(String[] args) {
-    int[] nums = {4, 5, 6, 7, 0, 1, 2};
+    int[] nums = {4, 5, 6, 7, 8, 9, 0, 1, 2};
     SearchRotatedSortedArrayInterface solution = getSolution();
     int actual = solution.search(nums, 0);
     System.out.println("actual = " + actual);
