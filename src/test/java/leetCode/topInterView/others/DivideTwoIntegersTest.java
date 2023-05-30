@@ -18,4 +18,13 @@ public class DivideTwoIntegersTest {
     int actual = solution.divide(10, 3);
     assertEquals(3, actual);
   }
+
+  @Test
+  public void test_bit_oper() {
+    int value = 5;
+    System.out.println("value = " + value);
+    int result = value << 2;
+    System.out.println("result = " + result);
+  }
+
 }
