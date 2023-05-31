@@ -31,9 +31,9 @@ public class SearchRotatedSortedArrayTest {
   @Test
   public void test_search_3() {
     SearchRotatedSortedArrayInterface solution = SearchRotatedSortedArray.getSolution();
-    int[] nums = {1};
-    int actual = solution.search(nums, 0);
-    assertEquals(-1, actual);
+    int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int actual = solution.search(nums, 2);
+    assertEquals(1, actual);
   }
 
   @Test
