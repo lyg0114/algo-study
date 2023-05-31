@@ -56,7 +56,15 @@ public class SearchRotatedSortedArrayTest {
   public void test_search_6() {
     SearchRotatedSortedArrayInterface solution = SearchRotatedSortedArray.getSolution();
     int[] nums = {1, 3};
-    int actual = solution.search(nums, 3);
-    assertEquals(1, actual);
+    int actual = solution.search(nums, 4);
+    assertEquals(-1, actual);
+  }
+
+  @Test
+  public void test_search_7() {
+    SearchRotatedSortedArrayInterface solution = SearchRotatedSortedArray.getSolution();
+    int[] nums = {10, 11, 14, 16, 1, 3, 5, 7, 9};
+    int actual = solution.search(nums, 16);
+    assertEquals(3, actual);
   }
 }
