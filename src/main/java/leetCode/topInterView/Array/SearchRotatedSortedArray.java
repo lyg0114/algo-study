@@ -41,7 +41,7 @@ public class SearchRotatedSortedArray {
           } else {
             left = mid + 1;
           }
-        } else {
+        } else { // nums[left] > nums[mid]
           if (target > nums[mid] && target <= nums[right]) {
             left = mid + 1;
           } else {
