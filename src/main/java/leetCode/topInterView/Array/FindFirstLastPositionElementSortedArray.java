@@ -73,6 +73,70 @@ public class FindFirstLastPositionElementSortedArray {
     }
   }
 
+  public static class FindFirstLastPositionElementSortedArraySolutionV2 implements
+      FindFirstLastPositionElementSortedArrayInterface {
+
+    @Override
+    public int[] searchRange(int[] nums, int target) {
+      int[] result = {-1, -1};
+      int start = findFirstPosition(nums, target);
+
+      if (start == -1) {
+        return result;
+      }
+
+      int end = findLastPosition(nums, target);
+      result[0] = start;
+      result[1] = end;
+
+      return result;
+    }
+
+    private int findFirstPosition(int[] nums, int target) {
+      int start = 0;
+      int end = nums.length - 1;
+      int position = -1;
+
+      while (start <= end) {
+        int mid = start + (end - start) / 2;
+
+        if (nums[mid] >= target) {
+          end = mid - 1;
+        } else {
+          start = mid + 1;
+        }
+
+        if (nums[mid] == target) {
+          position = mid;
+        }
+      }
+
+      return position;
+    }
+
+    private int findLastPosition(int[] nums, int target) {
+      int start = 0;
+      int end = nums.length - 1;
+      int position = -1;
+
+      while (start <= end) {
+        int mid = start + (end - start) / 2;
+
+        if (nums[mid] <= target) {
+          start = mid + 1;
+        } else {
+          end = mid - 1;
+        }
+
+        if (nums[mid] == target) {
+          position = mid;
+        }
+      }
+
+      return position;
+    }
+  }
+
   public interface FindFirstLastPositionElementSortedArrayInterface {
 
     int[] searchRange(int[] nums, int target);
