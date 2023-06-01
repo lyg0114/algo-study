@@ -48,4 +48,16 @@ public class FindFirstLastPositionElementSortedArrayTest {
     assertArrayEquals(expects, actuals);
   }
 
+  @Test
+  public void test_searchRange_4() {
+    FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
+        .getSolution();
+
+    int[] arr = {};
+    int target = 0;
+    int[] actuals = solution.searchRange(arr, target);
+    int[] expects = {-1, -1};
+    assertArrayEquals(expects, actuals);
+  }
+
 }
