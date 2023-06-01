@@ -24,7 +24,35 @@ public class FindFirstLastPositionElementSortedArray {
 
     @Override
     public int[] searchRange(int[] nums, int target) {
-      return null;
+      int l = 0;
+      int r = nums.length - 1;
+      int m;
+      int[] res = new int[2];
+
+      while (l < r) {
+        m = (l + r) / 2;
+        if (nums[m] == target) {
+          if (nums[m] == nums[m - 1]) {
+            res[0] = m - 1;
+            res[1] = m;
+          } else if (nums[m] == nums[m + 1]) {
+            res[0] = m;
+            res[1] = m + 1;
+          } else {
+            res[0] = -1;
+            res[1] = -1;
+          }
+          break;
+        }
+
+        if (nums[l] <= target && target < nums[m]) {
+          r = m - 1;
+        } else {
+          l = m + 1;
+        }
+      }
+
+      return res;
     }
   }
 

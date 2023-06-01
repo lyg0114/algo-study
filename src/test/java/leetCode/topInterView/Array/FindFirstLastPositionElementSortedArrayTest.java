@@ -13,7 +13,7 @@ import org.junit.Test;
 public class FindFirstLastPositionElementSortedArrayTest {
 
   @Test
-  public void test_searchRange() {
+  public void test_searchRange_1() {
     FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
         .getSolution();
 
@@ -21,7 +21,7 @@ public class FindFirstLastPositionElementSortedArrayTest {
     int target = 8;
     int[] actuals = solution.searchRange(arr, target);
     int[] expects = {3,4};
-    assertEquals(expects, actuals);
+    assertArrayEquals(expects, actuals);
   }
 
 }
