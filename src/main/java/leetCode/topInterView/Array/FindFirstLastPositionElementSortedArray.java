@@ -27,7 +27,7 @@ public class FindFirstLastPositionElementSortedArray {
       int l = 0;
       int r = nums.length - 1;
       int m;
-      int[] res = new int[2];
+      int[] res = {-1, -1};
 
       while (l < r) {
         m = (l + r) / 2;
@@ -38,9 +38,6 @@ public class FindFirstLastPositionElementSortedArray {
           } else if (nums[m] == nums[m + 1]) {
             res[0] = m;
             res[1] = m + 1;
-          } else {
-            res[0] = -1;
-            res[1] = -1;
           }
           break;
         }
