@@ -113,10 +113,22 @@ public class FindFirstLastPositionElementSortedArrayTest {
     FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
         .getSolution();
 
-    int[] arr = {3, 3, 3};
+    int[] arr = {1, 2, 3, 3, 3, 4, 5, 6};
     int target = 3;
     int[] actuals = solution.searchRange(arr, target);
-    int[] expects = {0, 2};
+    int[] expects = {2, 4};
+    assertArrayEquals(expects, actuals);
+  }
+
+  @Test
+  public void test_searchRange_10() {
+    FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
+        .getSolution();
+
+    int[] arr = {1, 1, 2};
+    int target = 1;
+    int[] actuals = solution.searchRange(arr, target);
+    int[] expects = {0, 1};
     assertArrayEquals(expects, actuals);
   }
 

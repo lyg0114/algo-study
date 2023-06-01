@@ -32,23 +32,8 @@ public class FindFirstLastPositionElementSortedArray {
       while (l <= r) {
         m = (l + r) / 2;
         if (nums[m] == target) {
-          if (nums.length == 1) {
-            res[0] = m;
-            res[1] = m;
-            break;
-          }
-
-          if (m > 0 && nums[m] == nums[m - 1]) {
-            res[0] = m - 1;
-            res[1] = m;
-          } else if (m < nums.length - 1 && nums[m] == nums[m + 1]) {
-            res[0] = m;
-            res[1] = m + 1;
-          } else {
-            res[0] = m;
-            res[1] = m;
-          }
-
+          res[0] = checkLeft(m, target, nums);
+          res[1] = checkright(m, target, nums);
           break;
         }
 
@@ -60,6 +45,31 @@ public class FindFirstLastPositionElementSortedArray {
       }
 
       return res;
+    }
+
+    private int checkLeft(int m, int target, int[] nums) {
+      if (m == 0) {
+        return m;
+      }
+
+      for (int i = m; i >= 0; i--) {
+        if (target != nums[i]) {
+          return i + 1;
+        }
+      }
+      return 0;
+    }
+
+    private int checkright(int m, int target, int[] nums) {
+      if (m == nums.length - 1) {
+        return m;
+      }
+      for (int i = m; i < nums.length; i++) {
+        if (target != nums[i]) {
+          return i - 1;
+        }
+      }
+      return nums.length - 1;
     }
   }
 
