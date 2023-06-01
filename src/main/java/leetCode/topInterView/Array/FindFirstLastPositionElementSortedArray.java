@@ -29,16 +29,26 @@ public class FindFirstLastPositionElementSortedArray {
       int m;
       int[] res = {-1, -1};
 
-      while (l < r) {
+      while (l <= r) {
         m = (l + r) / 2;
         if (nums[m] == target) {
-          if (nums[m] == nums[m - 1]) {
+          if (nums.length == 1) {
+            res[0] = m;
+            res[1] = m;
+            break;
+          }
+
+          if (m > 0 && nums[m] == nums[m - 1]) {
             res[0] = m - 1;
             res[1] = m;
-          } else if (nums[m] == nums[m + 1]) {
+          } else if (m < nums.length - 1 && nums[m] == nums[m + 1]) {
             res[0] = m;
             res[1] = m + 1;
+          } else {
+            res[0] = m;
+            res[1] = m;
           }
+
           break;
         }
 

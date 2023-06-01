@@ -60,4 +60,52 @@ public class FindFirstLastPositionElementSortedArrayTest {
     assertArrayEquals(expects, actuals);
   }
 
+  @Test
+  public void test_searchRange_5() {
+    FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
+        .getSolution();
+
+    int[] arr = {1};
+    int target = 1;
+    int[] actuals = solution.searchRange(arr, target);
+    int[] expects = {0, 0};
+    assertArrayEquals(expects, actuals);
+  }
+
+  @Test
+  public void test_searchRange_6() {
+    FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
+        .getSolution();
+
+    int[] arr = {2, 2};
+    int target = 2;
+    int[] actuals = solution.searchRange(arr, target);
+    int[] expects = {0, 1};
+    assertArrayEquals(expects, actuals);
+  }
+
+  @Test
+  public void test_searchRange_7() {
+    FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
+        .getSolution();
+
+    int[] arr = {0, 2, 2};
+    int target = 2;
+    int[] actuals = solution.searchRange(arr, target);
+    int[] expects = {1, 2};
+    assertArrayEquals(expects, actuals);
+  }
+
+  @Test
+  public void test_searchRange_8() {
+    FindFirstLastPositionElementSortedArrayInterface solution = FindFirstLastPositionElementSortedArray
+        .getSolution();
+
+    int[] arr = {1, 4};
+    int target = 4;
+    int[] actuals = solution.searchRange(arr, target);
+    int[] expects = {1, 1};
+    assertArrayEquals(expects, actuals);
+  }
+
 }
