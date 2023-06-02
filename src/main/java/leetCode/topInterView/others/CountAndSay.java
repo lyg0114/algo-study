@@ -22,8 +22,7 @@ public class CountAndSay {
 
     @Override
     public String countAndSay(int n) {
-      String res = "1";
-      return countAndSayRecursive(1, res, n);
+      return countAndSayRecursive(1, "1", n);
     }
 
     public String countAndSayRecursive(int cur, String res, int fin) {
