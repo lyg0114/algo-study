@@ -8,16 +8,10 @@ package leetCode.topInterView.others;
  */
 public class CountAndSay {
 
-  /*
-    countAndSay(1) = "1"
-    countAndSay(2) = say "1" = one 1 = "11"
-    countAndSay(3) = say "11" = two 1's = "21"
-    countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
-    countAndSay(5) = say "1211" = one 1 + two 2 + one 1 + one 1 = "11221111"
-*/
   public static void main(String[] args) {
     CountAndSayInterface solution = getSolution();
-
+    String s = solution.countAndSay(30);
+    System.out.println("s = " + s);
   }
 
   public static CountAndSayInterface getSolution() {
@@ -29,17 +23,32 @@ public class CountAndSay {
     @Override
     public String countAndSay(int n) {
       String res = "1";
-      countAndSayRecursive(1, res, n);
-
-      return null;
+      return countAndSayRecursive(1, res, n);
     }
 
-    public void countAndSayRecursive(int cur, String res, int fin) {
+    public String countAndSayRecursive(int cur, String res, int fin) {
       if (cur == fin) {
-        return;
+        return res;
       }
 
-
+      StringBuffer sb = new StringBuffer();
+      int target = Integer.parseInt(String.valueOf(res.charAt(0)));
+      int l = 0;
+      int r = 0;
+      while (r < res.length() - 1) {
+        if (r < res.length() - 1 && target != Integer.parseInt(String.valueOf(res.charAt(r + 1)))) {
+          int tmp = target;
+          target = Integer.parseInt(String.valueOf(res.charAt(r + 1)));
+          sb.append(r - l + 1);
+          sb.append(tmp);
+          l = r + 1;
+        }
+        r++;
+      }
+      sb.append(r - l + 1);
+      sb.append(target);
+      res = sb.toString();
+      return countAndSayRecursive(++cur, res, fin);
     }
   }
 
