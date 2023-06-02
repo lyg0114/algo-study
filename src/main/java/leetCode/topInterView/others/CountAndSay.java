@@ -18,6 +18,33 @@ public class CountAndSay {
     return new CountAndSaySolutionV1();
   }
 
+  public static class CountAndSaySolutionV2 implements CountAndSayInterface {
+
+    @Override
+    public String countAndSay(int n) {
+      if (n == 1) {
+        return "1";
+      }
+      String s = countAndSay(n - 1);
+      StringBuilder sb = new StringBuilder();
+      int count = 1;
+      int i = 0;
+      while (i < s.length()) {
+        char ch = s.charAt(i);
+        i++;
+        while (i < s.length() && s.charAt(i) == ch) {
+          count++;
+          i++;
+        }
+        sb.append(count).append(ch);
+        count = 1;
+
+      }
+      return sb.toString();
+
+    }
+  }
+
   public static class CountAndSaySolutionV1 implements CountAndSayInterface {
 
     @Override
