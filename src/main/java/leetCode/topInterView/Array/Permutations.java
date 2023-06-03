@@ -1,5 +1,6 @@
 package leetCode.topInterView.Array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ public class Permutations {
 
   public static void main(String[] args) {
     PermutationsInterface solution = getSolution();
-    int [] arr = {1,2,3};
+    int[] arr = {1, 2, 3};
     List<List<Integer>> permute = solution.permute(arr);
     for (List<Integer> integers : permute) {
       System.out.println("integers = " + integers);
@@ -26,7 +27,33 @@ public class Permutations {
 
     @Override
     public List<List<Integer>> permute(int[] nums) {
-      return null;
+      List<List<Integer>> res = new ArrayList<>();
+      permuteRec(res, nums, nums.length, nums.length, 0);
+      return res;
+    }
+
+    private void permuteRec(List<List<Integer>> res, int[] nums, int length, int choice,
+        int depth) {
+      if (choice == depth) {
+        ArrayList<Integer> eles = new ArrayList<>();
+        for (int i = 0; i < choice; i++) {
+          eles.add(nums[i]);
+        }
+        res.add(eles);
+        return;
+      }
+      for (int i = depth; i < length; i++) {
+        swap(nums, i, depth);
+        permuteRec(res, nums, length, choice, depth + 1);
+        swap(nums, i, depth);
+      }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+      int tmp;
+      tmp = nums[i];
+      nums[i] = nums[j];
+      nums[j] = tmp;
     }
   }
 
