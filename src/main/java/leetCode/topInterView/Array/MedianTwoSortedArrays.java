@@ -20,7 +20,42 @@ public class MedianTwoSortedArrays {
   }
 
   public static MedianTwoSortedArraysInterface getSolution() {
-    return new MedianTwoSortedArraysSolutionV1();
+    return new MedianTwoSortedArraysSolutionV2();
+  }
+
+  public static class MedianTwoSortedArraysSolutionV2 implements MedianTwoSortedArraysInterface {
+
+    @Override
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+      int m = nums1.length;
+      int n = nums2.length;
+      int totalLength = m + n;
+      int[] merged = new int[totalLength];
+
+      int i = 0, j = 0, k = 0;
+      while (i < m && j < n) {
+        if (nums1[i] <= nums2[j]) {
+          merged[k++] = nums1[i++];
+        } else {
+          merged[k++] = nums2[j++];
+        }
+      }
+
+      while (i < m) {
+        merged[k++] = nums1[i++];
+      }
+
+      while (j < n) {
+        merged[k++] = nums2[j++];
+      }
+
+      if (totalLength % 2 == 0) {
+        return (merged[totalLength / 2 - 1] + merged[totalLength / 2]) / 2.0;
+      } else {
+        return merged[totalLength / 2];
+      }
+    }
+
   }
 
   public static class MedianTwoSortedArraysSolutionV1 implements MedianTwoSortedArraysInterface {
