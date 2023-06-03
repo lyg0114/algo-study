@@ -28,7 +28,9 @@ public class Permutations {
     @Override
     public List<List<Integer>> permute(int[] nums) {
       List<List<Integer>> res = new ArrayList<>();
-      permuteRec(res, nums, nums.length, nums.length, 0);
+      int n = nums.length;
+      int r = 3;
+      permuteRec(res, nums, n, r, 0);
       return res;
     }
 
@@ -41,6 +43,7 @@ public class Permutations {
         res.add(eles);
         return;
       }
+
       for (int i = depth; i < n; i++) {
         swap(nums, i, depth);
         permuteRec(res, nums, n, r, depth + 1);
