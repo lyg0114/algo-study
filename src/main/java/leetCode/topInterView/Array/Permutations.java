@@ -32,20 +32,18 @@ public class Permutations {
       return res;
     }
 
-    private void permuteRec(List<List<Integer>> res, int[] nums, int length, int choice,
-        int depth) {
-
-      if (choice == depth) {
+    private void permuteRec(List<List<Integer>> res, int[] nums, int n, int r, int depth) {
+      if (r == depth) {
         ArrayList<Integer> eles = new ArrayList<>();
-        for (int i = 0; i < choice; i++) {
+        for (int i = 0; i < r; i++) {
           eles.add(nums[i]);
         }
         res.add(eles);
         return;
       }
-      for (int i = depth; i < length; i++) {
+      for (int i = depth; i < n; i++) {
         swap(nums, i, depth);
-        permuteRec(res, nums, length, choice, depth + 1);
+        permuteRec(res, nums, n, r, depth + 1);
         swap(nums, i, depth);
       }
     }
