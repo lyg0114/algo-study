@@ -39,11 +39,7 @@ public class Subsets {
 
     public void combi(int start, int n, int r, Stack<Integer> indexStack, int[] nums) {
       if (indexStack.size() == r) {
-        ArrayList<Integer> lis = new ArrayList<>();
-        for (Integer ele : indexStack) {
-          lis.add(nums[ele]);
-        }
-        res.add(lis);
+        collectCombi(indexStack, nums);
         return;
       }
       for (int i = start + 1; i < n; i++) {
@@ -51,6 +47,14 @@ public class Subsets {
         combi(i, n, r, indexStack, nums);
         indexStack.pop();
       }
+    }
+
+    private void collectCombi(Stack<Integer> indexStack, int[] nums) {
+      ArrayList<Integer> lis = new ArrayList<>();
+      for (Integer ele : indexStack) {
+        lis.add(nums[ele]);
+      }
+      res.add(lis);
     }
   }
 
