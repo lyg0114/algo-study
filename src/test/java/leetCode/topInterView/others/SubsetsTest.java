@@ -1,7 +1,9 @@
 package leetCode.topInterView.others;
 
 import java.util.List;
+import java.util.Stack;
 import leetCode.topInterView.others.Subsets.SubsetsInterface;
+import leetCode.topInterView.others.Subsets.SubsetsSolutionV1;
 import org.junit.Test;
 
 /**
@@ -29,5 +31,12 @@ public class SubsetsTest {
     for (List<Integer> subset : subsets) {
       System.out.println("subset = " + subset);
     }
+  }
+
+  @Test
+  public void test_combi_1() {
+    SubsetsSolutionV1 solution = new SubsetsSolutionV1();
+    int[] nums = {1, 2, 3};
+    solution.combi(-1, 3, 2, new Stack<>(), nums);
   }
 }
