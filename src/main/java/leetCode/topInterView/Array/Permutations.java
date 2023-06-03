@@ -34,6 +34,7 @@ public class Permutations {
 
     private void permuteRec(List<List<Integer>> res, int[] nums, int length, int choice,
         int depth) {
+     
       if (choice == depth) {
         ArrayList<Integer> eles = new ArrayList<>();
         for (int i = 0; i < choice; i++) {
