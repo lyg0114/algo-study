@@ -1,6 +1,7 @@
 package leetCode.topInterView.Strings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,9 +15,9 @@ public class LetterCasePermutation {
 
   public static void main(String[] args) {
     LetterCasePermutationInteface solution = getSolution();
-    String in = "a1b2";
+    String in = "JcTNPT1AsvC";
     List<String> strings = solution.letterCasePermutation(in);
-    System.out.println("strings = " + strings);
+    System.out.println(strings);
   }
 
   public static LetterCasePermutationInteface getSolution() {
@@ -29,7 +30,18 @@ public class LetterCasePermutation {
 
     @Override
     public List<String> letterCasePermutation(String s) {
-      letterCase(s.toCharArray(), s.length(), s.length() - 1, 0);
+      if (s.length() == 1) {
+        if (Character.isAlphabetic(s.charAt(0))) {
+          if (Character.isLowerCase(s.charAt(0))) {
+            return Arrays.asList(s, String.valueOf((char) ((s.charAt(0)) - 32)));
+          } else {
+            return Arrays.asList(s, String.valueOf((char) ((s.charAt(0)) + 32)));
+          }
+        } else {
+          return Arrays.asList(s);
+        }
+      }
+      letterCase(s.toCharArray(), s.length(), s.length(), 0);
       return new ArrayList<>(set);
     }
 
@@ -38,7 +50,6 @@ public class LetterCasePermutation {
       if (r == depth) {
         return;
       }
-
       for (int i = depth; i < n; i++) {
         char c = chars[i];
         if (Character.isAlphabetic(c)) {
