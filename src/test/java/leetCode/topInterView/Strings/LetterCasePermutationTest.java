@@ -37,7 +37,7 @@ public class LetterCasePermutationTest {
     LetterCasePermutationInteface solution = LetterCasePermutation.getSolution();
     String in = "c";
     List<String> actuals = solution.letterCasePermutation(in);
-    List<String> expects = Arrays.asList("c", "C");
+    List<String> expects = Arrays.asList("C", "c");
     assertEquals(expects, actuals);
   }
 
@@ -46,7 +46,7 @@ public class LetterCasePermutationTest {
     LetterCasePermutationInteface solution = LetterCasePermutation.getSolution();
     String in = "po";
     List<String> actuals = solution.letterCasePermutation(in);
-    List<String> expects = Arrays.asList("po", "Po", "PO", "pO");
+    List<String> expects = Arrays.asList("po", "pO", "Po", "PO");
     assertEquals(expects, actuals);
   }
 }

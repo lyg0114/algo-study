@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.security.auth.callback.CallbackHandler;
 
 /**
  * @author : iyeong-gyo
@@ -15,13 +16,38 @@ public class LetterCasePermutation {
 
   public static void main(String[] args) {
     LetterCasePermutationInteface solution = getSolution();
-    String in = "JcTNPT1AsvC";
+    String in = "a1b2";
     List<String> strings = solution.letterCasePermutation(in);
     System.out.println(strings);
   }
 
   public static LetterCasePermutationInteface getSolution() {
-    return new LetterCasePermutationSolutionV1();
+    return new LetterCasePermutationSolutionV2();
+  }
+
+  public static class LetterCasePermutationSolutionV2 implements LetterCasePermutationInteface {
+
+    @Override
+    public List<String> letterCasePermutation(String s) {
+      List<String> result = new ArrayList<>();
+      backtrack(s.toCharArray(), 0, result);
+      return result;
+    }
+
+    private static void backtrack(char[] chars, int index, List<String> result) {
+      if (index == chars.length) {
+        result.add(new String(chars));
+        return;
+      }
+
+      if (Character.isLetter(chars[index])) {
+        chars[index] = Character.toLowerCase(chars[index]);
+        backtrack(chars, index + 1, result);
+        chars[index] = Character.toUpperCase(chars[index]);
+      }
+      backtrack(chars, index + 1, result);
+    }
+
   }
 
   public static class LetterCasePermutationSolutionV1 implements LetterCasePermutationInteface {
