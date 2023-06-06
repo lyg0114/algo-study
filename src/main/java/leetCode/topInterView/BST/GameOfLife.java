@@ -1,10 +1,7 @@
 package leetCode.topInterView.BST;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * @author : iyeong-gyo
@@ -16,10 +13,8 @@ public class GameOfLife {
   public static void main(String[] args) {
     GameOfLifeInterface solution = getSolution();
     int[][] mrx = {
-        {0, 1, 0},
-        {0, 0, 1},
-        {1, 1, 1},
-        {0, 0, 0}
+        {1, 1},
+        {1, 0}
     };
     solution.gameOfLife(mrx);
   }
@@ -30,32 +25,60 @@ public class GameOfLife {
 
   public static class GameOfLifeSolutionV1 implements GameOfLifeInterface {
 
-    private static int dx[] = {0, 1, 0, -1};
-    private static int dy[] = {-1, 0, 1, 0};
-    private static int nx = 0;
-    private static int ny = 0;
+    private static int dx[] = {0, 1, 0, -1, 1, -1, -1, 1};
+    private static int dy[] = {-1, 0, 1, 0, 1, -1, 1, -1};
+    private List<Integer> res = new ArrayList<>();
 
     @Override
     public void gameOfLife(int[][] board) {
-      List<HashMap<Integer, Integer>> lis = new ArrayList<>();
       for (int i = 0; i < board.length; i++) {
         for (int j = 0; j < board[j].length; j++) {
-          dfs(i, j, board, board[j].length, board.length);
+          checkCell(i, j, board);
+        }
+      }
+      int idx = 0;
+      for (int i = 0; i < board.length; i++) {
+        for (int j = 0; j < board[j].length; j++) {
+          if (idx < res.size()) {
+            board[i][j] = res.get(idx++);
+          }
         }
       }
     }
 
-    private void dfs(int x, int y, int[][] board, int width, int height) {
-      for (int i = 0; i < 4; i++) {
-        nx = x + dx[i];
-        ny = y + dy[i];
-        if (ny < 0 || nx < 0 || ny >= height || nx >= width) {
-          continue;
+    private void checkCell(int x, int y, int[][] board) {
+      int nx = 0, ny = 0;
+      int live = 0, dead = 0;
+      for (int i = 0; i < 8; i++) {
+        try {
+          nx = x + dx[i];
+          ny = y + dy[i];
+          if (board[nx][ny] == 1) {
+            live++;
+          } else {
+            dead++;
+          }
+        } catch (ArrayIndexOutOfBoundsException e) {
+          System.out.println("catch Exception");
         }
-        dfs(nx, ny, board, width, height);
+      }
+
+      if (board[x][y] == 1) {
+        if (live < 2) {
+          res.add(0);
+        } else if (live == 2 || live == 3) {
+          res.add(1);
+        } else {
+          res.add(0);
+        }
+      } else {
+        if (live == 3) {
+          res.add(1);
+        } else {
+          res.add(0);
+        }
       }
     }
-
   }
 
   public interface GameOfLifeInterface {
