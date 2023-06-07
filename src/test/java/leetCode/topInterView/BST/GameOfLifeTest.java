@@ -39,4 +39,14 @@ public class GameOfLifeTest {
     solution.gameOfLife(mrx);
   }
 
+  @Test
+  public void test_gameOfLife_3() {
+    GameOfLifeInterface solution = GameOfLife.getSolution();
+    int[][] mrx = {
+        {1, 1},
+        {1, 1}
+    };
+    solution.gameOfLife(mrx);
+  }
+
 }
