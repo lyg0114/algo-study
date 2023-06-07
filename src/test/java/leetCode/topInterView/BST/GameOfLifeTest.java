@@ -1,7 +1,5 @@
 package leetCode.topInterView.BST;
 
-import static org.junit.Assert.*;
-
 import leetCode.topInterView.BST.GameOfLife.GameOfLifeInterface;
 import org.junit.Test;
 
