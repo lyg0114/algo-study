@@ -1,5 +1,6 @@
 package leetCode.topInterView.BST;
 
+import java.util.ArrayList;
 import leetCode.topInterView.BST.GameOfLife.GameOfLifeInterface;
 import org.junit.Test;
 
@@ -37,6 +38,14 @@ public class GameOfLifeTest {
         {1, 0}
     };
     solution.gameOfLife(mrx);
+    int width = mrx.length;
+    int height = mrx[0].length;
+    for (int i = 0; i < width; i++) {
+      for (int j = 0; j < height; j++) {
+        System.out.println("mrx = " + mrx[i][j]);
+      }
+    }
+
   }
 
   @Test

@@ -31,14 +31,16 @@ public class GameOfLife {
 
     @Override
     public void gameOfLife(int[][] board) {
-      for (int i = 0; i < board.length; i++) {
-        for (int j = 0; j < board[j].length; j++) {
+      int width = board.length;
+      int height = board[0].length;
+      for (int i = 0; i < width; i++) {
+        for (int j = 0; j < height; j++) {
           checkCell(i, j, board);
         }
       }
       int idx = 0;
-      for (int i = 0; i < board.length; i++) {
-        for (int j = 0; j < board[j].length; j++) {
+      for (int i = 0; i < width; i++) {
+        for (int j = 0; j < height; j++) {
           if (idx < res.size()) {
             board[i][j] = res.get(idx++);
           }
