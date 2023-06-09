@@ -24,52 +24,53 @@ public class LinkedListCycle {
     System.out.println(solution.hasCycle(node1));
   }
 
-}
+  public static class LinkedListCycleSolution implements LinkedListCycleInterface {
 
-interface LinkedListCycleInterface {
+    @Override
+    public boolean hasCycle(ListNode head) {
+      if (head == null) {
+        return false;
+      }
 
-  boolean hasCycle(ListNode head);
-}
-
-class LinkedListCycleSolution implements LinkedListCycleInterface {
-
-  @Override
-  public boolean hasCycle(ListNode head) {
-    if (head == null) {
+      HashSet<ListNode> set = new HashSet<>();
+      while (head.next != null) {
+        if (set.contains(head)) {
+          return true;
+        }
+        set.add(head);
+        head = head.next;
+      }
       return false;
     }
+  }
 
-    HashSet<ListNode> set = new HashSet<>();
-    while (head.next != null) {
-      if (set.contains(head)) {
-        return true;
+  public static class LinkedListCycleSolution2 implements LinkedListCycleInterface {
+
+    @Override
+    public boolean hasCycle(ListNode head) {
+      if (head == null) {
+        return false;
+
       }
-      set.add(head);
-      head = head.next;
+      ListNode slow = head;
+      ListNode fast = head.next;
+
+      while (fast != null && fast.next != null) {
+        if (slow == fast) {
+          return true;
+        }
+        slow = slow.next;
+        fast = fast.next.next;
+      }
+
+      return false;
     }
-    return false;
+  }
+
+  interface LinkedListCycleInterface {
+
+    boolean hasCycle(ListNode head);
   }
 }
 
-class LinkedListCycleSolution2 implements LinkedListCycleInterface {
 
-  @Override
-  public boolean hasCycle(ListNode head) {
-    if (head == null) {
-      return false;
-
-    }
-    ListNode slow = head;
-    ListNode fast = head.next;
-
-    while (fast != null && fast.next != null) {
-      if (slow == fast) {
-        return true;
-      }
-      slow = slow.next;
-      fast = fast.next.next;
-    }
-
-    return false;
-  }
-}
