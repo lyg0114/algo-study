@@ -20,6 +20,10 @@ public class IntersectionTwoLinkedLists {
 
     @Override
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+      if (headA == null || headB == null) {
+        return new ListNode(0);
+      }
+
       return null;
     }
   }
