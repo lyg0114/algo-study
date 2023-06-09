@@ -1,5 +1,7 @@
 package leetCode.topInterView.linkedlist;
 
+import java.util.Stack;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.linkedlist
@@ -23,8 +25,28 @@ public class IntersectionTwoLinkedLists {
       if (headA == null || headB == null) {
         return new ListNode(0);
       }
+      Stack<ListNode> stk1 = new Stack<>();
+      Stack<ListNode> stk2 = new Stack<>();
+      while (headA != null && headB != null) {
+        stk1.push(headA);
+        stk2.push(headB);
+        headA = headA.next;
+        headB = headB.next;
+      }
+      while (headA != null) {
+        stk1.push(headA);
+        headA = headA.next;
+      }
+      while (headB != null) {
+        stk2.push(headB);
+        headB = headB.next;
+      }
 
-      return null;
+      while (stk1.peek() == stk2.peek()) {
+        stk1.pop();
+        stk2.pop();
+      }
+      return stk1.pop().next;
     }
   }
 
