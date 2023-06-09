@@ -17,7 +17,6 @@ public class IntersectionTwoLinkedLists {
     return new IntersectionTwoLinkedListsSolutionV2();
   }
 
-
   public static class IntersectionTwoLinkedListsSolutionV2 implements
       IntersectionTwoLinkedListsInterface {
 
@@ -36,7 +35,6 @@ public class IntersectionTwoLinkedLists {
       return a;
     }
   }
-
 
   public static class IntersectionTwoLinkedListsSolutionV1 implements
       IntersectionTwoLinkedListsInterface {
