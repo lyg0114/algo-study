@@ -1,5 +1,7 @@
 package leetCode.topInterView.Array;
 
+import java.util.HashMap;
+
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.Array
@@ -17,8 +19,21 @@ public class MajorityElement {
 
   public static class MajorityElementSolutionV1 implements MajorityElementInterface {
 
-   @Override
+    @Override
     public int majorityElement(int[] nums) {
+      if (nums == null || nums.length == 0) {
+        return 0;
+      }
+
+      int m = nums.length / 2;
+      HashMap<Integer, Integer> map = new HashMap<>();
+      for (int num : nums) {
+        Integer val = map.getOrDefault(num, 0);
+        map.put(num, ++val);
+        if (val > m) {
+          return num;
+        }
+      }
       return 0;
     }
   }
