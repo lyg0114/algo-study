@@ -9,6 +9,8 @@ public class ExcelSheetColumnNumber {
 
   public static void main(String[] args) {
     ExcelSheetColumnNumberInterface solution = getSolution();
+    int a = solution.titleToNumber("A");
+    System.out.println("a = " + a);
   }
 
   public static ExcelSheetColumnNumberInterface getSolution() {
@@ -19,6 +21,9 @@ public class ExcelSheetColumnNumber {
 
     @Override
     public int titleToNumber(String columnTitle) {
+      if (columnTitle.length() == 0 || columnTitle.length() > 7) {
+        return -1;
+      }
       return 0;
     }
   }
