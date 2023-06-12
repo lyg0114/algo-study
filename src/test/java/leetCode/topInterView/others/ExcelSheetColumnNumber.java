@@ -10,7 +10,6 @@ import java.util.Map;
  * @url : https://leetcode.com/problems/excel-sheet-column-number/description/?envType=featured-list&envId=top-interview-questions
  */
 public class ExcelSheetColumnNumber {
-
   public static void main(String[] args) {
     ExcelSheetColumnNumberInterface solution = getSolution();
     int res = solution.titleToNumber("ZY");
@@ -34,7 +33,6 @@ public class ExcelSheetColumnNumber {
   // ...
   // ABC -> (26 x 26) x 1 + (26) x 2 + 3 =
   public static class ExcelSheetColumnNumberSolutionV1 implements ExcelSheetColumnNumberInterface {
-
     private final Map<Character, Integer> mp = new HashMap<>() {{
       put('A', 1); put('B', 2); put('C', 3); put('D', 4); put('E', 5);
       put('F', 6); put('G', 7); put('H', 8); put('I', 9); put('J', 10);
@@ -55,7 +53,6 @@ public class ExcelSheetColumnNumber {
       for (int i = 0; i < chs.length; i++) {
         res += calcul(chs[i], cnt--);
       }
-
       return res;
     }
 
@@ -64,7 +61,6 @@ public class ExcelSheetColumnNumber {
       if (cnt == 0) {
         return num;
       }
-
       int res = 1;
       for (int i = 0; i < cnt; i++) {
         res *= 26;
@@ -74,7 +70,6 @@ public class ExcelSheetColumnNumber {
   }
 
   public interface ExcelSheetColumnNumberInterface {
-
     int titleToNumber(String columnTitle);
   }
 }
