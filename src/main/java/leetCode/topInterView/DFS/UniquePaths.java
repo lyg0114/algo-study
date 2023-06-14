@@ -14,7 +14,7 @@ public class UniquePaths {
   }
 
   public static UniquePathsInterface getSolution() {
-    return new UniquePathsSolutionV1();
+    return new UniquePathsSolutionV2();
   }
 
   public static class UniquePathsSolutionV2 implements UniquePathsInterface {
