@@ -21,31 +21,31 @@ public class UniquePaths {
 
     @Override
     public int uniquePaths(int m, int n) {
-      // 경로 수를 저장할 2차원 배열 생성
+      // init array
       int[][] dp = new int[m][n];
 
-      // 시작 지점에서의 경로 수는 1
+      // the count of way in the start point is one
       dp[0][0] = 1;
 
-      // 첫 번째 열의 모든 칸에는 왼쪽에서 오는 경로만 존재
+      // In every cell of the first column, only paths coming from the left exist
       for (int i = 1; i < m; i++) {
         dp[i][0] = 1;
       }
 
-      // 첫 번째 행의 모든 칸에는 위쪽에서 오는 경로만 존재
+      // In every cell of the first row, only paths coming from above exist.
       for (int j = 1; j < n; j++) {
         dp[0][j] = 1;
       }
 
-      // 나머지 칸에 대한 경로 수 계산
+      // Calculate the number of paths for the remaining cells.
       for (int i = 1; i < m; i++) {
         for (int j = 1; j < n; j++) {
-          // 왼쪽과 위쪽에서 오는 경로 수를 더함
+          // Add the number of paths coming from the left and from above.
           dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
         }
       }
 
-      // 우측 하단 모서리의 경로 수 반환
+      // Return the number of paths in the bottom-right corner.
       return dp[m - 1][n - 1];
     }
   }
