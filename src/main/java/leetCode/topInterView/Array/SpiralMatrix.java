@@ -43,6 +43,18 @@ public class SpiralMatrix {
 
     @Override
     public List<Integer> spiralOrder(int[][] matrix) {
+      if (matrix.length == 0) {
+        return new ArrayList<>();
+      }
+
+      if (matrix.length == 1) {
+        ArrayList<Integer> lis = new ArrayList<>();
+        for (int i = 0; i < matrix[0].length; i++) {
+          lis.add(matrix[0][i]);
+        }
+        return lis;
+      }
+
       M = matrix.length;
       N = matrix[0].length;
       int[][] valid = new int[M][N];

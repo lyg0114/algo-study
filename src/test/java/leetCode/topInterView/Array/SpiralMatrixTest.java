@@ -15,11 +15,33 @@ import org.junit.Test;
 public class SpiralMatrixTest {
 
   @Test
-  public void test_spiralOrder() {
+  public void test_spiralOrder_1() {
     SpiralMatrixInterface solution = SpiralMatrix.getSolution();
     int[][] mtx = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     List<Integer> actual = solution.spiralOrder(mtx);
     List<Integer> expect = Arrays.asList(1, 2, 3, 6, 9, 8, 7, 4, 5);
+    for (int i = 0; i < actual.size(); i++) {
+      assertEquals(expect.get(i), actual.get(i));
+    }
+  }
+
+  @Test
+  public void test_spiralOrder_2() {
+    SpiralMatrixInterface solution = SpiralMatrix.getSolution();
+    int[][] mtx = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+    List<Integer> actual = solution.spiralOrder(mtx);
+    List<Integer> expect = Arrays.asList(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7);
+    for (int i = 0; i < actual.size(); i++) {
+      assertEquals(expect.get(i), actual.get(i));
+    }
+  }
+
+  @Test
+  public void test_spiralOrder_3() {
+    SpiralMatrixInterface solution = SpiralMatrix.getSolution();
+    int[][] mtx = {{1, 2, 3, 4, 5}};
+    List<Integer> actual = solution.spiralOrder(mtx);
+    List<Integer> expect = Arrays.asList(1, 2, 3, 4, 5);
     for (int i = 0; i < actual.size(); i++) {
       assertEquals(expect.get(i), actual.get(i));
     }
