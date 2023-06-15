@@ -69,4 +69,26 @@ public class SpiralMatrixTest {
       assertEquals(expect.get(i), actual.get(i));
     }
   }
+
+  @Test
+  public void test_spiralOrder_6() {
+    SpiralMatrixInterface solution = SpiralMatrix.getSolution();
+    int[][] mtx = {{3}, {2}};
+    List<Integer> actual = solution.spiralOrder(mtx);
+    List<Integer> expect = Arrays.asList(3, 2);
+    for (int i = 0; i < actual.size(); i++) {
+      assertEquals(expect.get(i), actual.get(i));
+    }
+  }
+
+  @Test
+  public void test_spiralOrder_7() {
+    SpiralMatrixInterface solution = SpiralMatrix.getSolution();
+    int[][] mtx = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    List<Integer> actual = solution.spiralOrder(mtx);
+    List<Integer> expect = Arrays.asList(1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10);
+    for (int i = 0; i < actual.size(); i++) {
+      assertEquals(expect.get(i), actual.get(i));
+    }
+  }
 }

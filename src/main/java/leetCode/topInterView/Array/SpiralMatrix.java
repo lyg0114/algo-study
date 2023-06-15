@@ -14,7 +14,7 @@ public class SpiralMatrix {
   public static void main(String[] args) {
 
     SpiralMatrixInterface solution = getSolution();
-    int[][] mtx = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int[][] mtx = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
     List<Integer> res = solution.spiralOrder(mtx);
     for (Integer re : res) {
       System.out.println("re = " + re);
@@ -26,7 +26,6 @@ public class SpiralMatrix {
   }
 
   public static class SpiralMatrixSolutionV1 implements SpiralMatrixInterface {
-
     int[] dx1 = {0, 1};
     int[] dy1 = {1, 0};
     int[] dx2 = {1, 0};
@@ -35,7 +34,6 @@ public class SpiralMatrix {
     int[] dy3 = {-1, 0};
     int[] dx4 = {-1, 0};
     int[] dy4 = {0, 1};
-
     int M = 0;
     int N = 0;
 
@@ -63,7 +61,7 @@ public class SpiralMatrix {
     }
 
     private void findWay(int[][] matrix, int w, int h, int[][] valid, int pos) {
-      if (valid[w][h] == 1) {
+      if (w < 0 || h < 0 || valid[w][h] == 1) {
         return;
       }
 
