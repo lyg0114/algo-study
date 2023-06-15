@@ -25,7 +25,16 @@ public class SpiralMatrix {
     return new SpiralMatrixSolutionV1();
   }
 
+  public static class SpiralMatrixSolutionV2 implements SpiralMatrixInterface {
+
+    @Override
+    public List<Integer> spiralOrder(int[][] matrix) {
+      return null;
+    }
+  }
+
   public static class SpiralMatrixSolutionV1 implements SpiralMatrixInterface {
+
     int[] dx1 = {0, 1};
     int[] dy1 = {1, 0};
     int[] dx2 = {1, 0};
