@@ -29,7 +29,7 @@ public class SpiralMatrix {
 
     @Override
     public List<Integer> spiralOrder(int[][] matrix) {
-      return null
+      return null;
     }
   }
 
