@@ -18,11 +18,15 @@ public class ImplemenStrStr {
   public static void main(String[] args) {
     String haystack = "butsad";
     String needle = "sad";
-    ImplemenStrStrSolution solution = new ImplemenStrStrSolution();
+    ImplemenStrStrInterface solution = getSolution();
     System.out.println(solution.strStr(haystack, needle));
   }
 
-  public static class ImplemenStrStrSolution {
+  public static ImplemenStrStrInterface getSolution() {
+    return new ImplemenStrStrSolutionV1();
+  }
+
+  public static class ImplemenStrStrSolutionV1 implements ImplemenStrStrInterface {
 
     public int strStr(String haystack, String needle) {
       // needle의 길이가 0인 경우 항상 0을 반환합니다.
