@@ -15,16 +15,23 @@ public class ReverseString {
       System.out.print(c);
     }
   }
-}
 
-class ReverseStringSolution {
+  public static class ReverseStringSolution implements ReverseStringInterface {
 
-  public void reverseString(char[] s) {
-    char tmp;
-    for (int i = 0; i < s.length / 2; i++) {
-      tmp = s[i];
-      s[i] = s[s.length - 1 - i];
-      s[s.length - 1 - i] = tmp;
+    @Override
+    public void reverseString(char[] s) {
+      char tmp;
+      for (int i = 0; i < s.length / 2; i++) {
+        tmp = s[i];
+        s[i] = s[s.length - 1 - i];
+        s[s.length - 1 - i] = tmp;
+      }
     }
   }
+
+  public interface ReverseStringInterface {
+
+    void reverseString(char[] s);
+  }
 }
+
