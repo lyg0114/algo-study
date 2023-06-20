@@ -9,11 +9,15 @@ public class ReverseString {
 
   public static void main(String[] args) {
     char[] str = {'H', 'a', 'n', 'a', 'h'};
-    ReverseStringSolution solution = new ReverseStringSolution();
+    ReverseStringInterface solution = getSolution();
     solution.reverseString(str);
     for (char c : str) {
       System.out.print(c);
     }
+  }
+
+  public static ReverseStringSolution getSolution() {
+    return new ReverseStringSolution();
   }
 
   public static class ReverseStringSolution implements ReverseStringInterface {
