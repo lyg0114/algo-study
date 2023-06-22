@@ -19,6 +19,7 @@ public class KthSmallestElementBSTTest {
     TreeNode nb = new TreeNode(2);
     TreeNode nc = new TreeNode(3);
     TreeNode nd = new TreeNode(4);
+    TreeNode ne = new TreeNode(5);
     nc.left = na;
     nc.right = nd;
     na.right = nb;
