@@ -10,7 +10,16 @@ import leetCode.topInterView.tree.TreeNode;
 public class KthSmallestElementBST {
 
   public static void main(String[] args) {
+    TreeNode na = new TreeNode(1);
+    TreeNode nb = new TreeNode(2);
+    TreeNode nc = new TreeNode(3);
+    TreeNode nd = new TreeNode(4);
+    nc.left = na;
+    nc.right = nd;
+    na.right = nb;
     KthSmallestElementBSTInterface solution = getSolution();
+    int i = solution.kthSmallest(nc, 1);
+    System.out.println("i = " + i);
   }
 
   private static KthSmallestElementBSTInterface getSolution() {
