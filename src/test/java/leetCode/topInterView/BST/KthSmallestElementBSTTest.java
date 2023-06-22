@@ -26,4 +26,22 @@ public class KthSmallestElementBSTTest {
     int actual = solution.kthSmallest(nc, 3);
     Assert.assertEquals(3, actual);
   }
+
+  @Test
+  public void test_kthSmallest_2() {
+    KthSmallestElementBSTInterface solution = KthSmallestElementBST.getSolution();
+    TreeNode n1 = new TreeNode(1);
+    TreeNode n2 = new TreeNode(2);
+    TreeNode n3 = new TreeNode(3);
+    TreeNode n4 = new TreeNode(4);
+    TreeNode n5 = new TreeNode(5);
+    TreeNode n6 = new TreeNode(6);
+    n5.left = n3;
+    n5.right = n6;
+    n3.right = n4;
+    n3.left = n2;
+    n2.left = n1;
+    int actual = solution.kthSmallest(n5, 3);
+    Assert.assertEquals(3, actual);
+  }
 }
