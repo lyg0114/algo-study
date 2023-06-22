@@ -18,19 +18,40 @@ public class KthSmallestElementBST {
     nc.right = nd;
     na.right = nb;
     KthSmallestElementBSTInterface solution = getSolution();
-    int i = solution.kthSmallest(nc, 1);
+    int i = solution.kthSmallest(nc, 3);
     System.out.println("i = " + i);
   }
 
   private static KthSmallestElementBSTInterface getSolution() {
-    return new KthSmallestElementBSTV2();
+    return new KthSmallestElementBSTV1();
   }
 
-  public static class KthSmallestElementBSTV2 implements KthSmallestElementBSTInterface {
+  public static class KthSmallestElementBSTV1 implements KthSmallestElementBSTInterface {
+
+    private int res = 0;
+    private int cur = 0;
+    private boolean status = true;
 
     @Override
     public int kthSmallest(TreeNode root, int k) {
-      return 0;
+      traverse(root, k);
+      return res;
+    }
+
+    public void traverse(TreeNode node, int k) {
+      if (node == null) {
+        return;
+      }
+      if (status) {
+        traverse(node.left, k);
+      }
+      if (k == (++cur)) {
+        status = false;
+        res = cur;
+      }
+      if (status) {
+        traverse(node.right, k);
+      }
     }
   }
 
