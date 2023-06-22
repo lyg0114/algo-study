@@ -22,7 +22,7 @@ public class KthSmallestElementBST {
     System.out.println("i = " + i);
   }
 
-  private static KthSmallestElementBSTInterface getSolution() {
+  public static KthSmallestElementBSTInterface getSolution() {
     return new KthSmallestElementBSTV1();
   }
 
