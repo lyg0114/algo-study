@@ -47,7 +47,7 @@ public class KthSmallestElementBST {
       }
       if (k == (++cur)) {
         status = false;
-        res = cur;
+        res = node.val;
       }
       if (status) {
         traverse(node.right, k);
