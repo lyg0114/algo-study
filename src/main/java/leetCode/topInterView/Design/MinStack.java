@@ -24,122 +24,105 @@ public class MinStack {
   private static MinStackInterface getSolution() {
     return new MinStackSolution();
   }
-}
 
-class MinStackSolution implements MinStackInterface {
+  public static class MinStackSolution implements MinStackInterface {
 
-  private static class Node {
+    private static class Node {
 
-    int val;
-    Node next;
-    int min;
-  }
+      int val;
+      Node next;
+      int min;
+    }
 
-  Node top;
-  int size;
+    Node top;
+    int size;
 
-  public MinStackSolution() {
-    size = 0;
-  }
+    public MinStackSolution() {
+      size = 0;
+    }
 
-  @Override
-  public void push(int val) {
-    if (size == 0) {
-      top = new Node();
-      top.val = val;
-      top.min = val;
-      top.next = null;
-      size++;
-    } else {
-      Node temp = new Node();
-      temp.val = val;
-      temp.min = Math.min(top.min, val);
-      temp.next = top;
-      top = temp;
-      size++;
+    @Override
+    public void push(int val) {
+      if (size == 0) {
+        top = new Node();
+        top.val = val;
+        top.min = val;
+        top.next = null;
+        size++;
+      } else {
+        Node temp = new Node();
+        temp.val = val;
+        temp.min = Math.min(top.min, val);
+        temp.next = top;
+        top = temp;
+        size++;
+      }
+    }
+
+    @Override
+    public void pop() {
+      top = top.next;
+      size--;
+    }
+
+    @Override
+    public int top() {
+      return top.val;
+    }
+
+    @Override
+    public int getMin() {
+      return top.min;
     }
   }
 
-  @Override
-  public void pop() {
-    top = top.next;
-    size--;
-  }
+  public static class MinStackSolutionV2 implements MinStackInterface {
 
-  @Override
-  public int top() {
-    return top.val;
-  }
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
 
-  @Override
-  public int getMin() {
-    return top.min;
-  }
-}
+    public MinStackSolutionV2() {
+      stack = new Stack<>();
+      minStack = new Stack<>();
+    }
 
-class MinStackSolutionV2 implements MinStackInterface {
+    @Override
+    public void push(int val) {
+      stack.push(val);
+      if (minStack.isEmpty() || val <= minStack.peek()) {
+        minStack.push(val);
+      }
+    }
 
-  private Stack<Integer> stack;
-  private Stack<Integer> minStack;
+    @Override
+    public void pop() {
+      if (stack.peek().equals(minStack.peek())) {
+        minStack.pop();
+      }
+      stack.pop();
+    }
 
-  public MinStackSolutionV2() {
-    stack = new Stack<>();
-    minStack = new Stack<>();
-  }
+    @Override
+    public int top() {
+      return stack.peek();
+    }
 
-  public void push(int val) {
-    stack.push(val);
-    if (minStack.isEmpty() || val <= minStack.peek()) {
-      minStack.push(val);
+    @Override
+    public int getMin() {
+      return minStack.peek();
     }
   }
 
-  public void pop() {
-    if (stack.peek().equals(minStack.peek())) {
-      minStack.pop();
-    }
-    stack.pop();
-  }
+  public interface MinStackInterface {
 
-  public int top() {
-    return stack.peek();
-  }
+    void push(int val);
 
-  public int getMin() {
-    return minStack.peek();
+    void pop();
+
+    int top();
+
+    int getMin();
   }
 }
 
-class MinStackGround implements MinStackInterface {
 
-  @Override
-  public void push(int val) {
-
-  }
-
-  @Override
-  public void pop() {
-
-  }
-
-  @Override
-  public int top() {
-    return 0;
-  }
-
-  @Override
-  public int getMin() {
-    return 0;
-  }
-}
-
-interface MinStackInterface {
-
-  void push(int val);
-
-  void pop();
-
-  int top();
-
-  int getMin();
-}
