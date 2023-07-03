@@ -32,7 +32,6 @@ public class KthLargestElementArray {
 
       while (left <= right) {
         int pivotIndex = partition(nums, left, right);
-
         if (pivotIndex == targetIndex) {
           return nums[pivotIndex];
         } else if (pivotIndex < targetIndex) {
