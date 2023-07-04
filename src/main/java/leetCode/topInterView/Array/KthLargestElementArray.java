@@ -20,39 +20,6 @@ public class KthLargestElementArray {
     return new KthLargestElementArraySolutionV1();
   }
 
-  public static class KthLargestElementArraySolutionV2 implements KthLargestElementArrayInterface {
-
-    public int findKthLargest(int[] nums, int k) {
-      return quickSelect(nums, 0, nums.length - 1, k);
-    }
-
-    int quickSelect(int[] nums, int low, int high, int k) {
-      int pivot = low;
-
-      for (int j = low; j < high; j++) {
-        if (nums[j] <= nums[high]) {
-          swap(nums, pivot++, j);
-        }
-      }
-      swap(nums, pivot, high);
-
-      int count = high - pivot + 1;
-      if (count == k) {
-        return nums[pivot];
-      }
-      if (count > k) {
-        return quickSelect(nums, pivot + 1, high, k);
-      }
-      return quickSelect(nums, low, pivot - 1, k - count);
-    }
-
-    private void swap(int[] nums, int i, int j) {
-      int temp = nums[i];
-      nums[i] = nums[j];
-      nums[j] = temp;
-    }
-  }
-
   public static class KthLargestElementArraySolutionV1 implements KthLargestElementArrayInterface {
 
     private static Random random = new Random();
