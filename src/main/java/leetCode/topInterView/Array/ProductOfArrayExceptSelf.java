@@ -4,6 +4,7 @@ package leetCode.topInterView.Array;
  * @author : iyeong-gyo
  * @package : leetCode.topInterView.Array
  * @since : 2023/07/05
+ * @url : https://leetcode.com/problems/product-of-array-except-self/solutions/1342916/3-minute-read-mimicking-an-interview/
  */
 public class ProductOfArrayExceptSelf {
 
