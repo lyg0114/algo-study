@@ -14,14 +14,19 @@ public class CodilitySolution1 {
   static String longetStr = "";
 
   public static void main(String[] args) {
-    int AA = 0;
-    int AB = 0;
-    int BB = 10;
+    long startTime = System.currentTimeMillis();
+
+    int AA = 1;
+    int AB = 2;
+    int BB = 1;
     String longestStr = solution(AA, AB, BB);
+    long endTime = System.currentTimeMillis();
+    long elapsedTime = endTime - startTime;
+
     System.out.println("longestStr = " + longestStr);
+    System.out.println("실행 시간: " + elapsedTime + " 밀리");
   }
 
-  // AA, AB, BB 를 조합하여 나열하는 문제
   private static String solution(int AA, int AB, int BB) {
     List<String> strings = new ArrayList<>();
     makeTotalStrs(AA, "AA", strings);
