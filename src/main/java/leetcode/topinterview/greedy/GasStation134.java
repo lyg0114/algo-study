@@ -1,8 +1,10 @@
-package leetcode.topinterview;
+package leetcode.topinterview.greedy;
 
 /**
  * @author : iyeong-gyo
  * @package : leetCode.topInterView
+ * @link
+ * https://leetcode.com/problems/gas-station/description/?envType=featured-list&envId=top-interview-questions%3FenvType%3Dfeatured-list&envId=top-interview-questions
  * @since : 12.11.23
  */
 public class GasStation134 {
