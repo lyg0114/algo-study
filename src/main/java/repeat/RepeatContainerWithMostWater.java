@@ -1,6 +1,6 @@
 package repeat;
 
-import leetCode.topInterView.others.ContainerWithMostWater.ContainerWithMostWaterInterface;
+import leetcode.topinterview.others.ContainerWithMostWater.ContainerWithMostWaterInterface;
 
 /**
  * @author : iyeong-gyo

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import leetCode.topInterView.Strings.LetterCombinationsofPhoneNumber.LetterCombinationsofPhoneNumberInterface;
+import leetcode.topinterview.strings.LetterCombinationsofPhoneNumber.LetterCombinationsofPhoneNumberInterface;
 
 /**
  * @author : iyeong-gyo

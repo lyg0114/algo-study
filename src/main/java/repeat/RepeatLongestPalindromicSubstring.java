@@ -1,6 +1,6 @@
 package repeat;
 
-import leetCode.topInterView.Strings.LongestPalindromicSubstring.LongestPalindromicSubstringInterface;
+import leetcode.topinterview.strings.LongestPalindromicSubstring.LongestPalindromicSubstringInterface;
 
 /**
  * @author : iyeong-gyo

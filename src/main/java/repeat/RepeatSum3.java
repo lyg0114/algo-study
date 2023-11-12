@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import leetCode.topInterView.others.Sum3.Sum3Interface;
+import leetcode.topinterview.others.Sum3.Sum3Interface;
 
 /**
  * @author : iyeong-gyo
