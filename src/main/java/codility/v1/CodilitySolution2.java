@@ -1,4 +1,4 @@
-package codility;
+package codility.v1;
 
 import java.util.Stack;
 
