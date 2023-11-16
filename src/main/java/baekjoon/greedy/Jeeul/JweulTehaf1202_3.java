@@ -49,7 +49,7 @@ public class JweulTehaf1202_3 {
     }
 
     // 가방과 보석을 무게 기준으로 정렬
-    Collections.sort(jewels, (j1, j2) -> Integer.compare(j1.weight, j2.weight));
+    Collections.sort(jewels, Comparator.comparingInt(j -> j.weight));
     Collections.sort(bags);
 
     long totalValue = 0;
