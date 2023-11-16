@@ -1,4 +1,4 @@
-package baekjoon.greedy;
+package baekjoon.greedy.Jeeul;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @package : baekjoon.greedy
  * @since : 15.11.23
  */
-public class JweulTehaf1202 {
+public class JweulTehaf1202_2 {
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
@@ -20,12 +20,12 @@ public class JweulTehaf1202 {
     for (int i = 0; i < N; i++) {
       jewels.add(new Jewel(scanner.nextInt(), scanner.nextInt()));
     }
-    jewels.sort(Comparator.comparingInt((Jewel jewel) -> jewel.price).reversed());
+    jewels.sort(Comparator.comparingInt((Jewel jewel) -> jewel.price));
     List<Bag> bags = new ArrayList<>();
     for (int i = 0; i < K; i++) {
       bags.add(new Bag(scanner.nextInt()));
     }
-    bags.sort(Comparator.comparingInt((Bag bag) -> bag.limitWeigh).reversed());
+    bags.sort(Comparator.comparingInt((Bag bag) -> bag.limitWeigh));
 
     for (Bag bag : bags) {
       for (Jewel jewel : jewels) {
