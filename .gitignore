@@ -27,3 +27,4 @@
 /.nb-gradle/
 /data/
 /logs/
+!/src/main/java/baekjoon/Main.java
