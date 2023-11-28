@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class LectureTour2109 {
   static class Req {
-    private int price;
-    private int maxDat;
+    private final int price;
+    private final int maxDat;
     public Req(int price, int maxDat) {
       this.price = price;
       this.maxDat = maxDat;
