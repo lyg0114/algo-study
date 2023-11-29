@@ -4,6 +4,7 @@ package leetcode.topinterview.greedy;
  * @author : iyeong-gyo
  * @package : leetcode.topinterview.greedy
  * @since : 29.11.23
+ * @url: https://leetcode.com/problems/jump-game/
  */
 public class JumpGame55 {
 
