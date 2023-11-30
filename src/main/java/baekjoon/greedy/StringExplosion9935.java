@@ -1,5 +1,8 @@
 package baekjoon.greedy;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,29 +16,60 @@ import java.util.stream.Collectors;
  */
 public class StringExplosion9935 {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     Solution solution = getSolution();
     solution.doMain();
   }
 
   private static Solution getSolution() {
-    return new SolutionV1_TimeAtacck();
+    return new SolutionV2();
   }
 
-  static class SolutionV1_TimeAtacck implements Solution {
+  static class SolutionV2 implements Solution {
+
+    @Override
+    public void doMain() throws IOException {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      String inputString = br.readLine();
+      String explosionString = br.readLine();
+
+      while (inputString.contains(explosionString)) {
+        inputString = inputString.replace(explosionString, "");
+      }
+
+      if (inputString.isEmpty()) {
+        System.out.println("FRULA");
+      } else {
+        System.out.println(inputString);
+      }
+    }
+
+  }
+
+  static class SolutionV1 implements Solution {
+
     static class TargetIndex {
+
       int start;
       int removeCnt;
+
       public TargetIndex(int start, int removeCnt) {
         this.start = start;
         this.removeCnt = removeCnt;
       }
-      public int getStart() { return start;}
-      public int getRemoveCnt() { return removeCnt; }
+
+      public int getStart() {
+        return start;
+      }
+
+      public int getRemoveCnt() {
+        return removeCnt;
+      }
     }
 
     static int successCount = 0;
-    public void doMain(){
+
+    public void doMain() {
       Scanner sc = new Scanner(System.in);
       String targetStr = sc.next();
       String bomb = sc.next();
@@ -64,8 +98,9 @@ public class StringExplosion9935 {
       String result = charList.stream()
           .map(String::valueOf)
           .collect(Collectors.joining());
-      if(result.isEmpty())
+      if (result.isEmpty()) {
         result = "FRULA";
+      }
       System.out.println(result);
 
     }
@@ -92,6 +127,7 @@ public class StringExplosion9935 {
   }
 
   interface Solution {
-    void doMain();
+
+    void doMain() throws IOException;
   }
 }
