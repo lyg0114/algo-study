@@ -17,12 +17,43 @@ import java.util.stream.Collectors;
 public class StringExplosion9935 {
 
   public static void main(String[] args) throws IOException {
-    Solution solution = getSolution();
+    Solution solution = new SolutionV3();
     solution.doMain();
   }
 
-  private static Solution getSolution() {
-    return new SolutionV2();
+  static class SolutionV3 implements Solution {
+
+    @Override
+    public void doMain() throws IOException {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      String str = br.readLine();
+      String boom = br.readLine();
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < str.length(); i++) {
+        char ch = str.charAt(i);
+        sb.append(ch);
+        if (sb.length() >= boom.length()) {
+          boolean sameFlag = true;
+          for (int j = 0; j < boom.length(); j++) {
+            char ch1 = sb.charAt(sb.length() - boom.length() + j);
+            char ch2 = boom.charAt(j);
+            if (ch1 != ch2) {
+              sameFlag = false;
+              break;
+            }
+          }
+          if (sameFlag) {
+            sb.delete(sb.length() - boom.length(), sb.length());
+          }
+        }
+      }
+      if (sb.length() == 0) {
+        System.out.println("FRULA");
+      } else {
+        System.out.println(sb.toString());
+      }
+
+    }
   }
 
   static class SolutionV2 implements Solution {
