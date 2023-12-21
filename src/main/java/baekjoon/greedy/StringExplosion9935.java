@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 /**
@@ -17,8 +18,47 @@ import java.util.stream.Collectors;
 public class StringExplosion9935 {
 
   public static void main(String[] args) throws IOException {
-    Solution solution = new SolutionV3();
+    Solution solution = new SolutionStackV4();
     solution.doMain();
+  }
+
+  static class SolutionStackV4 implements Solution {
+
+    @Override
+    public void doMain() throws IOException {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      String str = br.readLine();
+      String boom = br.readLine();
+      Stack<Character> stack = new Stack();
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < str.length(); i++) {
+        stack.push(str.charAt(i));
+        if (stack.size() >= boom.length()
+            && stack.peek().equals(boom.charAt(boom.length() - 1))) {
+          for (int j = 0; j < boom.length(); j++) {
+            Character pop = stack.pop();
+            sb.append(pop);
+          }
+          String popStr = sb.reverse().toString();
+          sb.setLength(0);
+          if (!popStr.equals(boom)) {
+            for (int j = popStr.length() - 1; j > -1; j--) {
+              stack.push(popStr.charAt(i));
+            }
+          }
+        }
+      }
+
+      if (!stack.isEmpty()) {
+        sb.setLength(0);
+        for (Character c : stack) {
+          sb.append(c);
+        }
+        System.out.println(sb);
+      } else {
+        System.out.println("FRULA");
+      }
+    }
   }
 
   static class SolutionV3 implements Solution {
@@ -161,4 +201,5 @@ public class StringExplosion9935 {
 
     void doMain() throws IOException;
   }
+
 }
