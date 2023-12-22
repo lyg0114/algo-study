@@ -3,11 +3,7 @@ package baekjoon.greedy;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 /**
  * @author : iyeong-gyo
@@ -18,11 +14,11 @@ import java.util.stream.Collectors;
 public class StringExplosion9935 {
 
   public static void main(String[] args) throws IOException {
-    Solution solution = new SolutionStackV4();
+    Solution solution = new SolutionUsingStack();
     solution.doMain();
   }
 
-  static class SolutionStackV4 implements Solution {
+  static class SolutionUsingStack implements Solution {
 
     @Override
     public void doMain() throws IOException {
@@ -48,7 +44,6 @@ public class StringExplosion9935 {
           }
         }
       }
-
       if (!stack.isEmpty()) {
         sb.setLength(0);
         for (Character c : stack) {
@@ -92,108 +87,42 @@ public class StringExplosion9935 {
       } else {
         System.out.println(sb.toString());
       }
-
     }
   }
 
-  static class SolutionV2 implements Solution {
+  static class SolutionRecover implements Solution {
 
     @Override
     public void doMain() throws IOException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-      String inputString = br.readLine();
-      String explosionString = br.readLine();
+      String str = br.readLine();
+      String boom = br.readLine();
 
-      while (inputString.contains(explosionString)) {
-        inputString = inputString.replace(explosionString, "");
-      }
+      StringBuilder sb = new StringBuilder();
+      boolean isSame;
 
-      if (inputString.isEmpty()) {
-        System.out.println("FRULA");
-      } else {
-        System.out.println(inputString);
-      }
-    }
-
-  }
-
-  static class SolutionV1 implements Solution {
-
-    static class TargetIndex {
-
-      int start;
-      int removeCnt;
-
-      public TargetIndex(int start, int removeCnt) {
-        this.start = start;
-        this.removeCnt = removeCnt;
-      }
-
-      public int getStart() {
-        return start;
-      }
-
-      public int getRemoveCnt() {
-        return removeCnt;
-      }
-    }
-
-    static int successCount = 0;
-
-    public void doMain() {
-      Scanner sc = new Scanner(System.in);
-      String targetStr = sc.next();
-      String bomb = sc.next();
-      char[] charArray = targetStr.toCharArray();
-      char[] bombArray = bomb.toCharArray();
-      List<Character> charList = new LinkedList<>();
-      for (char c : charArray) {
-        charList.add(c);
-      }
-
-      while (true) {
-        for (int i = 0; i < charList.size(); i++) {
-          if (charList.get(i).equals(bombArray[0])) {
-            TargetIndex target = checkTheTarget(i, charList, bombArray);
-            if (target != null) {
-              bombCharList(charList, i, target);
+      for (int i = 0; i < str.length(); i++) {
+        sb.append(str.charAt(i));
+        isSame = true;
+        if (sb.length() >= boom.length()) {
+          for (int j = 0; j < boom.length(); j++) {
+            char ch = sb.charAt(sb.length() - boom.length() + j);
+            char bCh = boom.charAt(j);
+            if (ch != bCh) {
+              isSame = false;
             }
           }
-        }
-        if (successCount == 0) {
-          break;
-        } else {
-          successCount = 0;
+          if (isSame) {
+            sb.delete(sb.length() - boom.length(), sb.length());
+          }
         }
       }
-      String result = charList.stream()
-          .map(String::valueOf)
-          .collect(Collectors.joining());
-      if (result.isEmpty()) {
-        result = "FRULA";
-      }
-      System.out.println(result);
 
-    }
-
-    private void bombCharList(
-        List<Character> charList, int index, TargetIndex target
-    ) {
-      for (int i = 0; i < target.getRemoveCnt(); i++) {
-        charList.remove(index);
+      if (sb.length() > 0) {
+        System.out.println(sb);
+      } else {
+        System.out.println("FRULA");
       }
-      successCount += 1;
-    }
-
-    private TargetIndex checkTheTarget(
-        int idx, List<Character> charList, char[] bombArray
-    ) {
-      for (int i = 0; i < bombArray.length; i++) {
-        if (!(charList.get(idx + i).equals(bombArray[i]))) {
-          return null;
-        }
-      }
-      return new TargetIndex(idx, bombArray.length);
     }
   }
 
@@ -201,5 +130,4 @@ public class StringExplosion9935 {
 
     void doMain() throws IOException;
   }
-
 }
