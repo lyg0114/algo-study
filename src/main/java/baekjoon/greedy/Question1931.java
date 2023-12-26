@@ -40,12 +40,10 @@ public class Question1931 {
         meetings.add(new Meeting(sc.nextInt(), sc.nextInt()));
       }
       meetings.sort(Comparator.comparingInt(Meeting::getEnd));
-      int curEnd = 0;
+      results.add(meetings.get(0));
+      int curEnd = meetings.get(0).getEnd();
       for (Meeting meeting : meetings) {
-        if (results.isEmpty()) {
-          results.add(meeting);
-          curEnd = meeting.getEnd();
-        } else if (meeting.getStart() >= curEnd) {
+        if (meeting.getStart() >= curEnd) {
           results.add(meeting);
           curEnd = meeting.getEnd();
         }
