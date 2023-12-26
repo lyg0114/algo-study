@@ -47,8 +47,7 @@ public class Question1202 {
       PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
       for (int b : bags) {
         while (idx < N && jewels.get(idx).weight <= b) {
-          maxHeap.offer(jewels.get(idx).price);
-          idx++;
+          maxHeap.offer(jewels.get(idx++).price);
         }
         if (!maxHeap.isEmpty()) {
           total += maxHeap.poll();
