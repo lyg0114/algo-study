@@ -15,8 +15,40 @@ import java.util.Stack;
 public class Question14469 {
 
   public static void main(String[] args) throws IOException {
-    Solution solution = new SolutionV1();
+    Solution solution = new SolutionV2();
     solution.doMain();
+  }
+
+  static class SolutionV2 implements Solution {
+
+    static class ArriveGoat {
+      private final int arrTime;
+      private final int checkTime;
+
+      public ArriveGoat(int arrTime, int checkTime) {
+        this.arrTime = arrTime;
+        this.checkTime = checkTime;
+      }
+      public int getArrTime() { return arrTime; }
+      public int getTerm(){return arrTime + checkTime;}
+    }
+
+    @Override
+    public void doMain() throws IOException {
+      Scanner sc = new Scanner(System.in);
+      int totalCnt = sc.nextInt();
+      List<ArriveGoat> goats = new ArrayList<>();
+      for (int i = 0; i < totalCnt; i++) {
+        goats.add(new ArriveGoat(sc.nextInt(), sc.nextInt()));
+      }
+      goats.sort(Comparator.comparingInt(ArriveGoat::getArrTime));
+      int realTime = goats.get(0).getTerm();
+      for (int i = 1; i < goats.size(); i++) {
+        realTime = Math.max(realTime, goats.get(i).getArrTime());
+        realTime += goats.get(i).checkTime;
+      }
+      System.out.println(realTime);
+    }
   }
 
   static class SolutionV1 implements Solution {
