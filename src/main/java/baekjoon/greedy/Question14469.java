@@ -30,7 +30,6 @@ public class Question14469 {
         this.checkTime = checkTime;
       }
       public int getArrTime() { return arrTime; }
-      public int getTerm(){return arrTime + checkTime;}
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Question14469 {
         goats.add(new ArriveGoat(sc.nextInt(), sc.nextInt()));
       }
       goats.sort(Comparator.comparingInt(ArriveGoat::getArrTime));
-      int realTime = goats.get(0).getTerm();
+      int realTime = goats.get(0).arrTime + goats.get(0).checkTime;
       for (int i = 1; i < goats.size(); i++) {
         realTime = Math.max(realTime, goats.get(i).getArrTime());
         realTime += goats.get(i).checkTime;
@@ -79,28 +78,25 @@ public class Question14469 {
       goats.sort(Comparator.comparingInt(ArriveGoat::getArrTime));
       Stack<ArriveGoat> stack = new Stack<>();
       int totalTime = 0;
-      for (ArriveGoat arriveGoat : goats) {
-        if (stack.isEmpty()) {
-          totalTime = arriveGoat.getTerm();
-          stack.push(arriveGoat);
+
+      totalTime = goats.get(0).getTerm();
+      stack.push(goats.get(0));
+      for (int i = 1; i < goats.size(); i++) {
+        ArriveGoat peek = stack.peek();
+        if (peek.getTerm() <= goats.get(i).getArrTime()) {
+          stack.pop();
+          totalTime = goats.get(i).getTerm();
+          stack.push(goats.get(i));
         } else {
-          ArriveGoat peek = stack.peek();
-          if (peek.getTerm() <= arriveGoat.getArrTime()) {
-            stack.pop();
-            totalTime = arriveGoat.getTerm();
-            stack.push(arriveGoat);
-          } else {
-            arriveGoat.setArrTime(totalTime);
-            totalTime = arriveGoat.getTerm();
-            stack.pop();
-            stack.push(arriveGoat);
-          }
+          goats.get(i).setArrTime(totalTime);
+          totalTime = goats.get(i).getTerm();
+          stack.pop();
+          stack.push(goats.get(i));
         }
       }
-      System.out.println("totalTime = " + totalTime);
+      System.out.println(totalTime);
     }
   }
-
 
   interface Solution {
 
