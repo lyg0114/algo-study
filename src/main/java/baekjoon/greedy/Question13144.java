@@ -18,31 +18,30 @@ public class Question13144 {
   }
 
   static class SolutionImpl implements Solution {
-
     @Override
     public void doMain() throws IOException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-      long s = 0, e = 0, ret = 0;
-      int n = Integer.parseInt(br.readLine());
-      int[] cnt = new int[100001];
+      long start = 0, end = 0, ret = 0;
+      int N = Integer.parseInt(br.readLine());
+      int[] chkDuplicate = new int[100001];
       StringTokenizer st = new StringTokenizer(br.readLine());
-      int[] a = new int[n];
-      for (int i = 0; i < n; i++) {
-        a[i] = Integer.parseInt(st.nextToken());
+      int[] nums = new int[N];
+      for (int i = 0; i < N; i++) {
+        nums[i] = Integer.parseInt(st.nextToken());
       }
 
-      while (e < n) {
-        if (cnt[a[(int) e]] == 0) {
-          cnt[a[(int) e]]++;
-          e++;
+      while (end < N) {
+        if (chkDuplicate[nums[(int) end]] == 0) {
+          chkDuplicate[nums[(int) end]]++;
+          end++;
         } else {
-          ret += (e - s);
-          cnt[a[(int) s]]--;
-          s++;
+          ret += (end - start);
+          chkDuplicate[nums[(int) start]]--;
+          start++;
         }
       }
 
-      ret += (e - s) * (e - s + 1) / 2;
+      ret += (end - start) * (end - start + 1) / 2;
       System.out.println(ret);
     }
   }
