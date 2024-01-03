@@ -16,38 +16,46 @@ public class Question12100 {
 
   static class SolutionImpl implements Solution {
     static class GameBoard {
-      int[][] cells = new int[24][24];
+
+      public int[][] cells = new int[boardSize][boardSize];
+
       void rotate90() {
-        int[][] temp = new int[24][24];
+        int[][] rotateTemp = new int[boardSize][boardSize];
         for (int i = 0; i < boardSize; i++) {
           for (int j = 0; j < boardSize; j++) {
-            temp[i][j] = cells[boardSize - j - 1][i];
+            rotateTemp[i][j] = cells[boardSize - j - 1][i];
           }
         }
-        System.arraycopy(temp, 0, cells, 0, temp.length);
+        // temp에다 cell을 90도 회전후 배열을 만들고 복사
+        System.arraycopy(rotateTemp, 0, cells, 0, rotateTemp.length);
       }
 
       void move() {
-        int[][] temp = new int[24][24];
+        int[][] moveTemp = new int[boardSize][boardSize];
         for (int i = 0; i < boardSize; i++) {
-          int colIndex = -1, mergeFlag = 0;
+          int colIndex = -1;
+          int isInsert = 0;
           for (int j = 0; j < boardSize; j++) {
+
             if (cells[i][j] == 0) {
               continue;
             }
-            if (mergeFlag != 0 && cells[i][j] == temp[i][colIndex]) {
-              temp[i][colIndex] *= 2;
-              mergeFlag = 0;
-            } else {
-              temp[i][++colIndex] = cells[i][j];
-              mergeFlag = 1;
+
+            if (isInsert != 0 && cells[i][j] == moveTemp[i][colIndex]){
+              moveTemp[i][colIndex] *= 2;
+              isInsert = 0;
             }
+            else {
+              moveTemp[i][++colIndex] = cells[i][j];
+              isInsert = 1;
+            }
+
           }
           for (colIndex++; colIndex < boardSize; colIndex++) {
-            temp[i][colIndex] = 0;
+            moveTemp[i][colIndex] = 0;
           }
         }
-        System.arraycopy(temp, 0, cells, 0, temp.length);
+        System.arraycopy(moveTemp, 0, cells, 0, moveTemp.length);
       }
 
       void getMax() {
