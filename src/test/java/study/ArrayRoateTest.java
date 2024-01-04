@@ -11,11 +11,9 @@ import org.junit.Test;
 public class ArrayRoateTest {
 
   @Test
-  public void rotateArray() {
+  public void rightRotateArray() {
     int n = 4;
     int[][] originalArray = new int[n][n];
-
-    // 초기 배열 설정
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
         originalArray[i][j] = i * n + j + 1;
@@ -25,23 +23,13 @@ public class ArrayRoateTest {
     System.out.println("Original Array:");
     printArray(originalArray);
 
-    System.out.println("\nRotated Array:");
-
+    System.out.println("\n right Rotated Array:");
     rotateArray(originalArray);
     printArray(originalArray);
     System.out.println();
-
-    rotateArray(originalArray);
-    printArray(originalArray);
-    System.out.println();
-
-    rotateArray(originalArray);
-    printArray(originalArray);
-    System.out.println();
-
   }
 
-  int[][] rotateArray(int[][] original) {
+  void rotateArray(int[][] original) {
     int n = original.length;
     int[][] rotated = new int[n][n];
 
@@ -54,8 +42,6 @@ public class ArrayRoateTest {
     for (int i = 0; i < n; i++) {
       System.arraycopy(rotated[i], 0, original[i], 0, n);
     }
-
-    return rotated;
   }
 
   static void printArray(int[][] array) {
