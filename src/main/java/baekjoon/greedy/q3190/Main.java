@@ -1,5 +1,7 @@
 package baekjoon.greedy.q3190;
 
+import java.io.IOException;
+
 /**
  * @author : iyeong-gyo
  * @package : baekjoon.greedy.q3190
@@ -7,8 +9,8 @@ package baekjoon.greedy.q3190;
  */
 public class Main {
 
-  public static void main(String[] args) {
-
+  public static void main(String[] args) throws IOException {
+    Solution solution = new Question3190_V2();
+    solution.doMain();
   }
-
 }

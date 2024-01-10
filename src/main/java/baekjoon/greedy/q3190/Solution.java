@@ -8,6 +8,5 @@ import java.io.IOException;
  * @since : 09.01.24
  */
 public interface Solution {
-
   void doMain() throws IOException;
 }
