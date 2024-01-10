@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @since : 05.01.24
  */
 public class Question3190_V2 implements Solution {
-  static int n, k, l, y, x, t, idx = 0, dir = 1;
+  static int n, k, l, y, x, t, dir = 1;
   static int[][] board, visited;
   static int time;
   static Deque<Pair> dqSnakeLocation;
@@ -49,9 +49,9 @@ public class Question3190_V2 implements Solution {
     for (int i = 0; i < l; i++) {
       t = sc.nextInt();
       char c = sc.next().charAt(0);
-      if (c == 'D') { // 오른쪽으로 꺽을 경우
+      if (c == 'D') { // 오른쪽으로 꺽을 경우 ==> 1
         changeDirTime.add(new Pair(t, 1));
-      } else { // 왼쪽으로 꺽을 경우
+      } else { // 왼쪽으로 꺽을 경우 ==> 3
         changeDirTime.add(new Pair(t, 3));
       }
     }
@@ -82,7 +82,6 @@ public class Question3190_V2 implements Solution {
       dqSnakeLocation.addFirst(new Pair(ny, nx));
       if (changeDirTime.peek() != null && time == changeDirTime.peek().first) {
         dir = (dir + changeDirTime.poll().second) % 4;
-        idx++;
       }
     }
 
