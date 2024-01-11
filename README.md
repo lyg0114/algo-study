@@ -9,4 +9,4 @@
 
 ### GREEDY
 
-- [뱀 - 3190](baekjoon/greedy/q3190/Question3190_V3.java) : [URL](https://www.acmicpc.net/problem/3190)
+- [뱀 - 3190](src/main/java/baekjoon/greedy/q3190/Question3190_V3.java) : [URL](https://www.acmicpc.net/problem/3190)
