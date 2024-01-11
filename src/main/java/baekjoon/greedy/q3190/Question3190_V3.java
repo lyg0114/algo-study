@@ -14,11 +14,6 @@ import java.util.Scanner;
  */
 public class Question3190_V3 implements Solution {
 
-  public static void main(String[] args) throws IOException {
-    Solution solution = new Question3190_V3();
-    solution.doMain();
-  }
-
   static class Pair {
     int first, second;
     public Pair(int first, int second) {
