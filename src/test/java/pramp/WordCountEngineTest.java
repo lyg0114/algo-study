@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
-import pramp.WordCountEngine.WordCountEngineInterface;
-import pramp.WordCountEngine.WordCountEngineSolutionV1;
-import pramp.WordCountEngine.WordCountEngineSolutionV2;
+import others.pramp.WordCountEngine.WordCountEngineInterface;
+import others.pramp.WordCountEngine.WordCountEngineSolutionV1;
+import others.pramp.WordCountEngine.WordCountEngineSolutionV2;
 
 /**
  * @author : iyeong-gyo
