@@ -1,6 +1,5 @@
 package leetcode.topinterview.strings;
 
-import repeat.RepeatLongestPalindromicSubstring;
 
 /**
  * @author : iyeong-gyo
@@ -10,7 +9,7 @@ import repeat.RepeatLongestPalindromicSubstring;
 public class LongestPalindromicSubstring {
 
   public static LongestPalindromicSubstringInterface getSolution() {
-    return new RepeatLongestPalindromicSubstring();
+    return null;
   }
 
   public static class LongestPalindromicSubstringSolutionV2 implements

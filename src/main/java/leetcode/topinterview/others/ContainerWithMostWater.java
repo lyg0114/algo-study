@@ -1,6 +1,5 @@
 package leetcode.topinterview.others;
 
-import repeat.RepeatContainerWithMostWater;
 
 /**
  * @author : iyeong-gyo
@@ -18,7 +17,7 @@ public class ContainerWithMostWater {
   }
 
   public static ContainerWithMostWaterInterface getSolution() {
-    return new RepeatContainerWithMostWater();
+    return null;
   }
 
   public static class ContainerWithMostWaterSolutionV2 implements ContainerWithMostWaterInterface {

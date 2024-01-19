@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import repeat.RepeatLetterCombinationsofPhoneNumber;
 
 /**
  * @author : iyeong-gyo
@@ -21,7 +20,7 @@ public class LetterCombinationsofPhoneNumber {
 
   public static LetterCombinationsofPhoneNumberInterface getSolution() {
 //    return new LetterCombinationsofPhoneNumberSolutionV2();
-    return new RepeatLetterCombinationsofPhoneNumber();
+    return null;
   }
 
   public static class LetterCombinationsofPhoneNumberSolutionV2 implements
