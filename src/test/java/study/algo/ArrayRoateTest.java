@@ -1,4 +1,4 @@
-package study;
+package study.algo;
 
 import java.util.Arrays;
 import org.junit.Test;
