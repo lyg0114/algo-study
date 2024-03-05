@@ -50,21 +50,23 @@ public class Question1911 {
           continue;
         }
 
-        if (index < curRange.start) {
+        if (index < curRange.start) { // 현재 idx 가 웅덩이의 시작점 (curRange.start) 보다 작은 경우
           countOfBoard =
                     ((curRange.end - curRange.start) / lengthOfBoard )              // (웅덩이 길이 / 널빤지 길이)
                   + ((curRange.end - curRange.start) % lengthOfBoard != 0 ? 1 : 0); // (웅덩이 길이 % 널빤지 길이) 가 0인지 0이 아닌지 판별
 
           index = curRange.start + (countOfBoard * lengthOfBoard);
 
-        } else {
+        } else { // 현재 idx 가 웅덩이의 시작점(curRange.start) 보다 크거나 같은 경우
           countOfBoard =
                 ((curRange.end - index) / lengthOfBoard)
               + ((curRange.end - index) % lengthOfBoard != 0 ? 1 : 0);
 
           index = index + (countOfBoard * lengthOfBoard);
         }
+
         ret += countOfBoard;
+
       }
 
       System.out.println(ret);
