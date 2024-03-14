@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
@@ -18,8 +19,46 @@ import java.util.StringTokenizer;
 public class Question14888 {
 
   public static void main(String[] args) throws IOException {
-    Solution solution = new SolutionImplV1();
+    Solution solution = new SolutionImplV2();
     solution.doMain();
+  }
+
+  static class SolutionImplV2 implements Solution {
+    static int n;
+    static int[] a;
+    static int p, minu, mult, divi;
+    static int ret = Integer.MIN_VALUE;
+    static int ret2 = Integer.MAX_VALUE;
+
+    static void go(int index, int cur, int plus, int minus, int mul, int div) {
+      if (index == n - 1) {
+        ret = Math.max(cur, ret);
+        ret2 = Math.min(ret2, cur);
+        return;
+      }
+      if (plus > 0) go(index + 1, cur + a[index + 1], plus - 1, minus, mul, div);
+      if (minus > 0) go(index + 1, cur - a[index + 1], plus, minus - 1, mul, div);
+      if (mul > 0) go(index + 1, cur * a[index + 1], plus, minus, mul - 1, div);
+      if (div > 0) go(index + 1, cur / a[index + 1], plus, minus, mul, div - 1);
+    }
+
+    @Override
+    public void doMain() throws IOException {
+      Scanner scanner = new Scanner(System.in);
+      n = scanner.nextInt();
+      a = new int[n];
+      for (int i = 0; i < n; i++) {
+        a[i] = scanner.nextInt();
+      }
+      p = scanner.nextInt();
+      minu = scanner.nextInt();
+      mult = scanner.nextInt();
+      divi = scanner.nextInt();
+      go(0, a[0], p, minu, mult, divi);
+      System.out.println(ret);
+      System.out.println(ret2);
+      scanner.close();
+    }
   }
 
   static class SolutionImplV1 implements Solution {
