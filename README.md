@@ -11,3 +11,4 @@
 - [2048(12100)](src/main/java/baekjoon/page5/Question12100.java) : [DOCS](https://www.acmicpc.net/problem/12100)
 - [배열돌리기(17406)](src/main/java/baekjoon/page5/Question17406.java) : [DOCS](https://www.acmicpc.net/problem/17406)
 - [톱니바퀴2(15662)](src/main/java/baekjoon/page5/Question15662.java) : [DOCS](https://www.acmicpc.net/problem/15662)
+- [주사위 윷놀이(15662)](src/main/java/baekjoon/page5/Question17825.java) : [DOCS](https://www.acmicpc.net/problem/17825)
