@@ -28,3 +28,4 @@
 /data/
 /logs/
 !/src/main/java/baekjoon/Main.java
+!/src/main/resources/
