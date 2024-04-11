@@ -10,7 +10,6 @@ import org.junit.Test;
  * @since : 16.03.24
  */
 public class VitualThreadExample {
-
   @Test
   public void test1() {
     Runnable printThread = () -> System.out.println(Thread.currentThread());
