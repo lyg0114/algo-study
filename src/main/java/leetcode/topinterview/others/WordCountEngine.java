@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
  * @since : 11.04.24
  */
 public class WordCountEngine {
+
   public static void main(String[] args) {
     String[][] strings
         = wordCountEngine(
@@ -28,6 +29,7 @@ public class WordCountEngine {
   // 1. strip out punctuation [x]
   // 2. seperate sentenct by whitespace [x]
   // 3. iterate sentence and check the count and make the Map<Integer, List<String>>
+
   public static String[][] wordCountEngine(String document) {
     String[] split = document.toLowerCase().split(" ");
     for (int i = 0; i < split.length; i++) {
@@ -36,6 +38,7 @@ public class WordCountEngine {
     Map<String, Long> collect = Arrays.stream(split)
         .collect(Collectors.groupingBy(s -> s, Collectors.counting()));
     HashMap<Long, ArrayList<String>> results = new HashMap<>();
+
     long maxCnt = 0;
     for (String s : split) {
       Long key = collect.get(s);
