@@ -16,36 +16,42 @@ public class Question17143 {
     solution.doMain();
   }
 
-  static class Cell {
-    List<Shark> sharks;
-    public Cell(List<Shark> shark) {
-      this.sharks = shark;
-    }
-  }
-
-  static class Shark {
-    int speed, dir, size, status;
-    public Shark(int speed, int dir, int size) {
-      this.speed = speed;
-      this.dir = dir;
-      this.size = size;
-      this.status = -1;
-    }
-
-    public int getBigSharkSize() {
-      return size;
-    }
-
-    @Override
-    public String
-    toString() { return "Shark{" + size + '}'; }
-  }
-
   // (r,c) -> 상어의 위치
   // s -> 속력
   // d -> 이동방향 (1 : 위, 2 : 아래, 3 : 오른쪽, 4 : 왼쪽)
   // z -> 크기
   static class SolutionImpl implements Solution {
+    static class Cell {
+      List<Shark> sharks;
+      public Cell(List<Shark> shark) {
+        this.sharks = shark;
+      }
+    }
+
+    static class Shark {
+      int speed, dir, size, status;
+      public Shark(int speed, int dir, int size) {
+        this.speed = speed;
+        this.dir = dir;
+        this.size = size;
+        this.status = -1;
+      }
+
+      public int getBigSharkSize() {
+        return size;
+      }
+
+      @Override
+      public String toString() {
+        return "{" +
+            "s=" + speed +
+            ", d=" + dir +
+            ", big=" + size +
+            ", live=" + status +
+            '}';
+      }
+    }
+
     int R,C,M;
     int r,c,s,d,z;
     int res;
@@ -69,8 +75,8 @@ public class Question17143 {
         board[r - 1][c - 1] = new Cell(new ArrayList<>(List.of(new Shark(s, d - 1, z))));
       }
 
-      printBoard(board);
       // 낙시왕의 낙시 로직
+      printBoard(board);
       for (int j = 0; j < C; j++) {
         for (int i = 0; i < R; i++) {
           if (board[i][j] != null && board[i][j].sharks != null && !board[i][j].sharks.isEmpty()) {
@@ -79,6 +85,7 @@ public class Question17143 {
             printBoard(board);
             break;
           }
+          printBoard(board);
         }
 
         // 상어 이동 로직
@@ -87,7 +94,7 @@ public class Question17143 {
           for (int l = 0; l < C; l++) {
             if (board[k][l] != null && board[k][l].sharks != null && !board[k][l].sharks.isEmpty()) {
               Shark shark = board[k][l].sharks.get(0);
-              if(shark.status == j) break;
+              if (shark.status == j) { break; }
               board[k][l].sharks = null; // 해당 위치에는 상어가 이동했으므로
 
               // 방향에 따른 이동 로직
@@ -96,8 +103,15 @@ public class Question17143 {
               for (int i = 0; i < shark.speed; i++) {
                 x = x + dx[dir];
                 y = y + dy[dir];
-                if ((dir == 2 || dir == 3) && (y == 0 || y == C - 1)) { dir = switchingDir(dir); }
-                if ((dir == 0 || dir == 1) && (x == 0 || x == R - 1)) { dir = switchingDir(dir); }
+                if ((dir == 2 || dir == 3) && (y == -1 || y == C)) {
+                  dir = switchingDir(dir);
+                  x = x + dx[dir];
+                  y = y + dy[dir];
+                } else if ((dir == 0 || dir == 1) && (x == -1 || x == R)) {
+                  dir = switchingDir(dir);
+                  x = x + dx[dir];
+                  y = y + dy[dir];
+                }
               }
               shark.dir = dir; // 상어의 이동 완료후 변경된 방향정보 업데이트
 
@@ -124,14 +138,14 @@ public class Question17143 {
         }
       }
 
-      System.out.println("res = " + res);
+      System.out.println(res);
     }
 
     // 현재 상어들의 상황을 디버깅 하기 위한 메소드
     private void printBoard(Cell[][] board) {
       for (int x = 0; x < board.length; x++) {
         for (int y = 0; y < board[x].length; y++) {
-          String sharkStr = "[x]     ";
+          String sharkStr = "[x]                       ";
           if (board[x][y] != null && board[x][y].sharks != null) {
             sharkStr = board[x][y].sharks.get(0).toString();
           }
