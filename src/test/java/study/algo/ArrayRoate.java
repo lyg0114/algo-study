@@ -8,7 +8,7 @@ import org.junit.Test;
  * @package : study
  * @since : 02.01.24
  */
-public class ArrayRoateTest {
+public class ArrayRoate {
 
   @Test
   public void rightRotateArrayTest() {

@@ -1,7 +1,6 @@
 package study.algo;
 
 import java.util.Comparator;
-import java.util.PriorityQueue;
 import org.junit.Test;
 
 /**
@@ -9,11 +8,11 @@ import org.junit.Test;
  * @package : study
  * @since : 28.11.23
  */
-public class PriorityQueueTest {
+public class PriorityQueue {
 
   @Test
   public void priorityQueuetest() {
-    PriorityQueue<Integer> minPriorityQueue = new PriorityQueue<>();
+    java.util.PriorityQueue<Integer> minPriorityQueue = new java.util.PriorityQueue<>();
     minPriorityQueue.add(3);
     minPriorityQueue.add(1);
     minPriorityQueue.add(4);
@@ -25,7 +24,7 @@ public class PriorityQueueTest {
 
   @Test
   public void reversePriorityQueuetest() {
-    PriorityQueue<Integer> maxPriorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
+    java.util.PriorityQueue<Integer> maxPriorityQueue = new java.util.PriorityQueue<>(Comparator.reverseOrder());
     maxPriorityQueue.add(3);
     maxPriorityQueue.add(1);
     maxPriorityQueue.add(4);
