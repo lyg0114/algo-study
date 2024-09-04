@@ -17,6 +17,7 @@ public class Question1202 {
   public static void main(String[] args) throws IOException {
     Solution solution = new SolutionImpl();
     solution.doMain();
+    System.out.println("Fix Error");
   }
 
   static class SolutionImpl implements Solution {
