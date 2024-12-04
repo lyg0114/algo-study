@@ -12,15 +12,22 @@ public class ArrayRoate {
 
   @Test
   public void rightRotateArrayTest() {
+
     int n = 4;
     int[][] originalArray = new int[n][n];
+
     for (int i = 0; i < n; i++) {
+
       for (int j = 0; j < n; j++) {
+
         originalArray[i][j] = i * n + j + 1;
+
       }
+
     }
 
     System.out.println("Original Array:");
+
     printArray(originalArray);
 
     System.out.println("\n right Rotated Array:");
@@ -80,7 +87,9 @@ public class ArrayRoate {
 
   static void printArray(int[][] array) {
     for (int[] row : array) {
+
       System.out.println(Arrays.toString(row));
+
     }
   }
 }

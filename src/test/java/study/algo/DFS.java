@@ -19,21 +19,32 @@ public class DFS {
     private Map<Integer, List<Integer>> graph;
 
     public Graph() {
+
       this.graph = new HashMap<>();
+
     }
 
     public void addEdge(int u, int v) {
+
       graph.computeIfAbsent(u, k -> new ArrayList<>()).add(v);
+
       graph.computeIfAbsent(v, k -> new ArrayList<>()).add(u);
+
     }
 
     public void dfs(int node, Set<Integer> visited) {
+
       if (!visited.contains(node)) {
+
         System.out.print(node + " ");
         visited.add(node);
+
         for (int neighbor : graph.getOrDefault(node, new ArrayList<>())) {
+
           dfs(neighbor, visited);
+
         }
+
       }
     }
   }
